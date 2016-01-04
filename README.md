@@ -17,7 +17,7 @@ Renske Talsma
 
 
 # Concept schets
-COMING SOON™ (When it's ready)
+!p[](doc/sketch.png)
 
 
 
