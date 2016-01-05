@@ -26,7 +26,7 @@
 
 ### Class Initialization (MainActivity)
 * loadDictionary
-⋅⋅⋅ returns set van key/value pairs met daarin de woorden en hun Engelse vertaling (inlezen van XML)
+⋅⋅* returns set van key/value pairs met daarin de woorden en hun Engelse vertaling (inlezen van XML)
 
 * getStatus
 ⋅⋅* returns de gekozen spelmodus chill of normaal (indien van toepassing)
