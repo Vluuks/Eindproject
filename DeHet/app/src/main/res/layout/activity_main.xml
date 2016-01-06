@@ -9,13 +9,49 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hints/uitleg"
-        android:id="@+id/hintTextview"
-        android:layout_gravity="center_horizontal"
-        android:onClick="displayHintScreen"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HP"
+            android:id="@+id/livesTextview"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HINTS"
+            android:id="@+id/hintTextview"
+            android:layout_gravity="center_horizontal"
+            android:onClick="displayHintScreen"/>
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OPTIONS"
+            android:id="@+id/optionsTextview"
+            android:layout_gravity="center_horizontal"
+            android:onClick="displayOptionsScreen"/>
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ACHIEVEMENTS"
+            android:id="@+id/achievementsTextview"
+            android:layout_gravity="center_horizontal"
+            android:onClick="displayAchievementScreen"/>
+
+
+    </LinearLayout>
 
 
     <TextView
@@ -28,7 +64,7 @@
 
     <TextView
         android:paddingTop="25dp"
-        android:paddingBottom="75dp"
+        android:paddingBottom="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -37,6 +73,15 @@
         android:layout_gravity="center_horizontal"
         android:onClick="displayTranslation"/>
 
+    <TextView
+        android:paddingBottom="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="MULTIPLIER"
+        android:id="@+id/multiplierTextview"
+        android:layout_gravity="center_horizontal" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center_horizontal"
@@ -44,19 +89,19 @@
         android:layout_height="match_parent">
 
         <Button
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DE"
-            android:id="@+id/button"
+            android:id="@+id/de_button"
             android:onClick="checkArticle"/>
 
         <Button
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="HET"
-            android:id="@+id/button2"
+            android:id="@+id/het_button"
             android:onClick="checkArticle"/>
     </LinearLayout>
 
