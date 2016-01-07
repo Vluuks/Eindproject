@@ -173,7 +173,6 @@
         <ar><k>[het] hemd</k>shirt</ar>
         <ar><k>[de] schoen</k>shoe</ar>
         <ar><k>[de] winkel</k>shop  ; store</ar>
-        <ar><k>[het] zijde</k>silk</ar>
         <ar><k>[de] rok</k>skirt</ar>
         <ar><k>[de] zeep</k>soap</ar>
         <ar><k>[de] sok</k>sock</ar>
@@ -227,7 +226,6 @@
         <ar><k>[de] autoriteit</k>authority  ; authorization  ; authorisation  ; potency  ; dominance  ; say-so</ar>
         <ar><k>[de] huid</k>skin  ; tegument  ; cutis</ar>
         <ar><k>[het] haar</k>hair  ; pilus</ar>
-        <ar><k>[het] haar  ; [de] haren (pl.)</k>hair</ar>
         <ar><k>[het] bot</k>bone  ; os</ar>
         <ar><k>[de] tand</k>tooth</ar>
         <ar><k>[de] spier</k>muscle  ; musculus</ar>
@@ -411,7 +409,7 @@
         <ar><k>[de] hemel</k>sky</ar>
         <ar><k>[de] bron</k>spring  ; fountain  ; outflow  ; outpouring  ; natural spring</ar>
         <ar><k>[de] ster</k>star</ar>
-        <ar><k>[de] sun</k>sun  ; Sun</ar>
+        <ar><k>[de] zon</k>sun  ; Sun</ar>
         <ar><k>[de] vakman  ; [de] specialist  ; [de] expert</k>expert</ar>
         <ar><k>[de] vrouw</k>female  ; female person</ar>
         <ar><k>[de] man</k>male  ; male person</ar>
@@ -522,7 +520,6 @@
         <ar><k>[het] staal</k>steel</ar>
         <ar><k>[de] chemicaliën</k>chemical  ; chemical substance</ar>
         <ar><k>[de] steenkool</k>coal</ar>
-        <ar><k>[het] stof</k>dust</ar>
         <ar><k>[de] lucht</k>air</ar>
         <ar><k>[de] adem</k>breath</ar>
         <ar><k>[de] aarde</k>earth  ; ground</ar>

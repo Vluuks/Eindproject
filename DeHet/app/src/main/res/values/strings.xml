@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">DeHet</string>
     <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="hint1">These are not rules that apply 100% of the time but can offer you some direction on when to use \"de\" or \"het\".</string>
+    <string name="usuallyde">Usually \"de\"</string>
+    <string name="dehint1">- Fruits, trees, plants, mountains, rivers.</string>
+    <string name="dehint2">- Plurals, such as \"(de) paarden\", \"(de) kroketten\"</string>
+    <string name="dehint3">- Words that end in -heid, -nis, -ij</string>
+    <string name="dehint4">- Words that end in -theek, -teit, -iteit</string>
+    <string name="usuallyhet">Usually \"het\"</string>
+    <string name="hethint1">- Verbs in infinitive form, such as \"(het) roken\", \"(het) delen\"</string>
+    <string name="hethint2">- Diminutives such as \"(het) kastje\", \"(het) koopje\"</string>
+    <string name="combinedwords">Combined words</string>
+    <string name="cwhint1">TEST</string>
+    <string name="gamemode">Chill Mode</string>
 </resources>

@@ -19,14 +19,6 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HP"
-            android:id="@+id/livesTextview"
-            android:layout_gravity="center_horizontal"/>
-
-        <TextView
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="HINTS"
             android:id="@+id/hintTextview"
             android:layout_gravity="center_horizontal"
@@ -39,26 +31,52 @@
             android:text="OPTIONS"
             android:id="@+id/optionsTextview"
             android:layout_gravity="center_horizontal"
-            android:onClick="displayOptionsScreen"/>
+            android:onClick="goToOptions"/>
 
         <TextView
-            android:layout_marginRight="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACHIEVEMENTS"
+        android:id="@+id/achievementsTextview"
+        android:layout_gravity="center_horizontal"
+        android:onClick="displayAchievementScreen"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACHIEVEMENTS"
-            android:id="@+id/achievementsTextview"
+            android:text="NEW GAME"
+            android:id="@+id/newgameTextview"
             android:layout_gravity="center_horizontal"
-            android:onClick="displayAchievementScreen"/>
+            android:onClick="startNewGame"/>
 
 
     </LinearLayout>
 
+    <TextView
+        android:paddingTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" "
+        android:id="@+id/timerTextview"
+        android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:paddingTop="100dp"
+        android:paddingTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LIVES"
+        android:id="@+id/livesTextview"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:paddingTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SCORE"
+        android:textColor="#FF6F00"
+        android:textSize="20dp"
         android:id="@+id/scoreTextview"
         android:layout_gravity="center_horizontal" />
 
@@ -69,6 +87,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="HET WOORD WOW"
+        android:textStyle="bold"
         android:id="@+id/woordTextview"
         android:layout_gravity="center_horizontal"
         android:onClick="displayTranslation"/>
@@ -79,6 +98,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="MULTIPLIER"
+        android:textColor="#FF6F00"
         android:id="@+id/multiplierTextview"
         android:layout_gravity="center_horizontal" />
 
