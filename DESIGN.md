@@ -91,9 +91,9 @@ haal de status van de achievements uit SharedPreferences
 
 
 ## Interface elementen gekoppeld aan methods
-![](doc/designfoc1)
+![](doc/designdoc1.jpg)
 
-![](doc/designfoc2)
+![](doc/designdoc2.jpg)
 
 
 
