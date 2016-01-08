@@ -91,7 +91,10 @@ haal de status van de achievements uit SharedPreferences
 
 
 ## Interface elementen gekoppeld aan methods
-![](TODO)
+![](doc/designfoc1)
+
+![](doc/designfoc2)
+
 
 
 

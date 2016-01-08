@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity  {
     public ArrayList<String> keylist;
     public TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView;
     public String lidwoord, znw, gameType, pickedWord, pickedWordTranslation;
-    public int score, lives, multiplier, maxmultiplier, timervalue;
+    public int score, lives, multiplier, maxmultiplier;
+    private long timervalue, storedtimervalue;
     private CountDownTimer gameTimer;
+    private boolean gamestatus, timerstatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity  {
         livesTextView = (TextView) findViewById(R.id.livesTextview);
         multiplierTextView = (TextView) findViewById(R.id.multiplierTextview);
         timerTextView = (TextView) findViewById(R.id.timerTextview);
+        woordTextView = (TextView) findViewById(R.id.woordTextview);
 
         initializeGame();
         pickWord();
@@ -58,10 +61,17 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onResume() {
         super.onResume();
-        // resume the timer where it left off
-        if(gameType.equals("NORMAL"))
-            initializeTimer(timervalue, 1000);
-            System.out.println("RESUMED" + timervalue);
+
+        if(gamestatus != false) {
+            //resume the timer where it left off
+            if (gameType.equals("NORMAL"))
+                gameTimer.cancel();
+            initializeTimer(storedtimervalue, 1000);
+            System.out.println("RESUMED" + storedtimervalue);
+        }
+        else
+            initializeGame();
+
 
     }
 
@@ -70,14 +80,17 @@ public class MainActivity extends AppCompatActivity  {
         super.onPause();
         // stop the timer and store the value
         if(gameType.equals("NORMAL") && !timerTextView.getText().equals("Time's up!")) {
-            timervalue = Integer.valueOf(timerTextView.getText().toString()) * 1000;
+            storedtimervalue = timervalue;
+            timerstatus = false;
             gameTimer.cancel();
             System.out.println("PAUSE" + timervalue);
+
         }
     }
 
     public void initializeGame()
     {
+        gamestatus = true;
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         gameType = useroptions.getString("GAMETYPE", "NORMAL");
         score = 0;
@@ -85,12 +98,15 @@ public class MainActivity extends AppCompatActivity  {
         multiplier = 0;
         maxmultiplier = 0;
 
+        woordTextView.setVisibility(View.VISIBLE);
+
         if (gameType.equals("CHILL"))
             setChillMode();
         else
             setNormalMode();
-
     }
+
+
 
     public void setNormalMode(){
         livesTextView.setVisibility(View.VISIBLE);
@@ -103,6 +119,38 @@ public class MainActivity extends AppCompatActivity  {
         multiplierTextView.setText(" ");
 
         initializeTimer(120000, 1000);
+        System.out.println("NEW TIMER STARTED");
+    }
+
+    public void stopGame(){
+
+        gamestatus = false;
+
+        // hide all game elements
+        livesTextView.setVisibility(View.INVISIBLE);
+        scoreTextView.setVisibility(View.INVISIBLE);
+        multiplierTextView.setVisibility(View.INVISIBLE);
+        timerTextView.setVisibility(View.INVISIBLE);
+        woordTextView.setVisibility(View.INVISIBLE);
+
+        //display appropriate message
+        // if blabla = lose or if blabla = win (argument of method)
+        // create imageview that goes over all the elements of the game
+
+        // collect data for highscores/achievements
+        Intent intent = new Intent(this, HighscoreActivity.class);
+        if(gameType.equals("NORMAL")) {
+            intent.putExtra("GAMETYPE", gameType);
+            intent.putExtra("SCORE", score);
+            intent.putExtra("LIVES", lives);
+            intent.putExtra("MAXMULTIPLIER", maxmultiplier);
+        }
+
+        // reset game values so that if user presses back from achievements a new game is available
+        // initializeGame();
+
+        startActivity(intent);
+
     }
 
     public void initializeTimer(long time, long interval){
@@ -116,10 +164,18 @@ public class MainActivity extends AppCompatActivity  {
 
             public void onFinish() {
                 timerTextView.setText("Time's up!");
-                onWin();
+
+                // if user actually played, trigger onwin, else just start a new game
+                if(score > 0)
+                    onWin();
+                else
+                    initializeGame();
             }
         }.start();
     }
+
+
+
 
     public void setChillMode(){
         lives = -1;
@@ -131,8 +187,10 @@ public class MainActivity extends AppCompatActivity  {
 
     public void startNewGame(View view) {
 
-        if(gameType.equals("NORMAL"))
+        if(gameType.equals("NORMAL")) {
             gameTimer.cancel();
+            System.out.println("TIMER CANCELLED: NEW GAME INITIATED");
+        }
 
         initializeGame();
         pickWord();
@@ -211,18 +269,6 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
-    public void sendScore(){
-        Intent intent = new Intent(this, HighscoreActivity.class);
-
-        // only send data if the mode is not chill
-        if(gameType.equals("NORMAL")) {
-            intent.putExtra("GAMETYPE", gameType);
-            intent.putExtra("SCORE", score);
-            intent.putExtra("LIVES", lives);
-            intent.putExtra("MAXMULTIPLIER", maxmultiplier);
-        }
-        startActivity(intent);
-    }
 
 
     public void onLose(){
@@ -230,7 +276,7 @@ public class MainActivity extends AppCompatActivity  {
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
         toast.show();
 
-        sendScore();
+        stopGame();
     }
 
     public void onWin(){
@@ -242,7 +288,7 @@ public class MainActivity extends AppCompatActivity  {
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
         toast.show();
 
-        sendScore();
+        stopGame();
     }
 
     // cannot be put in another class due to getassets not working?

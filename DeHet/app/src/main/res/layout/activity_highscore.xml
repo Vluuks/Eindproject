@@ -9,4 +9,11 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="AchievementsActivity"
+        android:id="@+id/textView13"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
