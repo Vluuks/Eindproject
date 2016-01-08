@@ -28,3 +28,9 @@
 * Er zit geen beginscherm met opties/nieuw spel/highscores etc. in, heb deze bovenaan in de game zelf gestopt, minder omslachtig en past prima omdat het design van de game zelf vrij rustig en leeg is.
 * Timer is nog wel erg buggy, bij heen en weer gaan tussen activities resumet ie wel maar gaan er op 1 of andere manier 2 door elkaar lopen. Lichtelijk bizar.
 
+
+## Day 5
+* Poging gedaan om timer te fixen, lijkt er op dat de bug in de API van android zit (cancel werkt niet) op zoek gegaan naar andere mogelijkheden. 
+* Verwijzing van backbutton vanuit onwin achievement screen verbeterd: start nu een nieuw spel in plaats van je de hele tijd heen en weer te sturen.
+* Bij chill mode moet nog een feedback of het goed of fout is, die ontbreekt nu en dan heeft het oefenen ook niet veel zin.
+
