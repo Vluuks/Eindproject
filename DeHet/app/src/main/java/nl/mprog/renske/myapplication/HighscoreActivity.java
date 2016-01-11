@@ -26,8 +26,8 @@ public class HighscoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
 
-        ArrayList<Achievement> achievements = new ArrayList<Achievement>();
 
+        // create list to put everything inside array in bulk
         Achievement[] achievementlist = new Achievement[]{
 
         // beginner achievements
@@ -54,10 +54,13 @@ public class HighscoreActivity extends AppCompatActivity {
         master_achiev2 = new Achievement("Score a combo of at least 100", "@mipmap/icontest", 0, "Ultimate")
         };
 
+        // add the array created above to the arraylist and set the listadapter on this arraylist
+        ArrayList<Achievement> achievements = new ArrayList<Achievement>();
         achievements.addAll(Arrays.asList(achievementlist));
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
 
+        // check where the user came from (if not from game, then no need to check for achievements)
         checkSource();
     }
 
@@ -151,22 +154,28 @@ public class HighscoreActivity extends AppCompatActivity {
                 v = vi.inflate(R.layout.listitem, null);
             }
 
+            // iterate over the items in achievement arraylist
             Achievement achievement = achievements.get(position);
             if (achievement != null) {
+
+                // initialize layout components from the listitem
                 TextView achievementname = (TextView) v.findViewById(R.id.name);
                 TextView achievementprogress =(TextView) v.findViewById(R.id.status);
                 ImageView achievementicon = (ImageView) v.findViewById(R.id.icon);
 
-                if (achievementname != null) {
+                // go over the components of the object, name and progress
+
+                // set textview to show achievement name
+                if (achievementname != null)
                     achievementname.setText(achievement.name);
-                }
 
                 if(achievementprogress != null) {
-
+                    // if the achievement is completed, set text to complete and update picture
                     if(achievement.status == 1){
                         achievementprogress.setText("Complete!");
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
                     }
+                    // otherwise just show the type of achievement as text
                     else
                         achievementprogress.setText(achievement.type);
                 }
