@@ -266,7 +266,6 @@
         <ar><k>[de] kwestie  ; strubbeling  ; zorg</k>trouble  ; problem</ar>
         <ar><k>[de] twijfel</k>doubt  ; uncertainty  ; incertitude  ; dubiety  ; doubtfulness  ; dubiousness</ar>
         <ar><k>[de] attentie</k>attention  ; attending</ar>
-        <ar><k>[het] zoet</k>sweet  ; sweetness  ; sugariness</ar>
         <ar><k>[het] lawaai</k>noise  ; dissonance  ; racket</ar>
         <ar><k>[het] cijfer</k>grade  ; mark  ; score</ar>
         <ar><k>[de] ervaring</k>experience</ar>
@@ -373,7 +372,6 @@
         <ar><k>[de] organisatie  ; [het] samenwerkingsverband</k>organization  ; organisation</ar>
         <ar><k>[de] regering</k>government  ; authorities  ; regime</ar>
         <ar><k>[het] bedrijf  ; [de] zaak  ; [de] organisatie  ; [de] firma</k>company</ar>
-        <ar><k>[het] bedrijf  ; [de] zaak  ; [de] organisatie  ; [de] firma</k>business  ; concern  ; business concern  ; business organization  ; business organisation</ar>
         <ar><k>[de] religie</k>religion  ; faith  ; organized religion</ar>
         <ar><k>[de] natie</k>nation  ; land  ; country</ar>
         <ar><k>[de] bevolking  ; [het] publiek</k>public  ; populace  ; world</ar>
@@ -425,7 +423,7 @@
         <ar><k>[het] meisje</k>girl  ; miss  ; missy  ; young lady  ; young woman  ; fille</ar>
         <ar><k>[de] rechter</k>judge  ; justice  ; jurist</ar>
         <ar><k>[de] jongen</k>boy  ; male child</ar>
-        <ar><k>[de] (volwassen) man</k>man  ; adult male</ar>
+        <ar><k>[de] man</k>man  ; adult male</ar>
         <ar><k>[de] moeder</k>mother  ; female parent</ar>
         <ar><k>[de] bezitter</k>owner  ; possessor</ar>
         <ar><k>[de] plaatsvervanger</k>representative</ar>
@@ -829,7 +827,7 @@
         <ar><k>[de] spelling</k>spelling</ar>
         <ar><k>[de] derde  ; 3de  ; 3e</k>third  ; 3rd  ; tertiary</ar>
         <ar><k>[de] actie</k>activity  ; action  ; activeness</ar>
-        <ar><k>[het] Chinees</k>Chinese</ar>
+        <ar><k>[het] Chinees (taal)</k>Chinese</ar>
         <ar><k>[de] handtas  ; [de] tas</k>bag  ; handbag  ; pocketbook  ; purse</ar>
         <ar><k>[het] teken  ; [het] symbool</k>character  ; grapheme  ; graphic symbol</ar>
         <ar><k>[het] Italiaans</k>Italian</ar>
@@ -906,6 +904,7 @@
         <ar><k>[de] boon</k>bean  ; edible bean</ar>
         <ar><k>[de] aardbei</k>strawberry</ar>
         <ar><k>[de] perzik</k>peach</ar>
+        <ar><k>[de] knoest</k>wood knot</ar>
         <ar><k>[de] banaan</k>banana</ar>
         <ar><k>[de] framboos</k>raspberry</ar>
         <ar><k>[de] kool</k>cabbage  ; chou</ar>
@@ -913,6 +912,7 @@
         <ar><k>[de] abrikoos</k>apricot</ar>
         <ar><k>[de] peer</k>pear</ar>
         <ar><k>[de] ozon</k>ozone</ar>
+        <ar><k>[het] kussen</k>pillow</ar>
         <ar><k>[de] dauw</k>dew</ar>
         <ar><k>[de] olijf</k>olive</ar>
         <ar><k>[de] atmosfeer</k>atmosphere  ; air</ar>

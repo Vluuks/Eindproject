@@ -34,3 +34,15 @@
 * Verwijzing van backbutton vanuit onwin achievement screen verbeterd: start nu een nieuw spel in plaats van je de hele tijd heen en weer te sturen.
 * Bij chill mode moet nog een feedback of het goed of fout is, die ontbreekt nu en dan heeft het oefenen ook niet veel zin.
 
+
+## Day 6
+* Timer maar even gelaten voor wat het is, eerst achievement systeem geimplementeerd.
+* Gekozen voor listview van objects, zo kan ik de onderdelen van het achievement gemakkelijk aanpassen.
+* Wilde een switch toepassen voor de achievement check, helaas kan in een switch geen gebruik gemaakt worden van groter/kleiner dan symbolen dus dit viel af. Nu is het een reeks if statements. Minder mooi, maar helaas noodzakelijk.
+* Achievements vooralsnog onderverdeeld in makkelijker en moeilijker.
+* Als timer weer werkt ook achievments toevoegen zoals score X binnen Y seconden.
+* Teller met goede en foute antwoorden toegevoegd om wat meer een idee te geven van de performance van de user en ook chill mode zinvolle feedback te geven (die ontbrak tot nog toe).
+* Geprobeerd om volledig scherm imageview te tonen on Win/Lose met passende boodschap en plaatje, dit is helaas nog niet gelukt ivm een memory error.
+* Ingelezen over het opslaan van achievements. Omdat een arraylist niet zonder meer in sharedpreferences opgeslagen kan worden moet ik hier iets anders voor verzinnen.
+* Nagedacht over een mechanic om levens terug te krijgen, bijvoorbeeld bij een combo van x25 +1 leven (max blijft wel 3). Dit om combo's nog meer te belonen.
+* Schetsen gemaakt plaatjes en icoontjes die ik aan het eind graag wil gaan gebruiken. 

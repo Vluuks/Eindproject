@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +26,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity  {
 
     public ArrayList<String> keylist;
-    public TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView;
+    public TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
     public String lidwoord, znw, gameType, pickedWord, pickedWordTranslation;
-    public int score, lives, multiplier, maxmultiplier;
+    public int score, lives, multiplier, maxmultiplier, correctcount, incorrectcount;
     private long timervalue, storedtimervalue;
     private CountDownTimer gameTimer;
     private boolean gamestatus, timerstatus;
@@ -46,15 +47,26 @@ public class MainActivity extends AppCompatActivity  {
             e.printStackTrace();
         }
 
+
+        //wait a bit so that the dictionary has time to load
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+
+
         // initialize layout components
         scoreTextView = (TextView) findViewById(R.id.scoreTextview);
         livesTextView = (TextView) findViewById(R.id.livesTextview);
         multiplierTextView = (TextView) findViewById(R.id.multiplierTextview);
         timerTextView = (TextView) findViewById(R.id.timerTextview);
         woordTextView = (TextView) findViewById(R.id.woordTextview);
+        correctTextView = (TextView) findViewById(R.id.correctcounter);
+        incorrectTextView = (TextView) findViewById(R.id.incorrectcounter);
+
 
         initializeGame();
-        pickWord();
     }
 
 
@@ -96,14 +108,23 @@ public class MainActivity extends AppCompatActivity  {
         score = 0;
         lives = 3;
         multiplier = 0;
-        maxmultiplier = 0;
+        maxmultiplier = -1;
+        correctcount = 0;
+        incorrectcount = 0;
 
         woordTextView.setVisibility(View.VISIBLE);
+        correctTextView.setVisibility(View.VISIBLE);
+        incorrectTextView.setVisibility(View.VISIBLE);
+        correctTextView.setText("RIGHT 0");
+        incorrectTextView.setText("WRONG 0");
+        woordTextView.setText(" ");
 
         if (gameType.equals("CHILL"))
             setChillMode();
         else
             setNormalMode();
+
+        pickWord();
     }
 
 
@@ -124,6 +145,7 @@ public class MainActivity extends AppCompatActivity  {
 
     public void stopGame(){
 
+        // set game status to false so back button in achievementactivity works properly
         gamestatus = false;
 
         // hide all game elements
@@ -132,10 +154,18 @@ public class MainActivity extends AppCompatActivity  {
         multiplierTextView.setVisibility(View.INVISIBLE);
         timerTextView.setVisibility(View.INVISIBLE);
         woordTextView.setVisibility(View.INVISIBLE);
+        correctTextView.setVisibility(View.INVISIBLE);
+        incorrectTextView.setVisibility(View.INVISIBLE);
 
+
+        //LinearLayout layout =(LinearLayout)findViewById(R.id.mainlayout);
         //display appropriate message
-        // if blabla = lose or if blabla = win (argument of method)
-        // create imageview that goes over all the elements of the game
+       // if(lives == 0)
+            //layout.setBackgroundResource(R.drawable.testplaatjeonlose);
+       // else
+            //layout.setBackgroundResource(R.drawable.testplaatjeonwin);
+
+
 
         // collect data for highscores/achievements
         Intent intent = new Intent(this, HighscoreActivity.class);
@@ -145,10 +175,6 @@ public class MainActivity extends AppCompatActivity  {
             intent.putExtra("LIVES", lives);
             intent.putExtra("MAXMULTIPLIER", maxmultiplier);
         }
-
-        // reset game values so that if user presses back from achievements a new game is available
-        // initializeGame();
-
         startActivity(intent);
 
     }
@@ -193,7 +219,6 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         initializeGame();
-        pickWord();
     }
 
     public void displayHintScreen(View view) {
@@ -219,40 +244,21 @@ public class MainActivity extends AppCompatActivity  {
     public void checkArticle(View view) {
 
         if (view.getId() == R.id.de_button) {
-            if(lidwoord.equals("[de]")){
-                keylist.remove(pickedWord);
-                multiplier++;
-                multiplierTextView.setText("COMBO x" + Integer.toString(multiplier));
+            if (lidwoord.equals("[de]")) {
+                ifCorrect();
+            } else {
+                ifIncorrect();
             }
-
-            else {
-                keylist.add(pickedWord);
-                lives--;
-                multiplier = 0;
-                multiplierTextView.setText(" ");
-            }
-        }
-        else if (view.getId() == R.id.het_button) {
-            if(lidwoord.equals("[het]")){
-                keylist.remove(pickedWord);
-                multiplier++;
-                multiplierTextView.setText("COMBO x" + Integer.toString(multiplier));
-            }
-
-            else {
-                keylist.add(pickedWord);
-                lives--;
-                multiplier = 0;
-                multiplierTextView.setText(" ");
+        } else if (view.getId() == R.id.het_button) {
+            if (lidwoord.equals("[het]")) {
+                ifCorrect();
+            } else {
+                ifIncorrect();
             }
         }
 
         //calculate score increase
         score = score + multiplier;
-
-        //decide if this multiplier is bigger than he ones before
-        if (multiplier > maxmultiplier)
-            maxmultiplier = multiplier;
 
         // update layout elements
         scoreTextView.setText(Integer.toString(score));
@@ -265,7 +271,48 @@ public class MainActivity extends AppCompatActivity  {
         // else go to achievement screen/game over screen
         else
             onLose();
+    }
 
+
+
+    public void ifCorrect(){
+
+        keylist.remove(pickedWord);
+        correctcount++;
+        correctTextView.setText("RIGHT " + Integer.toString(correctcount));
+
+        if(gameType.equals("NORMAL")) {
+            multiplier++;
+            multiplierTextView.setText("COMBO x" + Integer.toString(multiplier));
+
+            //decide if this multiplier is bigger than he ones before
+            if (multiplier > maxmultiplier)
+                maxmultiplier = multiplier;
+
+        }
+        else {
+            Toast toast = Toast.makeText(this, "CORRECT!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
+        }
+    }
+
+
+    public void ifIncorrect(){
+        keylist.add(pickedWord);
+        incorrectcount++;
+        incorrectTextView.setText("WRONG " + Integer.toString(incorrectcount));
+
+        if(gameType.equals("NORMAL")) {
+            lives--;
+            multiplier = 0;
+            multiplierTextView.setText(" ");
+        }
+        else{
+            Toast toast = Toast.makeText(this, "INCORRECT!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
+        }
     }
 
 
@@ -319,7 +366,6 @@ public class MainActivity extends AppCompatActivity  {
                     if (name.equals("k")) {
                         if (xpp.next() == XmlPullParser.TEXT)
                             dictKey = xpp.getText();
-                        System.out.println(dictKey);
                     }
                     break;
 
@@ -352,6 +398,12 @@ public class MainActivity extends AppCompatActivity  {
         Random randomizer = new Random();
         pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
         System.out.println("Gekozen woord raw:" + pickedWord);
+
+        while(pickedWord == null) {
+            pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
+            System.out.println("Gekozen woord raw:" + pickedWord);
+        }
+
         pickedWordTranslation = dictionarymap.get(pickedWord);
 
         // split keystring so that you have the article and the rest
