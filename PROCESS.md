@@ -46,3 +46,11 @@
 * Ingelezen over het opslaan van achievements. Omdat een arraylist niet zonder meer in sharedpreferences opgeslagen kan worden moet ik hier iets anders voor verzinnen.
 * Nagedacht over een mechanic om levens terug te krijgen, bijvoorbeeld bij een combo van x25 +1 leven (max blijft wel 3). Dit om combo's nog meer te belonen.
 * Schetsen gemaakt plaatjes en icoontjes die ik aan het eind graag wil gaan gebruiken. 
+
+
+## Day 7
+* Text to speech geimplementeerd in app, was nogal een gedoe, maar uiteindelijk blijkt Pico API helaas geen ondersteuning te bieden voor Nederlands... Beetje zonde van de tijd dus.
+* Nog op zoek naar een API die dat mogelijk wel (gratis) doet.
+* Begonnen met een indeling van model classes te maken om zo de code leesbaar te houden.
+* Uitzoeken hoe ik min ArrayList kan omzetten naar Gson om dit op te slaan in sharedpreferences of weg te schrijven naar een text file.
+* Gson API geinstaleerd van Google.
