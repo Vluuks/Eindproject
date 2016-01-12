@@ -2,6 +2,7 @@ package nl.mprog.renske.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,14 +16,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class HighscoreActivity extends AppCompatActivity {
 
@@ -39,50 +34,68 @@ public class HighscoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_highscore);
 
 
-        // create list to put everything inside array in bulk
-        Achievement[] achievementlist = new Achievement[]{
-
-        // beginner achievements
-        beginner_achiev1 = new Achievement("Score 50 points or more", "@mipmap/icontest", 0, "Beginner"),
-        beginner_achiev2 = new Achievement("Score a combo of at least 5", "@mipmap/icontest", 0, "Beginner"),
-        beginner_achiev3 = new Achievement("Finish a game with at least 1 life left", "@mipmap/icontest", 0, "Beginner"),
-
-        // novice achievements
-        novice_achiev1 = new Achievement("Score 100 points or more", "@mipmap/icontest", 0, "Novice"),
-        novice_achiev2 = new Achievement("Score a combo of at least 10", "@mipmap/icontest", 0, "Novice"),
-        novice_achiev3 = new Achievement("Finish a game with at least 2 lives left", "@mipmap/icontest", 0, "Novice"),
-
-        // intermediate achievements
-        intermediate_achiev1 = new Achievement("Score 250 points or more", "@mipmap/icontest", 0, "Intermediate"),
-        intermediate_achiev2 = new Achievement("Score a combo of at least 25", "@mipmap/icontest", 0, "Intermediate"),
-        intermediate_achiev3 = new Achievement("Finish a game with 3 lives left", "@mipmap/icontest", 0, "Intermediate"),
-
-        // master achievements
-        master_achiev1 = new Achievement("Score 750 points or more", "@mipmap/icontest", 0, "Master"),
-        master_achiev2 = new Achievement("Score a combo of at least 50", "@mipmap/icontest", 0, "Master"),
-
-        // ultimate achievements
-        master_achiev1 = new Achievement("Score 1500 points or more", "@mipmap/icontest", 0, "Ultimate"),
-        master_achiev2 = new Achievement("Score a combo of at least 100", "@mipmap/icontest", 0, "Ultimate")
-        };
-
-        // add the array created above to the arraylist and set the listadapter on this arraylist
-        achievements = new ArrayList<Achievement>();
-        achievements.addAll(Arrays.asList(achievementlist));
+        // set listview
         ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
+        achievements = new ArrayList<Achievement>();
+
+        // check for sharedpreferences
+        SharedPreferences savedprefs = this.getSharedPreferences("storedachievements", MODE_PRIVATE);
+        String jsonstring = savedprefs.getString("jsonachievements", null);
+
+        // if it's the first time the app is loaded create achievement objects
+        if(savedprefs == null || jsonstring == null) {
+            achievements = createAchievements();
+            listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
+        }
+
+        // if sharedpreferences exist, use those instead
+        else {
+            achievements = loadAchievements(jsonstring);
+            listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
+        }
 
         // check where the user came from (if not from game, then no need to check for achievements)
         checkSource();
     }
 
 
+    public ArrayList<Achievement> createAchievements(){
 
+        // create list to put everything inside array in bulk
+        Achievement[] achievementlist = new Achievement[]{
+
+                // beginner achievements
+                beginner_achiev1 = new Achievement("Score 50 points or more", "@mipmap/icontest", 0, "Beginner"),
+                beginner_achiev2 = new Achievement("Score a combo of at least 5", "@mipmap/icontest", 0, "Beginner"),
+                beginner_achiev3 = new Achievement("Finish a game with at least 1 life left", "@mipmap/icontest", 0, "Beginner"),
+
+                // novice achievements
+                novice_achiev1 = new Achievement("Score 100 points or more", "@mipmap/icontest", 0, "Novice"),
+                novice_achiev2 = new Achievement("Score a combo of at least 10", "@mipmap/icontest", 0, "Novice"),
+                novice_achiev3 = new Achievement("Finish a game with at least 2 lives left", "@mipmap/icontest", 0, "Novice"),
+
+                // intermediate achievements
+                intermediate_achiev1 = new Achievement("Score 250 points or more", "@mipmap/icontest", 0, "Intermediate"),
+                intermediate_achiev2 = new Achievement("Score a combo of at least 25", "@mipmap/icontest", 0, "Intermediate"),
+                intermediate_achiev3 = new Achievement("Finish a game with 3 lives left", "@mipmap/icontest", 0, "Intermediate"),
+
+                // master achievements
+                master_achiev1 = new Achievement("Score 750 points or more", "@mipmap/icontest", 0, "Master"),
+                master_achiev2 = new Achievement("Score a combo of at least 50", "@mipmap/icontest", 0, "Master"),
+
+                // ultimate achievements
+                master_achiev1 = new Achievement("Score 1500 points or more", "@mipmap/icontest", 0, "Ultimate"),
+                master_achiev2 = new Achievement("Score a combo of at least 100", "@mipmap/icontest", 0, "Ultimate")
+        };
+
+        // add the array created above to the arraylist and set the listadapter on this arraylist
+        ArrayList<Achievement> newAchievements = new ArrayList<Achievement>();
+        newAchievements.addAll(Arrays.asList(achievementlist));
+        return newAchievements;
+
+    }
 
     public void checkSource(){
-
-        // put basic achievements in json file so that its not null
-        toJSON(achievements);
 
         // if the user came from the game
         if(getIntent().getExtras()!=null) {
@@ -91,16 +104,13 @@ public class HighscoreActivity extends AppCompatActivity {
             finalmultiplier = intent.getExtras().getInt("MAXMULTIPLIER");
             finallives = intent.getExtras().getInt("LIVES");
 
-
             System.out.println(finalscore);
             System.out.println(finalmultiplier);
             System.out.println(finallives);
 
+            // check if the user is eligible for achievements
             checkForAchievement();
             }
-
-        else
-            loadAchievements();
         }
 
 
@@ -140,29 +150,17 @@ public class HighscoreActivity extends AppCompatActivity {
             ultimate_achiev2.setStatus(1);
 
         // save the status
-        toJSON(achievements);
+        saveAchievements(achievements);
     }
 
 
-    public void loadAchievements(){
-
-        ArrayList<Achievement> savedachievements = null;
-        Gson gson = new Gson();
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(new
-                    File(getFilesDir() + File.separator + "achievements")));
-            savedachievements = gson.fromJson(br, new TypeToken<List<Achievement>>() {
-            }.getType());
-
-            System.out.println(savedachievements);
-
-        }  catch (Exception e1) {
-            e1.printStackTrace();
-        }
+    public ArrayList<Achievement> loadAchievements(String jsonstring){
+            Gson gson = new Gson();
+            ArrayList<Achievement> savedAchievementList = gson.fromJson(jsonstring, new TypeToken<ArrayList<ArrayList<String>>>() {}.getType());
+            return savedAchievementList;
     }
 
-    public void toJSON(ArrayList<Achievement> achievements) {
+    public void saveAchievements(ArrayList<Achievement> achievements) {
             Gson gson = new Gson();
             StringBuilder sb = new StringBuilder();
             for(Achievement a : achievements) {
@@ -172,17 +170,11 @@ public class HighscoreActivity extends AppCompatActivity {
             System.out.println(sb.toString());
             String finaljson = sb.toString();
 
+        SharedPreferences prefs = this.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = prefs.edit();
 
-            String path = getFilesDir()+File.separator+"achievements.txt";
-            FileOutputStream fos = null;
-            try{
-                fos = openFileOutput(path, this.MODE_PRIVATE);
-                fos.write(finaljson.getBytes());
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        edit.putString("jsonachievements", finaljson);
+        edit.commit();
         }
 
 
