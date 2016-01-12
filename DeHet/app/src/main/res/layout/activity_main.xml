@@ -120,7 +120,7 @@
         android:textStyle="bold"
         android:id="@+id/woordTextview"
         android:layout_gravity="center_horizontal"
-        android:onClick="displayTranslation"/>
+        android:onClick="onWordClick"/>
 
     <TextView
         android:paddingBottom="60dp"

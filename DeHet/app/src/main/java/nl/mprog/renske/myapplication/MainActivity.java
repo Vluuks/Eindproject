@@ -2,7 +2,9 @@ package nl.mprog.renske.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -18,8 +20,11 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity  {
     private long timervalue, storedtimervalue;
     private CountDownTimer gameTimer;
     private boolean gamestatus, timerstatus;
+    private TextToSpeech t1;
+    private static final int MY_DATA_CHECK_CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +53,26 @@ public class MainActivity extends AppCompatActivity  {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         //wait a bit so that the dictionary has time to load
         try {
-            Thread.sleep(1000);                 //1000 milliseconds is one second.
+            Thread.sleep(1000);
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
 
 
+        initializeGame();
+
+        // TTS check
+        Intent checkIntent = new Intent();
+        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+        startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
+
+    }
+
+
+    public void initializeGame()
+    {
         // initialize layout components
         scoreTextView = (TextView) findViewById(R.id.scoreTextview);
         livesTextView = (TextView) findViewById(R.id.livesTextview);
@@ -65,43 +82,6 @@ public class MainActivity extends AppCompatActivity  {
         correctTextView = (TextView) findViewById(R.id.correctcounter);
         incorrectTextView = (TextView) findViewById(R.id.incorrectcounter);
 
-
-        initializeGame();
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if(gamestatus != false) {
-            //resume the timer where it left off
-            if (gameType.equals("NORMAL"))
-                gameTimer.cancel();
-            initializeTimer(storedtimervalue, 1000);
-            System.out.println("RESUMED" + storedtimervalue);
-        }
-        else
-            initializeGame();
-
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // stop the timer and store the value
-        if(gameType.equals("NORMAL") && !timerTextView.getText().equals("Time's up!")) {
-            storedtimervalue = timervalue;
-            timerstatus = false;
-            gameTimer.cancel();
-            System.out.println("PAUSE" + timervalue);
-
-        }
-    }
-
-    public void initializeGame()
-    {
         gamestatus = true;
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         gameType = useroptions.getString("GAMETYPE", "NORMAL");
@@ -126,6 +106,115 @@ public class MainActivity extends AppCompatActivity  {
 
         pickWord();
     }
+
+
+
+
+
+    // source: http://www.jameselsey.co.uk/blogs/techblog/android-a-really-easy-tutorial-on-how-to-use-text-to-speech-tts-and-how-you-can-enter-text-and-have-it-spoken/
+    public void startTTS() {
+        // create new TTS
+        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+
+                Locale[] locales = Locale.getAvailableLocales();
+                List<Locale> localeList = new ArrayList<Locale>();
+                for (Locale locale : locales) {
+                    int res = t1.isLanguageAvailable(locale);
+                    if (res == TextToSpeech.LANG_COUNTRY_AVAILABLE) {
+                        localeList.add(locale);
+                        System.out.println(locale);
+                    }
+                }
+
+
+                if (status != TextToSpeech.ERROR) {
+                    Locale loc = new Locale("fr", "FR");
+                    int result = t1.setLanguage(loc);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+
+                        System.out.println("LANGUAGE NOT SUPPORTED");
+
+
+                    }
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        timerstatus = true;
+
+        if(gamestatus != false) {
+            //resume the timer where it left off
+            if (gameType.equals("NORMAL"))
+                gameTimer.cancel();
+            initializeTimer(storedtimervalue, 1000);
+            System.out.println("RESUMED" + storedtimervalue);
+        }
+        else
+            initializeGame();
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // stop the timer and store the value
+        if(gameType.equals("NORMAL") && !timerTextView.getText().equals("Time's up!")) {
+            storedtimervalue = timervalue;
+            gameTimer.cancel();
+            System.out.println("PAUSE" + timervalue);
+            timerstatus = false;
+
+        }
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        // Don't forget to shutdown!
+        if (t1 != null)
+        {
+            t1.stop();
+            t1.shutdown();
+        }
+        super.onDestroy();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -183,9 +272,14 @@ public class MainActivity extends AppCompatActivity  {
         gameTimer = new CountDownTimer(time, interval) {
 
             public void onTick(long millisUntilFinished) {
-                timerTextView.setText(Long.toString(millisUntilFinished / 1000));
-                System.out.println(millisUntilFinished);
-                timervalue = millisUntilFinished; /// deze gebruiken ipv value van de textview is ws beter
+
+                if(gamestatus != false) {
+                    timerTextView.setText(Long.toString(millisUntilFinished / 1000));
+                    System.out.println(millisUntilFinished);
+                    timervalue = millisUntilFinished;
+                }
+                else
+                    System.out.println("PAUSED");
             }
 
             public void onFinish() {
@@ -231,8 +325,9 @@ public class MainActivity extends AppCompatActivity  {
         startActivity(intent);
     }
 
-    public void displayTranslation(View view) {
-        // to be done
+    public void onWordClick(View view){
+        String speech = woordTextView.getText().toString();
+        t1.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     public void displayAchievementScreen(View view) {
@@ -430,6 +525,36 @@ public class MainActivity extends AppCompatActivity  {
         System.out.println(znw);
 
     }
+
+    /**
+     * This is the callback from the TTS engine check, if a TTS is installed we
+     * create a new TTS instance (which in turn calls onInit), if not then we will
+     * create an intent to go off and install a TTS engine
+     * @param requestCode int Request code returned from the check for TTS engine.
+     * @param resultCode int Result code returned from the check for TTS engine.
+     * @param data Intent Intent returned from the TTS check.
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == MY_DATA_CHECK_CODE)
+        {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
+            {
+                startTTS();
+            }
+            else
+            {
+                // missing data, install it
+                Intent installIntent = new Intent();
+                installIntent.setAction(
+                        TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installIntent);
+            }
+        }
+    }
+
+
+
 }
 
 

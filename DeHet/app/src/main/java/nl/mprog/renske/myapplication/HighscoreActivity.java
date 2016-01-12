@@ -12,8 +12,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class HighscoreActivity extends AppCompatActivity {
 
@@ -21,6 +30,9 @@ public class HighscoreActivity extends AppCompatActivity {
     public Achievement beginner_achiev1, beginner_achiev2, beginner_achiev3, novice_achiev1,
             novice_achiev2, novice_achiev3, intermediate_achiev1, intermediate_achiev2,
             intermediate_achiev3, master_achiev1, master_achiev2, ultimate_achiev1, ultimate_achiev2;
+    public ArrayList<Achievement> achievements;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +67,7 @@ public class HighscoreActivity extends AppCompatActivity {
         };
 
         // add the array created above to the arraylist and set the listadapter on this arraylist
-        ArrayList<Achievement> achievements = new ArrayList<Achievement>();
+        achievements = new ArrayList<Achievement>();
         achievements.addAll(Arrays.asList(achievementlist));
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
@@ -68,6 +80,9 @@ public class HighscoreActivity extends AppCompatActivity {
 
 
     public void checkSource(){
+
+        // put basic achievements in json file so that its not null
+        toJSON(achievements);
 
         // if the user came from the game
         if(getIntent().getExtras()!=null) {
@@ -84,8 +99,8 @@ public class HighscoreActivity extends AppCompatActivity {
             checkForAchievement();
             }
 
-        //else
-            // load from sharedpreferences
+        else
+            loadAchievements();
         }
 
 
@@ -123,18 +138,52 @@ public class HighscoreActivity extends AppCompatActivity {
             ultimate_achiev1.setStatus(1);
         if(finalmultiplier >= 100)
             ultimate_achiev2.setStatus(1);
+
+        // save the status
+        toJSON(achievements);
     }
 
 
     public void loadAchievements(){
-        // obtain achievement arraylist from sharedpreferences
 
+        ArrayList<Achievement> savedachievements = null;
+        Gson gson = new Gson();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new
+                    File(getFilesDir() + File.separator + "achievements")));
+            savedachievements = gson.fromJson(br, new TypeToken<List<Achievement>>() {
+            }.getType());
+
+            System.out.println(savedachievements);
+
+        }  catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
 
-    public void updateAchievements(){
-        // put achievemenet arraylist in sharedpreferences
+    public void toJSON(ArrayList<Achievement> achievements) {
+            Gson gson = new Gson();
+            StringBuilder sb = new StringBuilder();
+            for(Achievement a : achievements) {
+                sb.append(gson.toJson(a));
+            }
 
-    }
+            System.out.println(sb.toString());
+            String finaljson = sb.toString();
+
+
+            String path = getFilesDir()+File.separator+"achievements.txt";
+            FileOutputStream fos = null;
+            try{
+                fos = openFileOutput(path, this.MODE_PRIVATE);
+                fos.write(finaljson.getBytes());
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 
     // source: http://codehenge.net/blog/2011/05/customizing-android-listview-item-layout/
@@ -176,8 +225,10 @@ public class HighscoreActivity extends AppCompatActivity {
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
                     }
                     // otherwise just show the type of achievement as text
-                    else
+                    else {
                         achievementprogress.setText(achievement.type);
+                        achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.icontest));
+                    }
                 }
             }
             return v;
