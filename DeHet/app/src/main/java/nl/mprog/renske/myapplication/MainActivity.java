@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity  {
     public ArrayList<String> keylist;
     public TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
     public String lidwoord, znw, gameType, pickedWord, pickedWordTranslation;
-    public int score, lives, multiplier, maxmultiplier, correctcount, incorrectcount;
-    private long timervalue, storedtimervalue;
-    private CountDownTimer gameTimer;
-    private boolean gamestatus, timerstatus;
+    public int score, lives, multiplier, maxmultiplier, correctcount, incorrectcount, storedtimervalue;
+    private Stopwatch gameTimer;
+    private boolean gamestatus;
     private TextToSpeech t1;
     private static final int MY_DATA_CHECK_CODE = 1234;
 
@@ -67,6 +66,9 @@ public class MainActivity extends AppCompatActivity  {
         Intent checkIntent = new Intent();
         checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
+
+
+
 
     }
 
@@ -148,13 +150,11 @@ public class MainActivity extends AppCompatActivity  {
     protected void onResume() {
         super.onResume();
 
-        timerstatus = true;
-
         if(gamestatus != false) {
             //resume the timer where it left off
             if (gameType.equals("NORMAL"))
-                gameTimer.cancel();
-            initializeTimer(storedtimervalue, 1000);
+                gameTimer.resumeTimer();
+
             System.out.println("RESUMED" + storedtimervalue);
         }
         else
@@ -168,10 +168,8 @@ public class MainActivity extends AppCompatActivity  {
         super.onPause();
         // stop the timer and store the value
         if(gameType.equals("NORMAL") && !timerTextView.getText().equals("Time's up!")) {
-            storedtimervalue = timervalue;
-            gameTimer.cancel();
-            System.out.println("PAUSE" + timervalue);
-            timerstatus = false;
+            storedtimervalue = gameTimer.pauseTimer();
+            System.out.println("PAUSED" + storedtimervalue);
 
         }
     }
@@ -228,7 +226,9 @@ public class MainActivity extends AppCompatActivity  {
         livesTextView.setText("LIVES " + Integer.toString(lives));
         multiplierTextView.setText(" ");
 
-        initializeTimer(120000, 1000);
+        //if(gameTimer != null)
+            //gameTimer.timerstatus = true;
+        initializeTimer(181);
         System.out.println("NEW TIMER STARTED");
     }
 
@@ -268,30 +268,10 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    public void initializeTimer(long time, long interval){
-        gameTimer = new CountDownTimer(time, interval) {
-
-            public void onTick(long millisUntilFinished) {
-
-                if(gamestatus != false) {
-                    timerTextView.setText(Long.toString(millisUntilFinished / 1000));
-                    System.out.println(millisUntilFinished);
-                    timervalue = millisUntilFinished;
-                }
-                else
-                    System.out.println("PAUSED");
-            }
-
-            public void onFinish() {
-                timerTextView.setText("Time's up!");
-
-                // if user actually played, trigger onwin, else just start a new game
-                if(score > 0)
-                    onWin();
-                else
-                    initializeGame();
-            }
-        }.start();
+    public void initializeTimer(int chosentime){
+        gameTimer = new Stopwatch(chosentime, timerTextView);
+        gameTimer.timerstatus = true;
+        System.out.println("NEW TIMER INITIALIZED:" + chosentime);
     }
 
 
@@ -308,7 +288,8 @@ public class MainActivity extends AppCompatActivity  {
     public void startNewGame(View view) {
 
         if(gameType.equals("NORMAL")) {
-            gameTimer.cancel();
+            gameTimer.cancelTimer();
+            timerTextView.setText(" ");
             System.out.println("TIMER CANCELLED: NEW GAME INITIATED");
         }
 
@@ -363,8 +344,11 @@ public class MainActivity extends AppCompatActivity  {
         if(lives > 0 || lives < 0){
             pickWord();
         }
+        if(gameType.equals("NORMAL") && gameTimer.finished == true && score > 0)
+            onWin();
+
         // else go to achievement screen/game over screen
-        else
+        if(lives == 0)
             onLose();
     }
 
@@ -424,7 +408,7 @@ public class MainActivity extends AppCompatActivity  {
     public void onWin(){
 
         if(gameType.equals("NORMAL"))
-            gameTimer.cancel();
+            gameTimer.cancelTimer();
 
         Toast toast = Toast.makeText(this, "AWESOME", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);

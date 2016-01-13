@@ -46,15 +46,18 @@ public class HighscoreActivity extends AppCompatActivity {
         // check for sharedpreferences
         SharedPreferences savedprefs = this.getSharedPreferences("storedachievements", MODE_PRIVATE);
         String jsonstring = savedprefs.getString("jsonachievements", null);
+        int savedcoins = savedprefs.getInt("coinsamount", 0);
 
         // if it's the first time the app is loaded create achievement objects
         if(savedprefs == null || jsonstring == null) {
+            coins = 0;
             achievements = createAchievements();
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
         }
 
         // if sharedpreferences exist, use those instead
         else {
+            coins = savedcoins;
             System.out.println("JSON STRING IN SHAREDPREFS" + jsonstring);
             achievements = loadAchievements(jsonstring);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
@@ -129,36 +132,60 @@ public class HighscoreActivity extends AppCompatActivity {
         // check if they're eligible for an achievement
         if(finalscore >= 50) {
             beginner_achiev1.setStatus(1);
-            beginner_achiev1.counter++;
+            beginner_achiev1.counternew++;
         }
-        if(finalmultiplier >= 5)
+        if(finalmultiplier >= 5) {
             beginner_achiev2.setStatus(1);
-        if(finallives >= 1)
+            beginner_achiev2.counternew++;
+        }
+        if(finallives >= 1) {
             beginner_achiev3.setStatus(1);
+            beginner_achiev3.counternew++;
+        }
 
-        if(finalscore >= 100)
+        if(finalscore >= 100) {
             novice_achiev1.setStatus(1);
-        if(finalmultiplier >= 10)
+            novice_achiev1.counternew++;
+        }
+        if(finalmultiplier >= 10) {
             novice_achiev2.setStatus(1);
-        if(finallives >= 2)
+            novice_achiev2.counternew++;
+        }
+        if(finallives >= 2) {
             novice_achiev3.setStatus(1);
+            novice_achiev3.counternew++;
+        }
 
-        if(finalscore >= 250)
+        if(finalscore >= 250) {
             intermediate_achiev1.setStatus(1);
-        if(finalmultiplier >= 25)
+            intermediate_achiev1.counternew++;
+        }
+        if(finalmultiplier >= 25) {
             intermediate_achiev2.setStatus(1);
-        if(finallives == 3)
+            intermediate_achiev2.counternew++;
+        }
+        if(finallives == 3) {
             intermediate_achiev3.setStatus(1);
+            intermediate_achiev3.counternew++;
+        }
 
-        if(finalscore >= 750)
+        if(finalscore >= 750) {
             master_achiev1.setStatus(1);
-        if(finalmultiplier >= 50)
+            master_achiev1.counternew++;
+        }
+        if(finalmultiplier >= 50) {
             master_achiev2.setStatus(1);
+            master_achiev2.counternew++;
+        }
 
-        if(finalscore >= 1500)
+        if(finalscore >= 1500) {
             ultimate_achiev1.setStatus(1);
-        if(finalmultiplier >= 100)
+            ultimate_achiev1.counternew++;
+        }
+        if(finalmultiplier >= 100) {
             ultimate_achiev2.setStatus(1);
+            ultimate_achiev2.counternew++;
+        }
 
         // save the status
         saveAchievements(achievements);
@@ -166,7 +193,6 @@ public class HighscoreActivity extends AppCompatActivity {
 
 
     public ArrayList<Achievement> loadAchievements(String jsonstring){
-
 
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
@@ -235,6 +261,7 @@ public class HighscoreActivity extends AppCompatActivity {
         System.out.println("FINAL JSON STRING" + finaljson);
 
         edit.putString("jsonachievements", jsonArrayString);
+        edit.putInt("currentcoins", coins);
         edit.commit();
         }
 
@@ -278,31 +305,34 @@ public class HighscoreActivity extends AppCompatActivity {
                         achievementprogress.setText("Complete!");
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
 
-                        if(achievement.counter > 0) {
-                            achievementprogress.setText(("Complete!  x" + achievement.counter).toString());
+                        // check if the achievement is repeated and award coins appropriately
+                        if(achievement.counternew > achievement.countercurrent) {
+                            achievementprogress.setText(("Complete!  x" + achievement.counternew).toString());
 
-                            switch(achievement.type){
-                                case("Beginner"):
+                            switch(achievement.type) {
+                                case ("Beginner"):
                                     coins = coins + 5;
-                                    coinsamount.setText(Integer.toString(coins));
-                                    System.out.println(coins);
-                                case("Novice"):
+
+                                case ("Novice"):
                                     coins = coins + 10;
-                                    coinsamount.setText(Integer.toString(coins));
-                                    System.out.println(coins);
-                                case("Intermediate"):
+
+                                case ("Intermediate"):
                                     coins = coins + 15;
-                                    coinsamount.setText(Integer.toString(coins));
-                                    System.out.println(coins);
-                                case("Master"):
+
+                                case ("Master"):
                                     coins = coins + 25;
-                                    coinsamount.setText(Integer.toString(coins));
-                                    System.out.println(coins);
-                                case("Ultimate"):
+
+                                case ("Ultimate"):
                                     coins = coins + 50;
-                                    coinsamount.setText(Integer.toString(coins));
-                                    System.out.println(coins);
                             }
+
+                            // update the amount of coins the user has
+                            coinsamount.setText(Integer.toString(coins));
+                            System.out.println(coins);
+
+                            // update the current counter
+                            achievement.countercurrent = achievement.counternew;
+
                         }
                     }
                     // otherwise just show the type of achievement as text
