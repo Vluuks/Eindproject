@@ -1,3 +1,5 @@
+# Week 1
+
 ## Day 2
 * Begonnen aan design document.
 * Bepaald welke methods and classes ik ga gebruiken.
@@ -35,6 +37,9 @@
 * Bij chill mode moet nog een feedback of het goed of fout is, die ontbreekt nu en dan heeft het oefenen ook niet veel zin.
 
 
+
+# Week 2
+
 ## Day 6
 * Timer maar even gelaten voor wat het is, eerst achievement systeem geimplementeerd.
 * Gekozen voor listview van objects, zo kan ik de onderdelen van het achievement gemakkelijk aanpassen.
@@ -57,6 +62,7 @@
 * Structuur voor het opslaan en inladen van achievements via SharedPreferences gemaakt. Gson gaat nog niet helemaal goed, omzetten naar Array mislukt een beetje. Maar begin is er.
 * Plaatjes van achievement gedragen zich nu correct bij het wel of niet behalen en verwdwijen ook als de achievement data verwijderd wordt.
 
+
 ## Day 8
 * Opslaan en inladen van achievements via SharedPreferences met Gson werkt eindelijk. 
 * Achievements kunnen nu worden herhaald om daarmee punten te verdienen. Met deze punten kan in de shop (WIP) wat gekocht worden voor de mascotte. 
@@ -64,3 +70,4 @@
 * Moeilijkere achievements geven meer punten dan makkelijke bij herhaling (min 5 max 50).
 * Gestart met het zelf opzetten van een timer die niet de countdowntimer API gebruikt. 
 * Ik ben van plan om ook de verwijswoorden (die/dit/deze/dat) een aparte mode te geven zodat ook daarmee geoefend kan worden.
+* Het lijkt erop dat de timer die ik in een aparte class heb aangemaakt (met hulp van StackOverflow) het nu wel goed doet. Pauzeren en resume werkt. 
