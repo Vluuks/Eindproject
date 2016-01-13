@@ -56,3 +56,11 @@
 * Gson API geinstaleerd van Google.
 * Structuur voor het opslaan en inladen van achievements via SharedPreferences gemaakt. Gson gaat nog niet helemaal goed, omzetten naar Array mislukt een beetje. Maar begin is er.
 * Plaatjes van achievement gedragen zich nu correct bij het wel of niet behalen en verwdwijen ook als de achievement data verwijderd wordt.
+
+## Day 8
+* Opslaan en inladen van achievements via SharedPreferences met Gson werkt eindelijk. 
+* Achievements kunnen nu worden herhaald om daarmee punten te verdienen. Met deze punten kan in de shop (WIP) wat gekocht worden voor de mascotte. 
+* Mascotte moet nog wel gemaakt worden, ga ik volgende week vooral mee bezig, dan wil ik echt de lay out componenten leuk maken.
+* Moeilijkere achievements geven meer punten dan makkelijke bij herhaling (min 5 max 50).
+* Gestart met het zelf opzetten van een timer die niet de countdowntimer API gebruikt. 
+* Ik ben van plan om ook de verwijswoorden (die/dit/deze/dat) een aparte mode te geven zodat ook daarmee geoefend kan worden.
