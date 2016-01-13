@@ -34,6 +34,8 @@
         </activity>
         <activity android:name=".OptionsActivity" >
         </activity>
+        <activity android:name=".ShopActivity" >
+        </activity>
     </application>
 
 </manifest>

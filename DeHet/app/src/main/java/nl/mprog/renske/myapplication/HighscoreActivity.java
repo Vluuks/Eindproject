@@ -14,6 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
@@ -21,11 +24,12 @@ import java.util.Arrays;
 
 public class HighscoreActivity extends AppCompatActivity {
 
-    public int finalscore, finalmultiplier, finallives;
+    public int finalscore, finalmultiplier, finallives, coins;
     public Achievement beginner_achiev1, beginner_achiev2, beginner_achiev3, novice_achiev1,
             novice_achiev2, novice_achiev3, intermediate_achiev1, intermediate_achiev2,
             intermediate_achiev3, master_achiev1, master_achiev2, ultimate_achiev1, ultimate_achiev2;
     public ArrayList<Achievement> achievements;
+    public TextView coinsamount;
 
 
     @Override
@@ -36,6 +40,7 @@ public class HighscoreActivity extends AppCompatActivity {
 
         // set listview
         ListView listView = (ListView) findViewById(R.id.listView);
+        coinsamount = (TextView) findViewById(R.id.coins);
         achievements = new ArrayList<Achievement>();
 
         // check for sharedpreferences
@@ -50,13 +55,18 @@ public class HighscoreActivity extends AppCompatActivity {
 
         // if sharedpreferences exist, use those instead
         else {
+            System.out.println("JSON STRING IN SHAREDPREFS" + jsonstring);
             achievements = loadAchievements(jsonstring);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
+            System.out.println("LOADING FROM SHAREDPREFS SUCCESFULL");
+
         }
 
         // check where the user came from (if not from game, then no need to check for achievements)
         checkSource();
     }
+
+
 
 
     public ArrayList<Achievement> createAchievements(){
@@ -92,7 +102,6 @@ public class HighscoreActivity extends AppCompatActivity {
         ArrayList<Achievement> newAchievements = new ArrayList<Achievement>();
         newAchievements.addAll(Arrays.asList(achievementlist));
         return newAchievements;
-
     }
 
     public void checkSource(){
@@ -118,8 +127,10 @@ public class HighscoreActivity extends AppCompatActivity {
     public void checkForAchievement(){
 
         // check if they're eligible for an achievement
-        if(finalscore >= 50)
+        if(finalscore >= 50) {
             beginner_achiev1.setStatus(1);
+            beginner_achiev1.counter++;
+        }
         if(finalmultiplier >= 5)
             beginner_achiev2.setStatus(1);
         if(finallives >= 1)
@@ -155,25 +166,75 @@ public class HighscoreActivity extends AppCompatActivity {
 
 
     public ArrayList<Achievement> loadAchievements(String jsonstring){
-            Gson gson = new Gson();
-            ArrayList<Achievement> savedAchievementList = gson.fromJson(jsonstring, new TypeToken<ArrayList<ArrayList<String>>>() {}.getType());
-            return savedAchievementList;
+
+
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+        JsonArray jArray = parser.parse(jsonstring).getAsJsonArray();
+
+        ArrayList<Achievement> sharedprefslist = new ArrayList<Achievement>();
+
+        for(JsonElement obj : jArray )
+        {
+            Achievement ach = gson.fromJson( obj , Achievement.class);
+            sharedprefslist.add(ach);
+        }
+
+
+        // create list to put everything inside array in bulk
+        Achievement[] achievementlist = new Achievement[]{
+
+                beginner_achiev1 = sharedprefslist.get(0),
+                beginner_achiev2 = sharedprefslist.get(1),
+                beginner_achiev3 = sharedprefslist.get(2),
+
+                novice_achiev1 = sharedprefslist.get(3),
+                novice_achiev2 = sharedprefslist.get(4),
+                novice_achiev3 = sharedprefslist.get(5),
+
+                intermediate_achiev1 = sharedprefslist.get(6),
+                intermediate_achiev2 = sharedprefslist.get(7),
+                intermediate_achiev3 = sharedprefslist.get(8),
+
+                master_achiev1 = sharedprefslist.get(9),
+                master_achiev2 = sharedprefslist.get(10),
+
+                ultimate_achiev1 = sharedprefslist.get(11),
+                ultimate_achiev2 = sharedprefslist.get(12),
+
+        };
+
+        // add the list created above to the actual arraylist
+        ArrayList<Achievement> savedAchievements = new ArrayList<Achievement>();
+        savedAchievements.addAll(Arrays.asList(achievementlist));
+        return savedAchievements;
+
     }
 
-    public void saveAchievements(ArrayList<Achievement> achievements) {
-            Gson gson = new Gson();
-            StringBuilder sb = new StringBuilder();
-            for(Achievement a : achievements) {
-                sb.append(gson.toJson(a));
-            }
 
-            System.out.println(sb.toString());
-            String finaljson = sb.toString();
+
+
+
+    public void saveAchievements(ArrayList<Achievement> achievements) {
+        Gson gson = new Gson();
+
+        JsonElement element =
+                gson.toJsonTree(achievements, new TypeToken<ArrayList<Achievement>>() {}.getType());
+
+        JsonArray jsonArray = element.getAsJsonArray();
+        String jsonArrayString = jsonArray.toString();
+
+        StringBuilder sb = new StringBuilder("{" + "\"achievement\": ");
+        sb.append(jsonArrayString);
+        sb.append("}");
+        String finaljson = sb.toString();
 
         SharedPreferences prefs = this.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = prefs.edit();
 
-        edit.putString("jsonachievements", finaljson);
+        System.out.println("FINAL JSON STRING" + finaljson);
+
+        edit.putString("jsonachievements", jsonArrayString);
         edit.commit();
         }
 
@@ -201,8 +262,9 @@ public class HighscoreActivity extends AppCompatActivity {
 
                 // initialize layout components from the listitem
                 TextView achievementname = (TextView) v.findViewById(R.id.name);
-                TextView achievementprogress =(TextView) v.findViewById(R.id.status);
+                TextView achievementprogress = (TextView) v.findViewById(R.id.status);
                 ImageView achievementicon = (ImageView) v.findViewById(R.id.icon);
+
 
                 // go over the components of the object, name and progress
 
@@ -215,6 +277,33 @@ public class HighscoreActivity extends AppCompatActivity {
                     if(achievement.status == 1){
                         achievementprogress.setText("Complete!");
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
+
+                        if(achievement.counter > 0) {
+                            achievementprogress.setText(("Complete!  x" + achievement.counter).toString());
+
+                            switch(achievement.type){
+                                case("Beginner"):
+                                    coins = coins + 5;
+                                    coinsamount.setText(Integer.toString(coins));
+                                    System.out.println(coins);
+                                case("Novice"):
+                                    coins = coins + 10;
+                                    coinsamount.setText(Integer.toString(coins));
+                                    System.out.println(coins);
+                                case("Intermediate"):
+                                    coins = coins + 15;
+                                    coinsamount.setText(Integer.toString(coins));
+                                    System.out.println(coins);
+                                case("Master"):
+                                    coins = coins + 25;
+                                    coinsamount.setText(Integer.toString(coins));
+                                    System.out.println(coins);
+                                case("Ultimate"):
+                                    coins = coins + 50;
+                                    coinsamount.setText(Integer.toString(coins));
+                                    System.out.println(coins);
+                            }
+                        }
                     }
                     // otherwise just show the type of achievement as text
                     else {

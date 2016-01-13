@@ -6,14 +6,17 @@ package nl.mprog.renske.myapplication;
 public class Achievement {
 
     public String name, imageviewpath, type;
-    public int status;
+    public int status, counter;
 
     public Achievement(String the_name, String the_imageviewpath, int the_status, String the_type){
         this.name = the_name;
         this.imageviewpath = the_imageviewpath;
         this.status = the_status;
         this.type = the_type;
+        this.counter = the_status;
     }
+
+
 
     public void setStatus(int status_value){
         this.status = status_value;

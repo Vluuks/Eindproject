@@ -512,11 +512,11 @@ public class MainActivity extends AppCompatActivity  {
         // if the dictionary entries comes with multiple nouns, only use the first
         if(znwparts.indexOf(';') != -1) {
             String[] znwpartsarray = znwparts.split(";", 2);
-            znw = znwpartsarray[0];
+            znw = znwpartsarray[0].trim();
         }
 
         else
-            znw = znwparts;
+            znw = znwparts.trim();
 
         woordTextView =(TextView) findViewById(R.id.woordTextview);
         woordTextView.setText(znw);
