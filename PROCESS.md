@@ -70,4 +70,10 @@
 * Moeilijkere achievements geven meer punten dan makkelijke bij herhaling (min 5 max 50).
 * Gestart met het zelf opzetten van een timer die niet de countdowntimer API gebruikt. 
 * Ik ben van plan om ook de verwijswoorden (die/dit/deze/dat) een aparte mode te geven zodat ook daarmee geoefend kan worden.
-* Het lijkt erop dat de timer die ik in een aparte class heb aangemaakt (met hulp van StackOverflow) het nu wel goed doet. Pauzeren en resume werkt. 
+* Het lijkt erop dat de timer die ik in een aparte class heb aangemaakt (met hulp van StackOverflow) het nu wel goed doet. Pauzeren en resume werkt.
+
+
+# Day 9
+* Begonnen met de app in classes te verdelen. Op dit moment is er alleen een GamePlay class. De app werkt nu wel en MainActivity is een stuk leger.
+* Kijken of de HighScoreActivity (achievements) ook verdeeld kan worden in classes op een handige manier.
+* Schets gemaakt van de classes, deze ga ik toevoegen aan het DesignDocument.  
