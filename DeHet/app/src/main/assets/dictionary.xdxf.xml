@@ -670,7 +670,7 @@
         <ar><k>[de] informatie</k>information  ; info</ar>
         <ar><k>[de] taal</k>speech  ; speech communication  ; spoken communication  ; spoken language  ; language  ; voice communication  ; oral communication</ar>
         <ar><k>[de] werker  ; [de] arbeider</k>worker</ar>
-        <ar><k>[de] gerechtshof</k>court  ; tribunal  ; judicature</ar>
+        <ar><k>[het] gerechtshof</k>court  ; tribunal  ; judicature</ar>
         <ar><k>[het] voorhoofd</k>forehead  ; brow</ar>
         <ar><k>[de] klant</k>customer  ; client</ar>
         <ar><k>[de] casus  ; [het] voorbeeld</k>case  ; instance  ; example</ar>
@@ -724,7 +724,6 @@
         <ar><k>[de] druk</k>pressure  ; pressure level  ; force per unit area</ar>
         <ar><k>[de] verandering  ; aanpassing</k>change  ; alteration  ; modification</ar>
         <ar><k>[de] gegevens  ; [de] informatie  ; [de] data</k>data  ; information</ar>
-        <ar><k>[de] middernacht</k>midnight</ar>
         <ar><k>[de] pauze</k>pause  ; intermission  ; break  ; interruption  ; suspension</ar>
         <ar><k>[het] product</k>product  ; production</ar>
         <ar><k>[de] patiënt</k>patient</ar>

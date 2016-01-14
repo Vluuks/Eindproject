@@ -11,6 +11,9 @@
     <string name="hethint1">- Verbs in infinitive form, such as \"(het) roken\", \"(het) delen\"</string>
     <string name="hethint2">- Diminutives such as \"(het) kastje\", \"(het) koopje\"</string>
     <string name="combinedwords">Combined words</string>
-    <string name="cwhint1">TEST</string>
+    <string name="cwhint1">When dealing with combined words, the article is determined by the last word in the combination.</string>
     <string name="gamemode">Chill Mode</string>
+    <string name="gameversion">Game Version</string>
+    <string name="dehetversion">De/Het (articles)</string>
+    <string name="dezedieditdatversion">Deze/Die Dit/Dat (demonstrative pronouns)</string>
 </resources>

@@ -307,7 +307,7 @@ public class HighscoreActivity extends AppCompatActivity {
 
                         // check if the achievement is repeated and award coins appropriately
                         if(achievement.counternew > achievement.countercurrent) {
-                            achievementprogress.setText(("Complete!  x" + achievement.counternew).toString());
+                            achievementprogress.setText("Completed " + Integer.toString(achievement.counternew) + "times");
 
                             switch(achievement.type) {
                                 case ("Beginner"):
