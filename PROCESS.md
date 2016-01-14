@@ -77,3 +77,6 @@
 * Begonnen met de app in classes te verdelen. Op dit moment is er alleen een GamePlay class. De app werkt nu wel en MainActivity is een stuk leger.
 * Kijken of de HighScoreActivity (achievements) ook verdeeld kan worden in classes op een handige manier.
 * Schets gemaakt van de classes, deze ga ik toevoegen aan het DesignDocument.  
+* Begonnen met het bedenken van icoontjes en plaatjes die ik volgende week wil toevoegen aan de app.
+* Mode geimplementeerd waarbij de demonstrative pronouns geoefend kunnen worden in plaats van de lidwoorden.
+* Testplaatje onlose/onwin geimplementeerd, nog op zoek naar hoe ik deze zichtbaar/onzichtbaar kan maken op een handige manier.
