@@ -13,7 +13,7 @@ public class Achievement {
         this.imageviewpath = the_imageviewpath;
         this.status = the_status;
         this.type = the_type;
-        this.countercurrent = the_status;
+        this.countercurrent = 0;
         this.counternew = 0;
     }
 

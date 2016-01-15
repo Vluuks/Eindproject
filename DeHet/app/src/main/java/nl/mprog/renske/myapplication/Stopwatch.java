@@ -41,6 +41,8 @@ public class Stopwatch {
         if (interval == 1) {
             timer.cancel();
             finished = true;
+            // trigger onwin uit gameplay: hoe?
+            
         }
         return --interval;
     }

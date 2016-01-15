@@ -16,4 +16,6 @@
     <string name="gameversion">Game Version</string>
     <string name="dehetversion">De/Het (articles)</string>
     <string name="dezedieditdatversion">Deze/Die Dit/Dat (demonstrative pronouns)</string>
+    <string name="reset"><![CDATA[Achievements & Coins]]></string>
+    <string name="resetcheckbox">Reset coins and all achievements.</string>
 </resources>

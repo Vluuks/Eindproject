@@ -126,6 +126,11 @@ public class MainActivity extends AppCompatActivity  {
         startActivity(intent);
     }
 
+    public void goToShop(View view) {
+        Intent intent = new Intent(this, ShopActivity.class);
+        startActivity(intent);
+    }
+
     public void onWordClick(View view){
         String speech = woordTextView.getText().toString();
         t1.speak(speech, TextToSpeech.QUEUE_FLUSH, null);

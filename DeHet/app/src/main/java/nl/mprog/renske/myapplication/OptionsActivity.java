@@ -3,6 +3,7 @@ package nl.mprog.renske.myapplication;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,6 +15,8 @@ public class OptionsActivity extends AppCompatActivity {
     public String chosenGametype, chosenGameversion;
     private RadioGroup radioGroup;
     private RadioButton dehetRadioButton, dezedieditdatRadioButton;
+    private CheckBox resetCheckBox;
+    private boolean resetvalue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class OptionsActivity extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         dehetRadioButton = (RadioButton) findViewById(R.id.dehetradioButton);
         dezedieditdatRadioButton = (RadioButton) findViewById(R.id.dezedieditdatradioButton);
+        resetCheckBox = (CheckBox) findViewById(R.id.checkBox);
         loadOptions();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -40,15 +44,6 @@ public class OptionsActivity extends AppCompatActivity {
         });
 
 
-
-
-
-        if (gamemodeSwitch.isChecked()){
-            gamemodeSwitch.setText("ON");
-        }
-        else
-            gamemodeSwitch.setText("OFF");
-
         gamemodeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -63,14 +58,37 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
+
+        if (gamemodeSwitch.isChecked()){
+            gamemodeSwitch.setText("ON");
+        }
+        else
+            gamemodeSwitch.setText("OFF");
+
+
+        resetCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    resetvalue = true;
+                } else {
+                    resetvalue = false;
+                }
+                saveOptions();
+            }
+        });
+
+
+
     }
 
     public void saveOptions(){
-        SharedPreferences settings = this.getSharedPreferences("settings",
+        SharedPreferences useroptions = this.getSharedPreferences("settings",
                 this.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
+        SharedPreferences.Editor editor = useroptions.edit();
         editor.putString("GAMETYPE", chosenGametype);
         editor.putString("GAMEVERSION", chosenGameversion);
+        editor.putBoolean("RESET", resetvalue);
         editor.commit();
 
         System.out.println("CHOSEN GAME MODE: " + chosenGametype);
@@ -92,5 +110,7 @@ public class OptionsActivity extends AppCompatActivity {
             dezedieditdatRadioButton.setChecked(true);
         else
             dehetRadioButton.setChecked(true);
+
+        resetCheckBox. setChecked(false);
     }
 }

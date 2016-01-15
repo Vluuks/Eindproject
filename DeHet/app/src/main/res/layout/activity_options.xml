@@ -59,4 +59,20 @@
         android:text="@string/dezedieditdatversion"
         android:id="@+id/dezedieditdatradioButton" />
     </RadioGroup>
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:id="@+id/textView15" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resetcheckbox"
+        android:id="@+id/checkBox" />
 </LinearLayout>

@@ -163,11 +163,16 @@ public class GamePlay {
         woordTextView.setVisibility(View.VISIBLE);
         correctTextView.setVisibility(View.VISIBLE);
         incorrectTextView.setVisibility(View.VISIBLE);
-        correctTextView.setText("RIGHT 0");
+        correctTextView.setText("0 RIGHT");
         incorrectTextView.setText("WRONG 0");
         woordTextView.setText(" ");
 
-        // Set the right game mode.
+        // Set the right game modes.
+        if (gameVersion.equals("DEMPRO"))
+            setDemonstrativePronounMode();
+        else
+            setArticleMode();
+
         if (gameType.equals("CHILL"))
             setChillMode();
         else
@@ -181,9 +186,6 @@ public class GamePlay {
      * Sets the game mode to normal. This includes score, lives and a tinmer.
      */
     private void setNormalMode(){
-
-        if (gameVersion.equals("DEMPRO"))
-            setDemonstrativePronounMode();
 
         livesTextView.setVisibility(View.VISIBLE);
         scoreTextView.setVisibility(View.VISIBLE);
@@ -214,8 +216,16 @@ public class GamePlay {
      * Sets the game mode to deze/die/dit/dat instead of de/het.
      */
     private void setDemonstrativePronounMode(){
-        deButton.setText("Deze / Die");
-        hetButton.setText("Dit / Dat");
+        deButton.setText("DEZE / DIE");
+        hetButton.setText("DIT / DAT");
+    }
+
+    /**
+     * Sets the game mode to de/het basic mode.
+     */
+    private void setArticleMode(){
+        deButton.setText("DE");
+        hetButton.setText("HET");
     }
 
 
@@ -350,7 +360,7 @@ public class GamePlay {
 
         keylist.remove(pickedWord);
         correctcount++;
-        correctTextView.setText("RIGHT " + Integer.toString(correctcount));
+        correctTextView.setText(Integer.toString(correctcount) + " RIGHT");
 
         if(gameType.equals("NORMAL")) {
             multiplier++;
@@ -392,8 +402,7 @@ public class GamePlay {
 
     private void onLose(){
 
-
-        finishedImageView.setImageResource(R.drawable.testplaatjeonlose2);
+        finishedImageView.setImageResource(R.drawable.onlosebruin);
 
         Toast toast = Toast.makeText(activityContext, "NOOB", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
@@ -406,6 +415,8 @@ public class GamePlay {
 
         if(gameType.equals("NORMAL"))
             gameTimer.cancelTimer();
+
+        finishedImageView.setImageResource(R.drawable.onwinbruin);
 
         Toast toast = Toast.makeText(activityContext, "AWESOME", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
