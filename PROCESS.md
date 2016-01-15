@@ -80,3 +80,15 @@
 * Begonnen met het bedenken van icoontjes en plaatjes die ik volgende week wil toevoegen aan de app.
 * Mode geimplementeerd waarbij de demonstrative pronouns geoefend kunnen worden in plaats van de lidwoorden.
 * Testplaatje onlose/onwin geimplementeerd, nog op zoek naar hoe ik deze zichtbaar/onzichtbaar kan maken op een handige manier.
+
+
+# Day 10
+* Bezig geweest met kleine bugfixes. De coin optelling van de achievements doet nog steeds naar.
+* Om dit beter te kunnen tracken heb ik een resetfunctie ingebouwd voor de coin- en achievementscore.
+* Die/deze/dit/dat mode geimplementeerd, werkt ook icm chill mode. Dus er zijn eigenlijk 4 spelvarianten totaal.
+* Ik ga ook nog aparte achievements voor de demonstrative pronouns maken.
+* Plaatjes onwin/onlose werken nu, en op het hoofdscherm staat ook de basic mascotte.
+* Verwijzing naar shop gaat goet, enkel de coins komen nog niet helemaal goed door. 
+* Ik ga een listview gebruiken voor de shop, net als bij de achievements, dan hoef ik daar geen nieuwe dingen voor te bouwen.
+* De alpha versie is qua gameplay eigenlijk prima. Ook de achievements werken grotendeels. Soms krijgt men echter nog credit voor achievements die eigenlijk niet gehaald zijn.
+* Ik hoop volgende week de shop/mascotte functionaliteit te implementeren en de achievements te perfectioneren.
