@@ -24,6 +24,12 @@
         android:text="@string/gamemode"
         android:id="@+id/textView12" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chillmodeexplained"
+        android:id="@+id/textView19" />
+
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +47,12 @@
         android:layout_height="wrap_content"
         android:text="@string/gameversion"
         android:id="@+id/textView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/versionsexplained"
+        android:id="@+id/textView20" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -66,13 +78,27 @@
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/turnTTSoff"
+        android:id="@+id/textView16" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ttsexplained"
+        android:id="@+id/textView18" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/reset"
         android:id="@+id/textView15" />
-
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/resetcheckbox"
         android:id="@+id/checkBox" />
+
 </LinearLayout>

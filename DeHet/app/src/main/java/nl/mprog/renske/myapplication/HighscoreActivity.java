@@ -152,6 +152,8 @@ public class HighscoreActivity extends AppCompatActivity {
             // check if the user is eligible for achievements
             checkForAchievement();
             }
+        else
+            coinsTextView.setText("Coins: " + Integer.toString(coinsAmount));
         }
 
 
@@ -287,6 +289,19 @@ public class HighscoreActivity extends AppCompatActivity {
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     // source: http://codehenge.net/blog/2011/05/customizing-android-listview-item-layout/
     // and http://android-developers.blogspot.nl/2009/02/android-layout-tricks-1.html
     public class UserItemAdapter extends ArrayAdapter<Achievement> {
@@ -333,25 +348,32 @@ public class HighscoreActivity extends AppCompatActivity {
                             System.out.println(achievement.counternew + "|" + achievement.countercurrent);
                             achievementprogress.setText("Completed " + Integer.toString(achievement.counternew) + "times");
 
+
+                            // if statements met equals van maken
                             switch(achievement.type) {
                                 case ("Beginner"):
                                     coinsAmount = coinsAmount + 5;
+                                    break;
 
                                 case ("Novice"):
                                     coinsAmount = coinsAmount + 10;
+                                    break;
 
                                 case ("Intermediate"):
                                     coinsAmount = coinsAmount + 15;
+                                    break;
 
                                 case ("Master"):
                                     coinsAmount = coinsAmount + 25;
+                                    break;
 
                                 case ("Ultimate"):
                                     coinsAmount = coinsAmount + 50;
+                                    break;
                             }
 
                             // update the amount of coins the user has
-                            coinsTextView.setText(Integer.toString(coinsAmount));
+                            coinsTextView.setText("Coins: " + Integer.toString(coinsAmount));
                             System.out.println("AMOUNT OF COINS" + coinsAmount);
 
                             // update the current counter

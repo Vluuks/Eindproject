@@ -9,8 +9,17 @@
     tools:context="nl.mprog.renske.myapplication.ShopActivity">
 
     <TextView
+        android:paddingLeft="15dp"
+        android:paddingBottom="10dp"
+        android:textColor="#C57B0D"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coins: "
         android:id="@+id/cointsTextView" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewShop" />
+
 </LinearLayout>

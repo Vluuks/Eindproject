@@ -73,7 +73,7 @@
 * Het lijkt erop dat de timer die ik in een aparte class heb aangemaakt (met hulp van StackOverflow) het nu wel goed doet. Pauzeren en resume werkt.
 
 
-# Day 9
+## Day 9
 * Begonnen met de app in classes te verdelen. Op dit moment is er alleen een GamePlay class. De app werkt nu wel en MainActivity is een stuk leger.
 * Kijken of de HighScoreActivity (achievements) ook verdeeld kan worden in classes op een handige manier.
 * Schets gemaakt van de classes, deze ga ik toevoegen aan het DesignDocument.  
@@ -82,7 +82,7 @@
 * Testplaatje onlose/onwin geimplementeerd, nog op zoek naar hoe ik deze zichtbaar/onzichtbaar kan maken op een handige manier.
 
 
-# Day 10
+## Day 10
 * Bezig geweest met kleine bugfixes. De coin optelling van de achievements doet nog steeds naar.
 * Om dit beter te kunnen tracken heb ik een resetfunctie ingebouwd voor de coin- en achievementscore.
 * Die/deze/dit/dat mode geimplementeerd, werkt ook icm chill mode. Dus er zijn eigenlijk 4 spelvarianten totaal.
@@ -92,3 +92,21 @@
 * Ik ga een listview gebruiken voor de shop, net als bij de achievements, dan hoef ik daar geen nieuwe dingen voor te bouwen.
 * De alpha versie is qua gameplay eigenlijk prima. Ook de achievements werken grotendeels. Soms krijgt men echter nog credit voor achievements die eigenlijk niet gehaald zijn.
 * Ik hoop volgende week de shop/mascotte functionaliteit te implementeren en de achievements te perfectioneren.
+
+
+# Week 3
+
+## Day 11
+* Bug gefixt coin toekenning achievements, was een ontbrekende break (pun intended) in de switch.
+* Aparte class aangemaakt voor shopitems, op eenzelfde manier als achievement class.
+* Layout van shop en achievement wat meer op elkaar afgestemd.
+* Shop toegevoegd, er kunnen nu items gekocht worden en de coinhoeveelheid gaat dan ook naar beneden.
+* Te weinig coins of item al in bezit check ook ingebouwd.
+* Plaatjes voor items in shop gemaakt, deze dmv van framelayout toegepast op mascotte, maar app wordt hier heel traag van.
+* Kijken of alles in 1 plaatje ipv layeren beter werkt of dat het kleiner maken van de resolutie van de plaatjes voldoende is.
+* Dit heeft ook implicaties voor de mogelijkheid tot het gebruiken van meerdere items uit de shop. Asl het in 1 plaatje moet is het lastig om dit toe te laten.
+* Het liefst wil ik dat de user door middel van aan/uitvinken zelf kan kiezen welke gekochte items uit de shop er op Bruin de mascotte getoond moeten worden.
+* Ik ben van plan morgen de begeleiders om advies te vragen hoe ik dit handig kan doen of dat er een manier is om de app minder langzaam te maken bij het gebruik van veel plaatjes.
+
+
+

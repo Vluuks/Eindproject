@@ -18,4 +18,8 @@
     <string name="dezedieditdatversion">Deze/Die Dit/Dat (demonstrative pronouns)</string>
     <string name="reset"><![CDATA[Achievements & Coins]]></string>
     <string name="resetcheckbox">Reset coins and all achievements.</string>
+    <string name="turnTTSoff">TextToSpeech</string>
+    <string name="chillmodeexplained">Chill mode lets you play indefinitely without a score, lives or timer. Games played in chill mode are not eligible for achievements or coins.</string>
+    <string name="versionsexplained">Choose between games using articles or demonstrative pronouns.</string>
+    <string name="ttsexplained">Allow TextToSpeech to read the word aloud when tapped. Note: TTS API is currently not supporting Dutch.</string>
 </resources>

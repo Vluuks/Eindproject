@@ -185,12 +185,33 @@
             android:onClick="checkArticle"/>
     </LinearLayout>
 
-    <ImageView
-        android:paddingTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bruinImageView"
-        android:src="@drawable/justbruin"
-        android:layout_gravity="center_vertical" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wingsImageView"
+            android:src="@drawable/bruinwings"
+            android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bruinImageView"
+            android:src="@drawable/justbruin"
+            android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bruinScarf"
+            android:src="@drawable/bruinscarf"
+            android:layout_gravity="center_vertical" />
+    </FrameLayout>
 
 </LinearLayout>
