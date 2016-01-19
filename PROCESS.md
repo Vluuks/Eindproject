@@ -109,4 +109,21 @@
 * Ik ben van plan morgen de begeleiders om advies te vragen hoe ik dit handig kan doen of dat er een manier is om de app minder langzaam te maken bij het gebruik van veel plaatjes.
 
 
+## Day 12
+* Plaatjes verkleind, de app is nu niet meer langzaam. De woorden worden gewoon snel ververst.
+* Class toegevoegd voor de mascotte Bruin, via deze class wordt geregeld welke items uit de shop wel en niet equipped zijn en dus getoond moeten worden.
+* Dit wordt ook meteen geupdatet als men uit de shop komt. Daarvoor hoeft er niet eerst een nieuwe game te worden gestart.
+* Gekozen voor het layeren van de plaatjes, dus transparant met bijvoorbeeld aleen de sjaal, zodat een gebruiker meerdere items kan kiezen.
+* In de shop kan door in de listview na het kopen nogmaals een long tap op een item uit te voeren het item equipped of unequipped worden. Dit was handiger dan nog weer een aparte activity of scherm maken waarin de user het aan kan vinken.
+* Wordt doorgegeven via Json naar sharedpreferences, waarna de Bruin class het er uit haalt en op basis van een boolean weet welke items wel of niet getoond moeten worden.
+* Op dit moment wordt er geen rekening gehouden met clipping, als ik tijd extra heb dan zal ik proberen of conflicterende items (bijv 2 headpieces) slechts de laatst gekozen laten zien.
+* Lukt dit niet is het ook geen drama, omdat ik bij het ontwerpen van de items wel heb gezorgd dat ze, ook al zijn ze allemaal geactiveerd, redelijk toonbaar blijven.
+* Toch weer bezig met proberen of ik de vertaling uit de XML file kan krijgen. 
+* Optie om TextToSpeech uit te zetten toegevoegd.
+* Activityscherm met daarin uitleg is in de maak. Ga waarschijnlijk de tekst in het hoofdmenu bovenaan vervangen door icoontjes als dat lukt.
+
+
+
+
+
 
