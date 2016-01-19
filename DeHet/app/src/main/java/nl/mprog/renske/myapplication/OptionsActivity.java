@@ -16,7 +16,7 @@ public class OptionsActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton dehetRadioButton, dezedieditdatRadioButton;
     private CheckBox resetCheckBox;
-    private boolean resetvalue;
+    private boolean resetvalue, textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +47,30 @@ public class OptionsActivity extends AppCompatActivity {
         gamemodeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    chosenGametype = "CHILL";
-                    gamemodeSwitch.setText("ON");
-                } else {
-                    chosenGametype = "NORMAL";
-                    gamemodeSwitch.setText("OFF");
+
+
+                switch (buttonView.getId()) {
+                    case R.id.switch1:
+                        if (isChecked) {
+                            chosenGametype = "CHILL";
+                            gamemodeSwitch.setText("ON");
+                        } else {
+                            chosenGametype = "NORMAL";
+                            gamemodeSwitch.setText("OFF");
+                        }
+                        break;
+                    case R.id.switch2:
+                        if (isChecked) {
+                            textToSpeech = true;
+                            gamemodeSwitch.setText("ON");
+                        } else {
+                            textToSpeech = false;
+                            gamemodeSwitch.setText("OFF");
+                        }
+                        break;
+
+
+
                 }
                 saveOptions();
             }
@@ -89,6 +107,7 @@ public class OptionsActivity extends AppCompatActivity {
         editor.putString("GAMETYPE", chosenGametype);
         editor.putString("GAMEVERSION", chosenGameversion);
         editor.putBoolean("RESET", resetvalue);
+        editor.putBoolean("TTS", textToSpeech);
         editor.commit();
 
         System.out.println("CHOSEN GAME MODE: " + chosenGametype);
@@ -100,6 +119,7 @@ public class OptionsActivity extends AppCompatActivity {
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         chosenGametype = useroptions.getString("GAMETYPE", "NORMAL");
         chosenGameversion = useroptions.getString("GAMEVERSION", "DEHET");
+        textToSpeech = useroptions.getBoolean("TTS", true);
 
         if (chosenGametype.equals("NORMAL"))
             gamemodeSwitch.setChecked(false);
@@ -110,6 +130,11 @@ public class OptionsActivity extends AppCompatActivity {
             dezedieditdatRadioButton.setChecked(true);
         else
             dehetRadioButton.setChecked(true);
+
+        if(textToSpeech)
+            gamemodeSwitch.setChecked(true);
+        else
+            gamemodeSwitch.setChecked(false);
 
         resetCheckBox. setChecked(false);
     }

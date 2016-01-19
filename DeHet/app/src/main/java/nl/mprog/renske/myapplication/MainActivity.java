@@ -21,12 +21,15 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity  {
 
-    public GamePlay gameplay;
-    public TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
+    private GamePlay gameplay;
+    private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
+    private ImageView item1ImageView, item2ImageView, item3ImageView, item4ImageView, item5ImageView,
+            item6ImageView, item7ImageView, item8ImageView, item9ImageView, item10ImageView;
     public ImageView finishedImageView;
     public Button deButton, hetButton;
     private TextToSpeech t1;
     private static final int MY_DATA_CHECK_CODE = 1234;
+    private boolean textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,12 @@ public class MainActivity extends AppCompatActivity  {
         initializeGameComponents();
         gameplay.initializeGame();
 
+        initializeBruin();
+
+
+
+        SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
+        textToSpeech = useroptions.getBoolean("TTS", true);
 
         // TTS check
         Intent checkIntent = new Intent();
@@ -100,10 +109,56 @@ public class MainActivity extends AppCompatActivity  {
         gameplay.setSharedPreferences(useroptions);
     }
 
+
+    public void initializeBruin(){
+
+        Bruin bruin = new Bruin();
+
+        // set sharedpreferences
+        SharedPreferences storedachievements = getSharedPreferences("storedachievements", this.MODE_PRIVATE);
+        bruin.setSharedPreferences(storedachievements);
+
+        ImageView[] imageViewArray = new ImageView[]{
+                item1ImageView = (ImageView) findViewById(R.id.scarfImageView),
+                item2ImageView = (ImageView) findViewById(R.id.hatImageView),
+                item3ImageView = (ImageView) findViewById(R.id.sockImageView),
+                item4ImageView = (ImageView) findViewById(R.id.earmuffsImageView),
+                item5ImageView = (ImageView) findViewById(R.id.flowerImageView),
+                item6ImageView = (ImageView) findViewById(R.id.shadesImageView),
+                item7ImageView = (ImageView) findViewById(R.id.tieImageView),
+                item8ImageView = (ImageView) findViewById(R.id.haloImageView),
+                item9ImageView = (ImageView) findViewById(R.id.wingsImageView),
+                item10ImageView = (ImageView) findViewById(R.id.crownImageView),
+        };
+
+        ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
+        imageViewList.addAll(Arrays.asList(imageViewArray));
+        bruin.setItemImageViews(imageViewList);
+        bruin.checkEquipped();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
         gameplay.resumeGame();
+        initializeBruin();
     }
 
     @Override
@@ -177,7 +232,7 @@ public class MainActivity extends AppCompatActivity  {
     {
         if (requestCode == MY_DATA_CHECK_CODE)
         {
-            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS && textToSpeech != false)
             {
                 startTTS();
             }

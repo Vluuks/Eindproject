@@ -27,14 +27,22 @@
         <activity
             android:name=".HintsActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_highscore"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".Main2Activity" >
+        <activity
+            android:name=".OptionsActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".OptionsActivity" >
+        <activity
+            android:name=".ShopActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".ShopActivity" >
+        <activity
+            android:name=".HelpActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

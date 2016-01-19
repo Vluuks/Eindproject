@@ -7,6 +7,7 @@ public class ShopItem {
 
     public String itemname, imageviewpath;
     public int status, price, id;
+    public boolean equipped;
 
     public ShopItem (String the_itemname, String the_imageviewpath, int the_id, int the_price){
         this.itemname = the_itemname;
@@ -14,5 +15,6 @@ public class ShopItem {
         this.id = the_id;
         this.status = 0;
         this.price = the_price;
+        this.equipped = false;
     }
 }

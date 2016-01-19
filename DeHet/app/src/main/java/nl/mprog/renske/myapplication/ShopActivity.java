@@ -2,6 +2,7 @@ package nl.mprog.renske.myapplication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,7 +34,7 @@ public class ShopActivity extends AppCompatActivity {
     private boolean resetvalue;
     private ShopItem item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
     private ListView listView;
-    private String jsonstring, itemsownedstring;
+    private String jsonstring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,10 @@ public class ShopActivity extends AppCompatActivity {
         SharedPreferences savedprefs = this.getSharedPreferences("storedachievements", MODE_PRIVATE);
         jsonstring = savedprefs.getString("jsonshop", null);
         coins = savedprefs.getInt("coinsamount", 0);
-        itemsownedstring = savedprefs.getString("owneditems", "");
-
 
         // if it's the first time the app is loaded or achievements have been reset create shopitems from scratch
         if(savedprefs == null || jsonstring == null) {
+            coins = 0;
             shopItems = createShopItems();
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
             coinsTextView.setText("Coins: " + Integer.toString(coins));
@@ -63,10 +63,10 @@ public class ShopActivity extends AppCompatActivity {
         // if sharedpreferences exist, use those instead
         else {
             checkForReset();
-            //shopItems = loadShopItems(jsonstring);
-            shopItems = createShopItems();
+            shopItems = loadShopItems(jsonstring);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
-            System.out.println("LOADING ITEMS FROM SHAREDPREFS SUCCESFULL");
+            System.out.println("LOADING ITEMS FROM SHAREDPREFS");
+            coins = 1000000;
             coinsTextView.setText("Coins: " + Integer.toString(coins));
         }
 
@@ -117,8 +117,17 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void buyItem(ShopItem theitem){
+
+        // if the user owns the item, equip or unequip it depending on current status
         if(theitem.status == 1) {
-            Toast.makeText(ShopActivity.this, "You already own this!", Toast.LENGTH_SHORT).show();
+
+            if(!theitem.equipped)
+                theitem.equipped = true;
+            else
+                theitem.equipped = false;
+
+            listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
+            System.out.println(theitem.equipped);
         }
         else {
             if(coins - theitem.price < 0)
@@ -128,14 +137,10 @@ public class ShopActivity extends AppCompatActivity {
                 theitem.price = 0;
                 listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
                 coinsTextView.setText("Coins: " + Integer.toString(coins));
-
-                // add the id of the bought item to string in sharedpreferences
-                StringBuilder sb = new StringBuilder(itemsownedstring);
-                sb.append(" " + Integer.toString(theitem.id));
-                sb.toString();
-
             }
         }
+
+        saveShopItems(shopItems);
     }
 
     // Check if the user has opted to reset the coins and achievements.
@@ -156,16 +161,16 @@ public class ShopActivity extends AppCompatActivity {
         // create list to put everything inside array in bulk
         ShopItem[] shopItemList = new ShopItem[]{
 
-                item1 = new ShopItem("Powdery Pastel Scarf", "@drawable/bruinscarf", 1, 50),
-                item2 = new ShopItem("Searing Summer Hat", "@mipmap/icontest", 2, 50),
-                item3 = new ShopItem("Surely Some Oversized Sock", "@mipmap/icontest", 3, 150),
-                item4 = new ShopItem("Warm Wooly Earmuffs", "@mipmap/icontest", 4, 150),
-                item5 = new ShopItem("Fantastic Fluffy Flowercrown", "@mipmap/icontest", 5, 250),
-                item6 = new ShopItem("Sporty Shades of Supercoolness", "@mipmap/icontest", 6, 250),
-                item7 = new ShopItem("Tie With Tons of Triangles", "@mipmap/icontest", 7, 300),
-                item8 = new ShopItem("Halo of Helpfulness", "@mipmap/icontest", 8, 500),
-                item9 = new ShopItem("Iridescent Wings of Indecision", "@drawable/bruinwings", 9, 1000),
-                item10 = new ShopItem("Royal Crown of Masterminds", "@mipmap/icontest", 10, 10000)
+                item1 = new ShopItem("Powdery Pastel Scarf", "bruinscarf", 1, 50),
+                item2 = new ShopItem("Searing Summer Hat", "bruinhat", 2, 50),
+                item3 = new ShopItem("Surely Some Oversized Sock", "bruinsock", 3, 150),
+                item4 = new ShopItem("Warm Wooly Earmuffs", "bruinearmuffs", 4, 150),
+                item5 = new ShopItem("Fantastic Fluffy Flowercrown", "bruinflower", 5, 250),
+                item6 = new ShopItem("Sporty Shades of Supercoolness", "bruinshades", 6, 250),
+                item7 = new ShopItem("Tie With Tons of Triangles", "bruintie", 7, 300),
+                item8 = new ShopItem("Halo of Helpfulness", "bruinhalo", 8, 500),
+                item9 = new ShopItem("Iridescent Wings of Indecision", "bruinwings", 9, 1000),
+                item10 = new ShopItem("Royal Crown of Masterminds", "bruincrown", 10, 10000)
         };
 
         // add the array created above to the arraylist and set the listadapter on this arraylist
@@ -188,10 +193,14 @@ public class ShopActivity extends AppCompatActivity {
         SharedPreferences.Editor edit = prefs.edit();
 
         edit.putString("jsonshop", jsonArrayString);
-        edit.putString("owneditems", itemsownedstring);
         edit.putInt("coinsamount", coins);
         edit.commit();
+
+        System.out.println(jsonArrayString);
     }
+
+
+
 
     public ArrayList<ShopItem> loadShopItems(String jsonstring){
 
@@ -265,16 +274,34 @@ public class ShopActivity extends AppCompatActivity {
 
                     // if the item has been bought
                     if (item.price == 0) {
-                        itemPrice.setText("You own this item!");
                         item.status = 1;
+
+                        // display text according to item's equipped status
+                        if (!item.equipped)
+                            itemPrice.setText("You own this! Tap to equip.");
+                        else
+                            itemPrice.setText("Equipped! Tap to unequip.");
                     }
+
+                    // if the item was not bought, just display the price
                     else
                         itemPrice.setText(Integer.toString(item.price));
                 }
+
+                // set the icon accordingly
                 if(itemIcon != null) {
-                    itemIcon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
+
+
+                    Resources res = getResources();
+                    int resourceId = res.getIdentifier(
+                            item.imageviewpath, "drawable", getPackageName() );
+                    itemIcon.setImageResource(resourceId);
+
+                    //itemIcon.setImageDrawable(getResources().getDrawable(R.drawable.path));
                 }
 
+
+                // save any changes that the adapter made
                 saveShopItems(shopItems);
 
             }

@@ -187,7 +187,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
 
         <ImageView
             android:paddingTop="50dp"
@@ -195,7 +196,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/wingsImageView"
             android:src="@drawable/bruinwings"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_horizontal" />
 
         <ImageView
             android:paddingTop="50dp"
@@ -203,15 +204,80 @@
             android:layout_height="wrap_content"
             android:id="@+id/bruinImageView"
             android:src="@drawable/justbruin"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_horizontal" />
 
         <ImageView
             android:paddingTop="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bruinScarf"
+            android:id="@+id/tieImageView"
+            android:src="@drawable/bruintie"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hatImageView"
+            android:src="@drawable/bruinhat"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scarfImageView"
             android:src="@drawable/bruinscarf"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/flowerImageView"
+            android:src="@drawable/bruinflower"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/earmuffsImageView"
+            android:src="@drawable/bruinearmuffs"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sockImageView"
+            android:src="@drawable/bruinsock"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/haloImageView"
+            android:src="@drawable/bruinhalo"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shadesImageView"
+            android:src="@drawable/bruinshades"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/crownImageView"
+            android:src="@drawable/bruincrown"
+            android:layout_gravity="center_horizontal" />
+
     </FrameLayout>
 
 </LinearLayout>
