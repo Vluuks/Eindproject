@@ -29,7 +29,7 @@ import java.util.Random;
 public class GamePlay {
 
     private Context activityContext;
-    private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
+    private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView, translationTextView;
     public ImageView finishedImageView;
     private Button deButton, hetButton;
     private String lidwoord, znw, gameType, pickedWord, pickedWordTranslation, gameVersion;
@@ -62,6 +62,7 @@ public class GamePlay {
         this.timerTextView = textViewList.get(4);
         this.correctTextView = textViewList.get(5);
         this.incorrectTextView = textViewList.get(6);
+        this.translationTextView = textViewList.get(7);
     }
 
     /**
@@ -95,7 +96,7 @@ public class GamePlay {
         XmlPullParser xpp = factory.newPullParser();
 
         // set the input stream
-        Reader myReader = new InputStreamReader(activityContext.getAssets().open("dictionary.xdxf.xml"), "UTF-8");
+        Reader myReader = new InputStreamReader(activityContext.getAssets().open("dictionary2.xml"), "UTF-8");
         xpp.setInput(myReader);
 
         // go over xml file
@@ -112,6 +113,11 @@ public class GamePlay {
                         if (xpp.next() == XmlPullParser.TEXT)
                             dictKey = xpp.getText();
                     }
+                    if (name.equals("t")) {
+                        if (xpp.next() == XmlPullParser.TEXT)
+                            dictValue = xpp.getText();
+                    }
+                    System.out.println(dictValue);
                     break;
 
                 case XmlPullParser.END_TAG:
@@ -253,6 +259,8 @@ public class GamePlay {
             intent.putExtra("SCORE", score);
             intent.putExtra("LIVES", lives);
             intent.putExtra("MAXMULTIPLIER", maxmultiplier);
+            intent.putExtra("CORRECTCOUNT", correctcount);
+            intent.putExtra("TIMERSECONDS", Integer.parseInt(timerTextView.getText().toString()));
         }
 
         activityContext.startActivity(intent);
@@ -266,13 +274,14 @@ public class GamePlay {
     private void initializeTimer(int chosentime){
         gameTimer = new Stopwatch(chosentime, timerTextView);
         gameTimer.timerstatus = true;
-        System.out.println("NEW TIMER INITIALIZED:" + chosentime);
     }
 
     /**
      * Pick a word from the keylist and dictionary.
      */
     public void pickWord() {
+
+        translationTextView.setText(" ");
 
         if (keylist.isEmpty())
             onWin();
@@ -417,11 +426,6 @@ public class GamePlay {
             gameTimer.cancelTimer();
 
         finishedImageView.setImageResource(R.drawable.onwinbruin);
-
-        Toast toast = Toast.makeText(activityContext, "AWESOME", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-        toast.show();
-
         stopGame();
     }
 
@@ -458,4 +462,9 @@ public class GamePlay {
         initializeGame();
     }
 
+
+    public void showTranslation(){
+        pickedWordTranslation = dictionarymap.get(pickedWord);
+        translationTextView.setText(pickedWordTranslation);
+    }
 }

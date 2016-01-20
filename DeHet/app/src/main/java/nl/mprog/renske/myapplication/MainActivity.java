@@ -2,7 +2,6 @@ package nl.mprog.renske.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,14 +21,14 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity  {
 
     private GamePlay gameplay;
-    private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
+    private TextView woordTextView, translationTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
     private ImageView item1ImageView, item2ImageView, item3ImageView, item4ImageView, item5ImageView,
             item6ImageView, item7ImageView, item8ImageView, item9ImageView, item10ImageView;
     public ImageView finishedImageView;
     public Button deButton, hetButton;
     private TextToSpeech t1;
     private static final int MY_DATA_CHECK_CODE = 1234;
-    private boolean textToSpeech;
+    private boolean textToSpeechStatus, translationStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity  {
 
         gameplay = new GamePlay(MainActivity.this);
 
-        // load the dictionary
+        // Load the dictionary.
         try {
             gameplay.loadDictionary();
         } catch (XmlPullParserException e) {
@@ -47,24 +46,18 @@ public class MainActivity extends AppCompatActivity  {
             e.printStackTrace();
         }
 
+        // Prepare game components and mascot.
         initializeGameComponents();
-        gameplay.initializeGame();
-
         initializeBruin();
 
-
-
-        SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
-        textToSpeech = useroptions.getBoolean("TTS", true);
-
-        // TTS check
-        Intent checkIntent = new Intent();
-        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-        startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
-
+        // Check sharedpreferences for useroptions.
+        checkSharedPreferences();
+        checkForTTS();
     }
 
-
+    /**
+     * Gives gameplay class access to interface elements.
+     */
     public void initializeGameComponents()
     {
         // initialize layout components
@@ -75,7 +68,8 @@ public class MainActivity extends AppCompatActivity  {
             multiplierTextView = (TextView) findViewById(R.id.multiplierTextview),
             timerTextView = (TextView) findViewById(R.id.timerTextview),
             correctTextView = (TextView) findViewById(R.id.correctcounter),
-            incorrectTextView = (TextView) findViewById(R.id.incorrectcounter)
+            incorrectTextView = (TextView) findViewById(R.id.incorrectcounter),
+            translationTextView = (TextView) findViewById(R.id.translationTextView)
         };
 
         ArrayList<TextView> textViewList = new ArrayList<TextView>();
@@ -107,9 +101,13 @@ public class MainActivity extends AppCompatActivity  {
 
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         gameplay.setSharedPreferences(useroptions);
+        gameplay.initializeGame();
+
     }
 
-
+    /**
+     * Creates the game's mascot, Bruin.
+     */
     public void initializeBruin(){
 
         Bruin bruin = new Bruin();
@@ -137,26 +135,19 @@ public class MainActivity extends AppCompatActivity  {
         bruin.checkEquipped();
     }
 
+    public void checkSharedPreferences(){
+        SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
+        textToSpeechStatus = useroptions.getBoolean("TTS", true);
+        translationStatus = useroptions.getBoolean("TRANSLATION", true);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Activity lifecycle methods.
+     */
     @Override
     protected void onResume() {
         super.onResume();
+        checkSharedPreferences();
         gameplay.resumeGame();
         initializeBruin();
     }
@@ -167,12 +158,16 @@ public class MainActivity extends AppCompatActivity  {
         gameplay.pauseGame();
     }
 
+    /**
+     * Interface redirecting methods.
+     */
     public void displayHintScreen(View view) {
         Intent intent = new Intent(this, HintsActivity.class);
         startActivity(intent);
     }
 
     public void startNewGame(View view) {
+        checkSharedPreferences();
         gameplay.startNewGame();
     }
 
@@ -187,8 +182,14 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void onWordClick(View view){
-        String speech = woordTextView.getText().toString();
-        t1.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+
+        if(textToSpeechStatus) {
+            String speech = woordTextView.getText().toString();
+            t1.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+        }
+        if (translationStatus){
+            gameplay.showTranslation();
+        }
     }
 
     public void displayAchievementScreen(View view) {
@@ -200,8 +201,22 @@ public class MainActivity extends AppCompatActivity  {
         gameplay.checkArticle(view);
     }
 
+    public void displayHelpScreen(View view) {
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
 
-    // source: http://www.jameselsey.co.uk/blogs/techblog/android-a-really-easy-tutorial-on-how-to-use-text-to-speech-tts-and-how-you-can-enter-text-and-have-it-spoken/
+    /**
+     * TextToSpeech implementations.
+     * http://www.jameselsey.co.uk/blogs/techblog/android-a-really-easy-tutorial-on-how-to-use-text-
+     * to-speech-tts-and-how-you-can-enter-text-and-have-it-spoken/
+     */
+    public void checkForTTS(){
+        Intent checkIntent = new Intent();
+        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+        startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
+    }
+
     public void startTTS() {
         // create new TTS
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -232,7 +247,7 @@ public class MainActivity extends AppCompatActivity  {
     {
         if (requestCode == MY_DATA_CHECK_CODE)
         {
-            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS && textToSpeech != false)
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
             {
                 startTTS();
             }
@@ -246,10 +261,4 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
     }
-
-
-
-
 }
-
-

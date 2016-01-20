@@ -22,10 +22,13 @@ import java.util.Arrays;
 
 public class HighscoreActivity extends AppCompatActivity {
 
-    public int finalscore, finalmultiplier, finallives, coinsAmount;
-    public Achievement beginner_achiev1, beginner_achiev2, beginner_achiev3, novice_achiev1,
-            novice_achiev2, novice_achiev3, intermediate_achiev1, intermediate_achiev2,
-            intermediate_achiev3, master_achiev1, master_achiev2, ultimate_achiev1, ultimate_achiev2;
+    public int finalscore, finalmultiplier, finallives, coinsAmount, correctcounter;
+    public Achievement
+            beginner_achiev1, beginner_achiev2, beginner_achiev3, beginner_achiev4,
+            novice_achiev1, novice_achiev2, novice_achiev3, novice_achiev4,
+            intermediate_achiev1, intermediate_achiev2, intermediate_achiev3, intermediate_achiev4,
+            master_achiev1, master_achiev2, master_achiev3,
+            ultimate_achiev1, ultimate_achiev2, ultimate_achiev3;
     public ArrayList<Achievement> achievements;
     public TextView coinsTextView;
     private boolean resetvalue;
@@ -68,6 +71,7 @@ public class HighscoreActivity extends AppCompatActivity {
         }
 
         // check where the user came from (if not from game, then no need to check for achievements)
+        saveAchievements(achievements);
         checkSource();
     }
 
@@ -93,10 +97,6 @@ public class HighscoreActivity extends AppCompatActivity {
         return resetvalue;
     }
 
-
-
-
-
     // Creates achievements from scratch.
     public ArrayList<Achievement> createAchievements(){
 
@@ -107,24 +107,29 @@ public class HighscoreActivity extends AppCompatActivity {
                 beginner_achiev1 = new Achievement("Score 50 points or more", "@mipmap/icontest", 0, "Beginner"),
                 beginner_achiev2 = new Achievement("Score a combo of at least 5", "@mipmap/icontest", 0, "Beginner"),
                 beginner_achiev3 = new Achievement("Finish a game with at least 1 life left", "@mipmap/icontest", 0, "Beginner"),
+                beginner_achiev4 = new Achievement("Correctly assign 25 articles", "@mipmap/icontest", 0, "Beginner"),
 
                 // novice achievements
                 novice_achiev1 = new Achievement("Score 100 points or more", "@mipmap/icontest", 0, "Novice"),
                 novice_achiev2 = new Achievement("Score a combo of at least 10", "@mipmap/icontest", 0, "Novice"),
                 novice_achiev3 = new Achievement("Finish a game with at least 2 lives left", "@mipmap/icontest", 0, "Novice"),
+                novice_achiev4 = new Achievement("Correctly assign 50 articles", "@mipmap/icontest", 0, "Novice"),
 
                 // intermediate achievements
                 intermediate_achiev1 = new Achievement("Score 250 points or more", "@mipmap/icontest", 0, "Intermediate"),
                 intermediate_achiev2 = new Achievement("Score a combo of at least 25", "@mipmap/icontest", 0, "Intermediate"),
                 intermediate_achiev3 = new Achievement("Finish a game with 3 lives left", "@mipmap/icontest", 0, "Intermediate"),
+                intermediate_achiev4 = new Achievement("Correctly assign 75 articles", "@mipmap/icontest", 0, "Intermediate"),
 
                 // master achievements
                 master_achiev1 = new Achievement("Score 750 points or more", "@mipmap/icontest", 0, "Master"),
                 master_achiev2 = new Achievement("Score a combo of at least 50", "@mipmap/icontest", 0, "Master"),
+                master_achiev3 = new Achievement("Correctly assign 100 articles", "@mipmap/icontest", 0, "Master"),
 
                 // ultimate achievements
                 master_achiev1 = new Achievement("Score 1500 points or more", "@mipmap/icontest", 0, "Ultimate"),
-                master_achiev2 = new Achievement("Score a combo of at least 100", "@mipmap/icontest", 0, "Ultimate")
+                master_achiev2 = new Achievement("Score a combo of at least 100", "@mipmap/icontest", 0, "Ultimate"),
+                master_achiev3 = new Achievement("Correctly assign 150 articles", "@mipmap/icontest", 0, "Ultimate")
         };
 
         // add the array created above to the arraylist and set the listadapter on this arraylist
@@ -144,10 +149,7 @@ public class HighscoreActivity extends AppCompatActivity {
             finalscore = intent.getExtras().getInt("SCORE");
             finalmultiplier = intent.getExtras().getInt("MAXMULTIPLIER");
             finallives = intent.getExtras().getInt("LIVES");
-
-            System.out.println("FINAL SCORE:" + finalscore);
-            System.out.println("BEST COMBO" + finalmultiplier);
-            System.out.println("LIVES LEFT" + finallives);
+            correctcounter = intent.getExtras().getInt("CORRECTCOUNTER");
 
             // check if the user is eligible for achievements
             checkForAchievement();
@@ -163,61 +165,84 @@ public class HighscoreActivity extends AppCompatActivity {
         // check if they're eligible for an achievement
         if(finalscore >= 50) {
             beginner_achiev1.setStatus(1);
-            beginner_achiev1.counternew++;
+            beginner_achiev1.counter++;
         }
         if(finalmultiplier >= 5) {
             beginner_achiev2.setStatus(1);
-            beginner_achiev2.counternew++;
+            beginner_achiev2.counter++;
         }
         if(finallives >= 1) {
             beginner_achiev3.setStatus(1);
-            beginner_achiev3.counternew++;
+            beginner_achiev3.counter++;
         }
+        if(correctcounter >= 25) {
+            beginner_achiev4.setStatus(1);
+            beginner_achiev4.counter++;
+        }
+
 
         if(finalscore >= 100) {
             novice_achiev1.setStatus(1);
-            novice_achiev1.counternew++;
+            novice_achiev1.counter++;
         }
         if(finalmultiplier >= 10) {
             novice_achiev2.setStatus(1);
-            novice_achiev2.counternew++;
+            novice_achiev2.counter++;
         }
         if(finallives >= 2) {
             novice_achiev3.setStatus(1);
-            novice_achiev3.counternew++;
+            novice_achiev3.counter++;
         }
+        if(correctcounter >= 50) {
+            novice_achiev4.setStatus(1);
+            novice_achiev4.counter++;
+        }
+
 
         if(finalscore >= 250) {
             intermediate_achiev1.setStatus(1);
-            intermediate_achiev1.counternew++;
+            intermediate_achiev1.counter++;
         }
         if(finalmultiplier >= 25) {
             intermediate_achiev2.setStatus(1);
-            intermediate_achiev2.counternew++;
+            intermediate_achiev2.counter++;
         }
         if(finallives == 3) {
             intermediate_achiev3.setStatus(1);
-            intermediate_achiev3.counternew++;
+            intermediate_achiev3.counter++;
         }
+        if(correctcounter >= 75) {
+            intermediate_achiev4.setStatus(1);
+            intermediate_achiev4.counter++;
+        }
+
 
         if(finalscore >= 750) {
             master_achiev1.setStatus(1);
-            master_achiev1.counternew++;
+            master_achiev1.counter++;
         }
         if(finalmultiplier >= 50) {
             master_achiev2.setStatus(1);
-            master_achiev2.counternew++;
+            master_achiev2.counter++;
         }
+        if(finalmultiplier >= 100) {
+            master_achiev3.setStatus(1);
+            master_achiev3.counter++;
+        }
+
 
         if(finalscore >= 1500) {
             ultimate_achiev1.setStatus(1);
-            ultimate_achiev1.counternew++;
+            ultimate_achiev1.counter++;
         }
         if(finalmultiplier >= 100) {
             ultimate_achiev2.setStatus(1);
-            ultimate_achiev2.counternew++;
+            ultimate_achiev2.counter++;
         }
-
+        if(finalmultiplier >= 150) {
+            ultimate_achiev3.setStatus(1);
+            ultimate_achiev3.counter++;
+        }
         // Save the status of the achievements.
         saveAchievements(achievements);
     }
@@ -342,11 +367,11 @@ public class HighscoreActivity extends AppCompatActivity {
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
 
                         // check if the achievement is repeated and award coins appropriately
-                        if(achievement.counternew > achievement.countercurrent) {
+                        if(achievement.counter > 1) {
                             System.out.println(coinsAmount);
                             System.out.println("COUNTERNEW IS BIGGER THAN OLD COUNTER");
-                            System.out.println(achievement.counternew + "|" + achievement.countercurrent);
-                            achievementprogress.setText("Completed " + Integer.toString(achievement.counternew) + "times");
+                            System.out.println(achievement.counter + "|" + achievement.countercurrent);
+                            achievementprogress.setText("Completed " + Integer.toString(achievement.counter) + " times");
 
 
                             // if statements met equals van maken
@@ -377,13 +402,10 @@ public class HighscoreActivity extends AppCompatActivity {
                             System.out.println("AMOUNT OF COINS" + coinsAmount);
 
                             // update the current counter
-                            achievement.countercurrent = achievement.counternew;
-                            System.out.println(achievement.counternew + achievement.countercurrent);
+                            //achievement.countercurrent = achievement.counternew;
+                            System.out.println(achievement.counter + achievement.countercurrent);
 
                         }
-
-                        // update the current counter
-                        achievement.countercurrent = achievement.counternew;
                     }
                     // otherwise just show the type of achievement as text
                     else {
@@ -393,6 +415,7 @@ public class HighscoreActivity extends AppCompatActivity {
                 }
 
             saveAchievements(achievements);
+
 
             }
             return v;

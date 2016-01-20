@@ -3,6 +3,7 @@ package nl.mprog.renske.myapplication;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -66,7 +67,7 @@ public class ShopActivity extends AppCompatActivity {
             shopItems = loadShopItems(jsonstring);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
             System.out.println("LOADING ITEMS FROM SHAREDPREFS");
-            coins = 1000000;
+            coins = 1000000; // TODO
             coinsTextView.setText("Coins: " + Integer.toString(coins));
         }
 

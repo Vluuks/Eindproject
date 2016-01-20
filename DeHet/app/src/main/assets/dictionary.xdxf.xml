@@ -72,8 +72,7 @@
         <ar><k>[de] koe</k>cow  ; moo-cow</ar>
         <ar><k>[het] schaap</k>sheep</ar>
         <ar><k>[de] geit</k>goat  ; caprine animal</ar>
-        <ar><k>[de] mens  ; [de] homosapien</k>human  ; homo  ; man  ; human being</ar>
-        <ar><k>[de] aap {m}  ; [de] apin {f}</k>monkey</ar>
+        <ar><k>[de] aap</k>monkey</ar>
         <ar><k>[de] vis</k>fish</ar>
         <ar><k>[de] toevoeging</k>addition  ; add-on  ; improver</ar>
         <ar><k>[het] vliegtuig</k>plane  ; airplane  ; aeroplane</ar>
@@ -99,7 +98,6 @@
         <ar><k>[de] borstel</k>brush</ar>
         <ar><k>[het] gebouw</k>building  ; edifice</ar>
         <ar><k>[de] fotocamera  ; [het] fototoestel</k>camera  ; photographic camera</ar>
-        <ar><k>[het] blik</k>can  ; tin  ; tin can</ar>
         <ar><k>[de] kaart</k>card</ar>
         <ar><k>[de] ketting</k>chain</ar>
         <ar><k>[de] kerk</k>church  ; church building</ar>
@@ -197,7 +195,6 @@
         <ar><k>[het] wiel</k>wheel</ar>
         <ar><k>[de] zweep</k>whip</ar>
         <ar><k>[het] venster  ; [het] raam  ; [de] ruit</k>window</ar>
-        <ar><k>[de] draad</k>wire</ar>
         <ar><k>[de] humor</k>humor  ; humour  ; sense of humor  ; sense of humour</ar>
         <ar><k>[de] vorm</k>shape  ; form  ; cast</ar>
         <ar><k>[de] blik  ; [de] gezichtsuitdrukking</k>expression  ; look  ; aspect  ; facial expression  ; face</ar>
@@ -296,7 +293,6 @@
         <ar><k>[het] formulier</k>form</ar>
         <ar><k>[de] lijst</k>list  ; listing</ar>
         <ar><k>[de] rekening  ; [de] factuur</k>invoice  ; bill  ; account</ar>
-        <ar><k>[het] ticket  ; [het] kaartje  ; [het] toegangsbewijs</k>ticket</ar>
         <ar><k>[de] wet</k>law</ar>
         <ar><k>[het] testament  ; [de] laatste wilsbeschikking</k>will  ; testament</ar>
         <ar><k>[de] brief</k>letter  ; missive</ar>
@@ -382,7 +378,6 @@
         <ar><k>[het] systeem</k>system  ; scheme</ar>
         <ar><k>[de] stroom</k>stream  ; flow  ; current</ar>
         <ar><k>[het] land</k>country  ; state  ; land</ar>
-        <ar><k>[de] kant</k>edge  ; border</ar>
         <ar><k>[het] einde</k>end  ; terminal</ar>
         <ar><k>[het] veld (crops)  ; [de] wei (animals)</k>field</ar>
         <ar><k>[het] front</k>front  ; front end  ; forepart</ar>
@@ -414,11 +409,11 @@
         <ar><k>[de] baby</k>baby  ; babe  ; infant</ar>
         <ar><k>[de] geliefde  ; [de] beminde</k>dear  ; beloved  ; dearest  ; honey  ; love</ar>
         <ar><k>[de] broer</k>brother  ; blood brother</ar>
-        <ar><k>[de] kok {m}  ; [de] kokkin {f}</k>cook</ar>
+        <ar><k>[de] kok</k>cook</ar>
         <ar><k>[de] dochter</k>daughter  ; girl</ar>
         <ar><k>[de] directeur  ; [de] directrice {f}</k>director  ; manager  ; managing director</ar>
         <ar><k>[de] vader</k>father  ; male parent  ; begetter</ar>
-        <ar><k>[de] vriend {m}  ; [de] vriendin {f}</k>friend</ar>
+        <ar><k>[de] vriend</k>friend</ar>
         <ar><k>[de] generaal</k>general  ; full general</ar>
         <ar><k>[het] meisje</k>girl  ; miss  ; missy  ; young lady  ; young woman  ; fille</ar>
         <ar><k>[de] rechter</k>judge  ; justice  ; jurist</ar>
@@ -602,7 +597,7 @@
         <ar><k>[het] strand</k>beach</ar>
         <ar><k>[het] kasteel  ; [het] fort  ; [de] burcht</k>castle</ar>
         <ar><k>[het] bos</k>forest  ; wood  ; woods</ar>
-        <ar><k>[de] beer {m}  ; [de] berin {f}</k>bear</ar>
+        <ar><k>[de] beer</k>bear</ar>
         <ar><k>[het] Hindi</k>Hindi</ar>
         <ar><k>[de] technologie</k>technology  ; engineering</ar>
         <ar><k>[de] snavel</k>beak  ; bill  ; neb  ; nib  ; pecker</ar>
@@ -747,17 +742,16 @@
         <ar><k>[het] onderdeel  ; [het] stuk</k>piece</ar>
         <ar><k>[het] kampioenschap</k>championship  ; title</ar>
         <ar><k>[de] ploeg  ; [het] team</k>team  ; squad</ar>
-        <ar><k>[de] golf</k>golf  ; golf game</ar>
         <ar><k>[de] soort</k>type</ar>
         <ar><k>[de] adviesraad  ; [het] raadgevend lichaam</k>council</ar>
         <ar><k>[de] leugen</k>lie  ; prevarication</ar>
-        <ar><k>[de] zanger {m}  ; [de] zangeres {f}</k>singer  ; vocalist  ; vocalizer  ; vocaliser</ar>
+        <ar><k>[de] zanger</k>singer  ; vocalist  ; vocalizer  ; vocaliser</ar>
         <ar><k>[de] aangelegenheid</k>matter  ; affair  ; thing</ar>
         <ar><k>[de] titel</k>title</ar>
         <ar><k>[het] tijdschrift  ; [het] magazine  ; [het] blad</k>magazine  ; mag</ar>
         <ar><k>[de] politieagent</k>policeman  ; police officer  ; officer</ar>
         <ar><k>[de] schrijftafel</k>desk</ar>
-        <ar><k>[de] buurman {m}  ; [de] buurvrouw {f}  ; [de] buren {pl.}</k>neighbor  ; neighbour</ar>
+        <ar><k>[de] buurman</k>neighbor  ; neighbour</ar>
         <ar><k>[de] economie</k>economy  ; economic system</ar>
         <ar><k>[het] nu</k>now</ar>
         <ar><k>[de] slaapkamer</k>bedroom  ; sleeping room  ; sleeping accommodation  ; chamber  ; bedchamber</ar>
@@ -795,7 +789,7 @@
         <ar><k>[de] campagne</k>campaign  ; cause  ; crusade  ; drive  ; movement  ; effort</ar>
         <ar><k>[de] speler</k>player  ; participant</ar>
         <ar><k>[het] personeel</k>staff</ar>
-        <ar><k>[de] aandeel</k>share</ar>
+        <ar><k>[het] aandeel</k>share</ar>
         <ar><k>[de] bruiloft</k>wedding  ; wedding ceremony  ; nuptials  ; hymeneals</ar>
         <ar><k>[de] strubbeling</k>difficulty</ar>
         <ar><k>[de] universiteit</k>university</ar>
@@ -851,7 +845,7 @@
         <ar><k>[het] geheel</k>whole</ar>
         <ar><k>[het] gemiddelde</k>mean  ; mean value</ar>
         <ar><k>[de] koffer  ; [het] valies (.be)</k>suitcase  ; bag  ; traveling bag  ; travelling bag  ; grip</ar>
-        <ar><k>[de] basis-</k>basic</ar>
+        <ar><k>[de] basis</k>base</ar>
         <ar><k>[de] ambtenaar</k>officer  ; officeholder</ar>
         <ar><k>[de] productie</k>production</ar>
         <ar><k>[de] oppervlakte</k>area  ; expanse  ; surface area</ar>
@@ -869,7 +863,6 @@
         <ar><k>[de] gootsteen</k>sink</ar>
         <ar><k>[het] bewijs</k>evidence</ar>
         <ar><k>[het] Spaans</k>Spanish</ar>
-        <ar><k>[de] expres</k>express  ; limited</ar>
         <ar><k>[de] buitenkant</k>outside  ; exterior</ar>
         <ar><k>[het] gedrag  ; [de] attitude</k>attitude  ; mental attitude</ar>
         <ar><k>[het] rapport</k>report  ; study  ; written report</ar>

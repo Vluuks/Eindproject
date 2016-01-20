@@ -11,25 +11,31 @@ import android.widget.Switch;
 
 public class OptionsActivity extends AppCompatActivity {
 
-    private Switch gamemodeSwitch;
+    private Switch gamemodeSwitch, textToSpeechSwitch, translationSwitch;
     public String chosenGametype, chosenGameversion;
     private RadioGroup radioGroup;
     private RadioButton dehetRadioButton, dezedieditdatRadioButton;
     private CheckBox resetCheckBox;
-    private boolean resetvalue, textToSpeech;
+    private boolean resetValue, textToSpeech, translation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
+        // Initialize layout components.
         gamemodeSwitch = (Switch) findViewById(R.id.switch1);
+        textToSpeechSwitch = (Switch) findViewById(R.id.switch2);
+        translationSwitch = (Switch) findViewById(R.id.switch3);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         dehetRadioButton = (RadioButton) findViewById(R.id.dehetradioButton);
         dezedieditdatRadioButton = (RadioButton) findViewById(R.id.dezedieditdatradioButton);
         resetCheckBox = (CheckBox) findViewById(R.id.checkBox);
+
         loadOptions();
 
+
+        // Set listeners.
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedButtonId) {
@@ -43,12 +49,9 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
-
-        gamemodeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        CompoundButton.OnCheckedChangeListener multipleListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-
                 switch (buttonView.getId()) {
                     case R.id.switch1:
                         if (isChecked) {
@@ -62,55 +65,50 @@ public class OptionsActivity extends AppCompatActivity {
                     case R.id.switch2:
                         if (isChecked) {
                             textToSpeech = true;
-                            gamemodeSwitch.setText("ON");
+                            textToSpeechSwitch.setText("ON");
                         } else {
                             textToSpeech = false;
-                            gamemodeSwitch.setText("OFF");
+                            textToSpeechSwitch.setText("OFF");
+                        }
+                        break;
+                    case R.id.switch3:
+                        if (isChecked) {
+                            translation = true;
+                            translationSwitch.setText("ON");
+                        } else {
+                            translation = false;
+                            translationSwitch.setText("OFF");
+                        }
+                        break;
+                    case R.id.checkBox:
+                        if (isChecked) {
+                            resetValue = true;
+                        } else {
+                            resetValue = false;
                         }
                         break;
 
-
-
                 }
                 saveOptions();
             }
-        });
+        };
 
-
-        if (gamemodeSwitch.isChecked()){
-            gamemodeSwitch.setText("ON");
-        }
-        else
-            gamemodeSwitch.setText("OFF");
-
-
-        resetCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    resetvalue = true;
-                } else {
-                    resetvalue = false;
-                }
-                saveOptions();
-            }
-        });
-
-
-
+        gamemodeSwitch.setOnCheckedChangeListener(multipleListener);
+        textToSpeechSwitch.setOnCheckedChangeListener(multipleListener);
+        translationSwitch.setOnCheckedChangeListener(multipleListener);
     }
 
     public void saveOptions(){
+
         SharedPreferences useroptions = this.getSharedPreferences("settings",
                 this.MODE_PRIVATE);
         SharedPreferences.Editor editor = useroptions.edit();
         editor.putString("GAMETYPE", chosenGametype);
         editor.putString("GAMEVERSION", chosenGameversion);
-        editor.putBoolean("RESET", resetvalue);
+        editor.putBoolean("RESET", resetValue);
         editor.putBoolean("TTS", textToSpeech);
+        editor.putBoolean("TRANSLATION", translation);
         editor.commit();
-
-        System.out.println("CHOSEN GAME MODE: " + chosenGametype);
     }
 
 
@@ -120,21 +118,40 @@ public class OptionsActivity extends AppCompatActivity {
         chosenGametype = useroptions.getString("GAMETYPE", "NORMAL");
         chosenGameversion = useroptions.getString("GAMEVERSION", "DEHET");
         textToSpeech = useroptions.getBoolean("TTS", true);
+        translation = useroptions.getBoolean("TRANSLATION", true);
 
-        if (chosenGametype.equals("NORMAL"))
+        if (chosenGametype.equals("NORMAL")) {
             gamemodeSwitch.setChecked(false);
-        else
+            gamemodeSwitch.setText("OFF");
+        }
+        else {
             gamemodeSwitch.setChecked(true);
+            gamemodeSwitch.setText("ON");
+
+        }
+
+        if(textToSpeech == true) {
+            textToSpeechSwitch.setChecked(true);
+            textToSpeechSwitch.setText("ON");
+        }
+        else {
+            textToSpeechSwitch.setChecked(false);
+            textToSpeechSwitch.setText("OFF");
+        }
+
+        if(translation == true) {
+            translationSwitch.setChecked(true);
+            translationSwitch.setText("ON");
+        }
+        else {
+            translationSwitch.setChecked(false);
+            translationSwitch.setText("OFF");
+        }
 
         if(chosenGameversion.equals("DEMPRO"))
             dezedieditdatRadioButton.setChecked(true);
         else
             dehetRadioButton.setChecked(true);
-
-        if(textToSpeech)
-            gamemodeSwitch.setChecked(true);
-        else
-            gamemodeSwitch.setChecked(false);
 
         resetCheckBox. setChecked(false);
     }

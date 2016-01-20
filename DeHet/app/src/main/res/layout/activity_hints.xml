@@ -8,27 +8,8 @@
     android:layout_width="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hint1"
-        android:id="@+id/textView2"
-        android:paddingBottom="20dp"
-        android:gravity="center_horizontal"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        android:layout_gravity="center_horizontal"
-        >
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <TextView
         android:textSize="20dp"
+        android:textColor="#4D3E2D"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/usuallyde"
@@ -36,28 +17,32 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dehint1"
         android:id="@+id/textView4" />
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dehint2"
         android:id="@+id/textView5" />
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dehint3"
         android:id="@+id/textView6" />
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dehint4"
@@ -65,6 +50,7 @@
 
     <TextView
         android:textSize="20dp"
+        android:textColor="#4D3E2D"
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,14 +59,16 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hethint1"
         android:id="@+id/textView8" />
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hethint2"
@@ -88,6 +76,7 @@
 
     <TextView
         android:textSize="20dp"
+        android:textColor="#4D3E2D"
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,19 +85,13 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:textColor="#856948"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cwhint1"
         android:id="@+id/textView11" />
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-    </LinearLayout>
+</LinearLayout>
 
 
 

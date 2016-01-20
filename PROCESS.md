@@ -123,6 +123,17 @@
 * Activityscherm met daarin uitleg is in de maak. Ga waarschijnlijk de tekst in het hoofdmenu bovenaan vervangen door icoontjes als dat lukt.
 
 
+## Day 13
+* Switches in options menu werken nu goed en laten ook de juiste tekst (on/off) zien.
+* XML file aangepast zodat deze makkelijker te parsen is, heb nu de vertaling opgehaald uit XML.
+* Vertaling krijg je te zien door op het woord te tappen, net zoals de TextToSpeech.
+* Vertalen en TTS kunnen in/uitgeschakeld worden naar wens in het optiesmenu.
+* Begonnen met het veranderen van de kleuren zodat de app wat meer een geheel is en wat zachter oogt. 
+* Overbodige toasts uit de app gehaald.
+
+
+
+
 
 
 

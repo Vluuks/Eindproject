@@ -36,7 +36,6 @@ public class Stopwatch {
         }, delay, period);
     }
 
-
     private final int setInterval() {
         if (interval == 1) {
             timer.cancel();
@@ -47,8 +46,6 @@ public class Stopwatch {
         return --interval;
     }
 
-
-
     public void resumeTimer(){
         timerstatus = true;
     }
@@ -57,15 +54,17 @@ public class Stopwatch {
         timer.cancel();
     }
 
-
     public int pauseTimer(){
         timerstatus = false;
         int savedinterval = interval;
         return savedinterval;
     }
 
-    public void setTextView(){
+    public int getTimerSeconds(){
+        return interval;
+    }
 
+    public void setTextView(){
         // source: http://stackoverflow.com/questions/3280141/calledfromwrongthreadexception-only-the-original-thread-that-created-a-view-hie
         Handler refresh = new Handler(Looper.getMainLooper());
         refresh.post(new Runnable() {

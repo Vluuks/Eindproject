@@ -13,7 +13,7 @@
     <TextView
         android:paddingLeft="15dp"
         android:paddingBottom="10dp"
-        android:textColor="#C57B0D"
+        android:textColor="#ffd800"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coins: 0"

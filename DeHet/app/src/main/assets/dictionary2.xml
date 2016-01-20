@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <ar><k>[de] persoon</k><t>person  ; individual  ; someone  ; somebody  ; mortal  ; soul</t></ar>
+        <ar><k>[het] dier  ; [het] beest</k><t>animal  ; animate being  ; beast  ; brute  ; creature  ; fauna</t></ar>
+        <ar><k>[de] plant</k><t>plant  ; flora  ; plant life</t></ar>
+        <ar><k>[het] voedsel</k><t>food  ; nutrient</t></ar>
+        <ar><k>[de] kennis</k><t>knowledge  ; cognition  ; noesis</t></ar>
+        <ar><k>[het] gevoel</k><t>feeling</t></ar>
+        <ar><k>[de] ruimte</k><t>space  ; infinite</t></ar>
+        <ar><k>[het] evenement  ; gebeurtenis</k><t>event</t></ar>
+        <ar><k>[het] proces</k><t>process  ; physical process</t></ar>
+        <ar><k>[de] daad</k><t>act  ; deed  ; human action  ; human activity</t></ar>
+        <ar><k>[de] groep</k><t>group  ; grouping</t></ar>
+        <ar><k>[de] relatie</k><t>relation</t></ar>
+        <ar><k>[de] ontdekking</k><t>discovery  ; find  ; uncovering</t></ar>
+        <ar><k>[het] record</k><t>record</t></ar>
+        <ar><k>[het] verlies</k><t>loss</t></ar>
+        <ar><k>[de] fout  ; [de] vergissing</k><t>mistake  ; error  ; fault</t></ar>
+        <ar><k>[de] val</k><t>fall  ; spill  ; tumble</t></ar>
+        <ar><k>[de] schop</k><t>kick  ; boot  ; kicking</t></ar>
+        <ar><k>[de] kus</k><t>kiss  ; buss  ; osculation</t></ar>
+        <ar><k>[de] vergelijking</k><t>comparison  ; comparing</t></ar>
+        <ar><k>[de] manier</k><t>means  ; agency  ; way</t></ar>
+        <ar><k>[de] vervanging</k><t>substitution  ; exchange  ; commutation</t></ar>
+        <ar><k>[de] vernietiging</k><t>destruction  ; devastation</t></ar>
+        <ar><k>[de] vlucht</k><t>flight  ; flying</t></ar>
+        <ar><k>[de] tocht</k><t>journey  ; journeying</t></ar>
+        <ar><k>[de] snee</k><t>cut  ; cutting</t></ar>
+        <ar><k>[de] deling</k><t>division  ; partition  ; partitioning  ; segmentation  ; sectionalization  ; sectionalisation</t></ar>
+        <ar><k>[de] operatie  ; bewerking</k><t>operation</t></ar>
+        <ar><k>[het] amusement  ; [het] vertier</k><t>entertainment  ; amusement</t></ar>
+        <ar><k>[het] werk</k><t>work</t></ar>
+        <ar><k>[de] zorg</k><t>care  ; attention  ; aid  ; tending</t></ar>
+        <ar><k>[de] operatie</k><t>operation  ; surgery  ; surgical operation  ; surgical procedure  ; surgical process</t></ar>
+        <ar><k>[de] kneep</k><t>trick ; pinch</t></ar>
+        <ar><k>[de] misdaad</k><t>crime  ; offense  ; criminal offense  ; criminal offence  ; offence  ; law-breaking</t></ar>
+        <ar><k>[de] poging</k><t>attempt  ; effort  ; endeavor  ; endeavour  ; try</t></ar>
+        <ar><k>[de] seks  ; [de] geslachtsdaad  ; [het] vrijen</k><t>sex  ; sexual activity  ; sexual practice  ; sex activity</t></ar>
+        <ar><k>[de] beving</k><t>shake  ; tremble  ; shiver</t></ar>
+        <ar><k>[de] sommering  ; [de] optelling</k><t>addition  ; summation  ; plus</t></ar>
+        <ar><k>[het] onderwijs</k><t>education  ; instruction  ; teaching  ; pedagogy  ; didactics  ; educational activity</t></ar>
+        <ar><k>[de] industrie</k><t>industry  ; manufacture</t></ar>
+        <ar><k>[de] schets</k><t>design  ; designing</t></ar>
+        <ar><k>[het] gebruik</k><t>use  ; usage  ; utilization  ; utilisation  ; employment  ; exercise</t></ar>
+        <ar><k>[de] aanval</k><t>attack  ; onslaught  ; onset  ; onrush</t></ar>
+        <ar><k>[de] meting</k><t>measurement  ; measuring  ; measure  ; mensuration</t></ar>
+        <ar><k>[de] rust</k><t>rest  ; ease  ; repose  ; relaxation</t></ar>
+        <ar><k>[de] handel</k><t>trade</t></ar>
+        <ar><k>[de] markt  ; [de] marktplaats</k><t>market  ; marketplace  ; market place</t></ar>
+        <ar><k>[het] vervoer  ; [het] transport</k><t>transport  ; shipping  ; transportation</t></ar>
+        <ar><k>[de] straf</k><t>punishment  ; penalty  ; penalization  ; penalisation</t></ar>
+        <ar><k>[het] gevecht</k><t>fight  ; fighting  ; combat  ; scrap</t></ar>
+        <ar><k>[de] slag</k><t>blow</t></ar>
+        <ar><k>[de] hulp</k><t>help  ; aid  ; assist  ; assistance</t></ar>
+        <ar><k>[de] instemming  ; [de] goedkeuring  ; [het] fiat</k><t>approval  ; blessing  ; approving</t></ar>
+        <ar><k>[de] steun</k><t>support</t></ar>
+        <ar><k>[de] samenkomst  ; [de] bijeenkomst</k><t>meeting  ; coming together</t></ar>
+        <ar><k>[het] ei</k><t>egg</t></ar>
+        <ar><k>[de] vogel</k><t>bird</t></ar>
+        <ar><k>[de] slang  ; [het] serpent (archaism)</k><t>snake  ; serpent  ; ophidian</t></ar>
+        <ar><k>[de] pluim  ; [de] veer  ; [de] veder</k><t>feather  ; plume  ; plumage</t></ar>
+        <ar><k>[de] hond</k><t>dog  ; domestic dog  ; Canis familiaris</t></ar>
+        <ar><k>[de] kat  ; [de] poes {f}</k><t>cat  ; true cat</t></ar>
+        <ar><k>[de] vleugel</k><t>wing</t></ar>
+        <ar><k>[de] staart</k><t>tail</t></ar>
+        <ar><k>[het] insect</k><t>insect</t></ar>
+        <ar><k>[de] vlieg</k><t>fly</t></ar>
+        <ar><k>[de] bij</k><t>bee</t></ar>
+        <ar><k>[de] mier</k><t>ant  ; emmet  ; pismire</t></ar>
+        <ar><k>[het] paard</k><t>horse  ; Equus caballus</t></ar>
+        <ar><k>[het] zwijn  ; [het] varken</k><t>pig  ; hog  ; grunter  ; squealer  ; Sus scrofa</t></ar>
+        <ar><k>[de] koe</k><t>cow  ; moo-cow</t></ar>
+        <ar><k>[het] schaap</k><t>sheep</t></ar>
+        <ar><k>[de] geit</k><t>goat  ; caprine animal</t></ar>
+        <ar><k>[de] aap</k><t>monkey</t></ar>
+        <ar><k>[de] vis</k><t>fish</t></ar>
+        <ar><k>[de] toevoeging</k><t>addition  ; add-on  ; improver</t></ar>
+        <ar><k>[het] vliegtuig</k><t>plane  ; airplane  ; aeroplane</t></ar>
+        <ar><k>[de] flat</k><t>flat  ; apartment</t></ar>
+        <ar><k>[de] kunst</k><t>art  ; fine art</t></ar>
+        <ar><k>[de] achterkant</k><t>back</t></ar>
+        <ar><k>[de] zak  ; [de] tas</k><t>bag</t></ar>
+        <ar><k>[de] bal</k><t>ball</t></ar>
+        <ar><k>[de] basis  ; [de] kazerne</k><t>base  ; base of operations</t></ar>
+        <ar><k>[de] mand  ; [de] korf</k><t>basket  ; handbasket</t></ar>
+        <ar><k>[het] bed</k><t>bed</t></ar>
+        <ar><k>[de] bel</k><t>bell</t></ar>
+        <ar><k>[de] bocht</k><t>curve  ; bend</t></ar>
+        <ar><k>[de] fiets  ; [de] velo (.be)</k><t>bike  ; bicycle  ; wheel  ; cycle</t></ar>
+        <ar><k>[de] kling  ; [het] lemmet</k><t>blade</t></ar>
+        <ar><k>[de] boot</k><t>boat</t></ar>
+        <ar><k>[het] boek</k><t>book  ; volume</t></ar>
+        <ar><k>[de] laars</k><t>boot</t></ar>
+        <ar><k>[de] fles</k><t>bottle</t></ar>
+        <ar><k>[de] doos</k><t>box</t></ar>
+        <ar><k>[de] baksteen</k><t>brick</t></ar>
+        <ar><k>[de] brug</k><t>bridge  ; span</t></ar>
+        <ar><k>[de] borstel</k><t>brush</t></ar>
+        <ar><k>[het] gebouw</k><t>building  ; edifice</t></ar>
+        <ar><k>[de] fotocamera  ; [het] fototoestel</k><t>camera  ; photographic camera</t></ar>
+        <ar><k>[de] kaart</k><t>card</t></ar>
+        <ar><k>[de] ketting</k><t>chain</t></ar>
+        <ar><k>[de] kerk</k><t>church  ; church building</t></ar>
+        <ar><k>[de] klok</k><t>clock</t></ar>
+        <ar><k>[de] mantel  ; [de] jas</k><t>coat</t></ar>
+        <ar><k>[de] kraag  ; [de] boord  ; [de] halsboord</k><t>collar  ; neckband</t></ar>
+        <ar><k>[de] kopie</k><t>copy</t></ar>
+        <ar><k>[het] katoen</k><t>cotton</t></ar>
+        <ar><k>[de] kop</k><t>cup</t></ar>
+        <ar><k>[de] beker  ; [de] wedstrijdbeker</k><t>cup  ; loving cup</t></ar>
+        <ar><k>[het] gordijn</k><t>curtain  ; drape  ; drapery  ; mantle  ; pall</t></ar>
+        <ar><k>[de] decoratie</k><t>decoration  ; ornament  ; ornamentation</t></ar>
+        <ar><k>[de] deur</k><t>door</t></ar>
+        <ar><k>[de] la</k><t>drawer</t></ar>
+        <ar><k>[de] lift</k><t>elevator  ; lift</t></ar>
+        <ar><k>[de] motor</k><t>engine</t></ar>
+        <ar><k>[het] materiaal</k><t>cloth  ; fabric  ; material  ; textile</t></ar>
+        <ar><k>[de] boerderij</k><t>farm</t></ar>
+        <ar><k>[de] vlag</k><t>flag</t></ar>
+        <ar><k>[de] vloer</k><t>floor  ; flooring</t></ar>
+        <ar><k>[de] verdieping</k><t>floor  ; level  ; storey  ; story</t></ar>
+        <ar><k>[de] vork</k><t>fork</t></ar>
+        <ar><k>[het] montuur</k><t>frame</t></ar>
+        <ar><k>[de] tuin</k><t>garden</t></ar>
+        <ar><k>[het] glas</k><t>glass  ; drinking glass</t></ar>
+        <ar><k>[het] geweer  ; [het] pistool</k><t>gun</t></ar>
+        <ar><k>[de] hamer</k><t>hammer</t></ar>
+        <ar><k>[de] greep  ; [de] handgreep</k><t>handle  ; grip  ; handgrip  ; hold</t></ar>
+        <ar><k>[de] hoed</k><t>hat  ; chapeau  ; lid</t></ar>
+        <ar><k>[de] haak</k><t>hook  ; claw</t></ar>
+        <ar><k>[het] ziekenhuis  ; [het] hospitaal</k><t>hospital  ; infirmary</t></ar>
+        <ar><k>[het] huis</k><t>house</t></ar>
+        <ar><k>[het] instrument  ; [het] muziekinstrument</k><t>instrument</t></ar>
+        <ar><k>[het] internet</k><t>internet  ; net  ; cyberspace</t></ar>
+        <ar><k>[het] juweel</k><t>jewel  ; gem  ; precious stone</t></ar>
+        <ar><k>[de] sleutel</k><t>key</t></ar>
+        <ar><k>[het] mes</k><t>knife</t></ar>
+        <ar><k>[de] knoop</k><t>knot</t></ar>
+        <ar><k>[de] bibliotheek</k><t>library</t></ar>
+        <ar><k>[het] slot</k><t>lock</t></ar>
+        <ar><k>[de] machine</k><t>machine</t></ar>
+        <ar><k>[de] kaart</k><t>map</t></ar>
+        <ar><k>[de] lucifer</k><t>match  ; lucifer  ; friction match</t></ar>
+        <ar><k>[de] mijn</k><t>mine</t></ar>
+        <ar><k>[de] spijker  ; [de] nagel</k><t>nail</t></ar>
+        <ar><k>[de] naald</k><t>needle</t></ar>
+        <ar><k>[het] net</k><t>net  ; network  ; mesh  ; meshing  ; meshwork</t></ar>
+        <ar><k>[de] moer</k><t>nut</t></ar>
+        <ar><k>[het] kantoor</k><t>office  ; business office</t></ar>
+        <ar><k>[de] oven</k><t>oven</t></ar>
+        <ar><k>[de] verf</k><t>paint  ; pigment</t></ar>
+        <ar><k>[de] pen</k><t>pen</t></ar>
+        <ar><k>[het] potlood</k><t>pencil</t></ar>
+        <ar><k>[het] beeld  ; [de] beeltenis  ; [het] plaatje  ; [het] icoon</k><t>picture  ; image  ; icon  ; ikon</t></ar>
+        <ar><k>[de] speld</k><t>pin</t></ar>
+        <ar><k>[de] buis</k><t>pipe  ; pipage  ; piping</t></ar>
+        <ar><k>[het] bord  ; [het] dienblad</k><t>plate</t></ar>
+        <ar><k>[de] gevangenis</k><t>prison  ; prison house</t></ar>
+        <ar><k>[de] pomp</k><t>pump</t></ar>
+        <ar><k>[de] knop</k><t>button  ; push button  ; push</t></ar>
+        <ar><k>[de] ring</k><t>ring  ; band</t></ar>
+        <ar><k>[de] weg  ; [de] straat  ; [de] baan</k><t>road  ; route</t></ar>
+        <ar><k>[het] dak</k><t>roof</t></ar>
+        <ar><k>[de] kamer  ; [de] ruimte</k><t>room</t></ar>
+        <ar><k>[het] zeil</k><t>sail  ; canvas  ; canvass  ; sheet</t></ar>
+        <ar><k>[de] school</k><t>school  ; schoolhouse</t></ar>
+        <ar><k>[de] schaar</k><t>scissors  ; pair of scissors</t></ar>
+        <ar><k>[de] deksel</k><t>cover  ; screen  ; covert  ; concealment</t></ar>
+        <ar><k>[het] schap  ; [de] plank</k><t>shelf</t></ar>
+        <ar><k>[het] schip</k><t>ship</t></ar>
+        <ar><k>[het] hemd</k><t>shirt</t></ar>
+        <ar><k>[de] schoen</k><t>shoe</t></ar>
+        <ar><k>[de] winkel</k><t>shop  ; store</t></ar>
+        <ar><k>[de] rok</k><t>skirt</t></ar>
+        <ar><k>[de] zeep</k><t>soap</t></ar>
+        <ar><k>[de] sok</k><t>sock</t></ar>
+        <ar><k>[de] lepel</k><t>spoon</t></ar>
+        <ar><k>[de] springveer</k><t>spring</t></ar>
+        <ar><k>[het] toneel</k><t>stage</t></ar>
+        <ar><k>[de] stempel</k><t>stamp</t></ar>
+        <ar><k>[het] station</k><t>station</t></ar>
+        <ar><k>[de] trap</k><t>step  ; stair</t></ar>
+        <ar><k>[de] stok</k><t>stick</t></ar>
+        <ar><k>[de] steek</k><t>stitch</t></ar>
+        <ar><k>[de] straat</k><t>street</t></ar>
+        <ar><k>[de] constructie</k><t>structure  ; construction</t></ar>
+        <ar><k>[de] tafel</k><t>table</t></ar>
+        <ar><k>[de] camera  ; [de] videocamera  ; [de] camcorder</k><t>television camera  ; tv camera  ; camera</t></ar>
+        <ar><k>[het] ding</k><t>thing</t></ar>
+        <ar><k>[de] rail</k><t>track  ; rail  ; rails  ; runway</t></ar>
+        <ar><k>[de] trein</k><t>train  ; railroad train</t></ar>
+        <ar><k>[de] muur</k><t>wall</t></ar>
+        <ar><k>[het] horloge</k><t>watch  ; ticker</t></ar>
+        <ar><k>[de] bron  ; [de] put</k><t>well</t></ar>
+        <ar><k>[het] wiel</k><t>wheel</t></ar>
+        <ar><k>[de] zweep</k><t>whip</t></ar>
+        <ar><k>[het] venster  ; [het] raam  ; [de] ruit</k><t>window</t></ar>
+        <ar><k>[de] humor</k><t>humor  ; humour  ; sense of humor  ; sense of humour</t></ar>
+        <ar><k>[de] vorm</k><t>shape  ; form  ; cast</t></ar>
+        <ar><k>[de] kwaliteit</k><t>quality</t></ar>
+        <ar><k>[het] gedrag  ; gedragingen</k><t>behavior  ; demeanor  ; demeanour  ; behaviour  ; conduct  ; deportment</t></ar>
+        <ar><k>[het] eigendom</k><t>property</t></ar>
+        <ar><k>[de] structuur</k><t>structure</t></ar>
+        <ar><k>[de] geur  ; [de] reuk  ; [het] aroma</k><t>smell  ; olfactory property  ; aroma  ; odor  ; odour  ; scent</t></ar>
+        <ar><k>[het] geluid</k><t>sound</t></ar>
+        <ar><k>[de] stilte</k><t>silence  ; quiet</t></ar>
+        <ar><k>[de] massa</k><t>mass</t></ar>
+        <ar><k>[het] gewicht</k><t>weight</t></ar>
+        <ar><k>[de] afstand</k><t>distance</t></ar>
+        <ar><k>[het] niveau  ; [de] graad</k><t>degree  ; grade  ; level</t></ar>
+        <ar><k>[de] maat</k><t>size</t></ar>
+        <ar><k>[de] massa</k><t>mass  ; bulk  ; volume</t></ar>
+        <ar><k>[de] hoeveelheid</k><t>amount</t></ar>
+        <ar><k>[de] toename</k><t>increase  ; increment</t></ar>
+        <ar><k>[de] limiet</k><t>limit  ; bound  ; boundary</t></ar>
+        <ar><k>[het] bereik</k><t>range  ; scope  ; reach  ; orbit  ; compass  ; ambit</t></ar>
+        <ar><k>[de] waarde</k><t>value</t></ar>
+        <ar><k>[de] functie  ; [het] nut</k><t>purpose  ; function  ; role  ; use</t></ar>
+        <ar><k>[de] prijs</k><t>price  ; cost  ; toll</t></ar>
+        <ar><k>[de] macht  ; kracht</k><t>power  ; powerfulness</t></ar>
+        <ar><k>[de] controle</k><t>control</t></ar>
+        <ar><k>[de] autoriteit</k><t>authority  ; authorization  ; authorisation  ; potency  ; dominance  ; say-so</t></ar>
+        <ar><k>[de] huid</k><t>skin  ; tegument  ; cutis</t></ar>
+        <ar><k>[het] haar</k><t>hair  ; pilus</t></ar>
+        <ar><k>[het] bot</k><t>bone  ; os</t></ar>
+        <ar><k>[de] tand</k><t>tooth</t></ar>
+        <ar><k>[de] spier</k><t>muscle  ; musculus</t></ar>
+        <ar><k>[de] tong</k><t>tongue  ; lingua  ; glossa  ; clapper</t></ar>
+        <ar><k>[de] mond</k><t>mouth  ; oral cavity  ; oral fissure  ; rima oris</t></ar>
+        <ar><k>[de] lip</k><t>lip</t></ar>
+        <ar><k>[het] oog</k><t>eye  ; oculus  ; optic</t></ar>
+        <ar><k>[het] oor</k><t>ear</t></ar>
+        <ar><k>[het] hart</k><t>heart  ; pump  ; ticker</t></ar>
+        <ar><k>[de] maag</k><t>stomach  ; tummy  ; tum  ; breadbasket</t></ar>
+        <ar><k>[het] bloed</k><t>blood</t></ar>
+        <ar><k>[de] zenuw</k><t>nerve  ; nervus</t></ar>
+        <ar><k>[de] hersenen  ; [de] hersens  ; [het] brein</k><t>brain  ; encephalon</t></ar>
+        <ar><k>[het] hoofd</k><t>head  ; caput</t></ar>
+        <ar><k>[de] hals</k><t>neck  ; cervix</t></ar>
+        <ar><k>[de] keel</k><t>throat  ; pharynx</t></ar>
+        <ar><k>[de] romp</k><t>body  ; torso  ; trunk</t></ar>
+        <ar><k>[de] borstkast</k><t>chest  ; thorax  ; pectus</t></ar>
+        <ar><k>[de] rug</k><t>back  ; dorsum</t></ar>
+        <ar><k>[het] been</k><t>leg</t></ar>
+        <ar><k>[de] voet</k><t>foot  ; human foot  ; pes</t></ar>
+        <ar><k>[de] arm</k><t>arm</t></ar>
+        <ar><k>[de] hand</k><t>hand  ; manus  ; mitt  ; paw</t></ar>
+        <ar><k>[de] vinger</k><t>finger</t></ar>
+        <ar><k>[de] duim</k><t>thumb  ; pollex</t></ar>
+        <ar><k>[de] knie</k><t>knee  ; knee joint  ; human knee  ; articulatio genus  ; genu</t></ar>
+        <ar><k>[de] teen</k><t>toe</t></ar>
+        <ar><k>[de] nagel</k><t>nail</t></ar>
+        <ar><k>[de] neus</k><t>nose  ; olfactory organ</t></ar>
+        <ar><k>[de] kin</k><t>chin  ; mentum</t></ar>
+        <ar><k>[het] gezicht  ; [het] gelaat</k><t>face  ; human face</t></ar>
+        <ar><k>[het] verstand  ; [de] geest  ; [de] psyche  ; [het] denkvermogen</k><t>mind  ; head  ; brain  ; psyche  ; nous</t></ar>
+        <ar><k>[de] uitvinding</k><t>invention  ; innovation  ; excogitation  ; conception  ; design</t></ar>
+        <ar><k>[het] geheugen</k><t>memory  ; retention  ; retentiveness  ; retentivity</t></ar>
+        <ar><k>[de] wil</k><t>will  ; volition</t></ar>
+        <ar><k>[de] smaak</k><t>taste  ; gustation  ; sense of taste  ; gustatory modality</t></ar>
+        <ar><k>[de] interesse</k><t>interest  ; involvement</t></ar>
+        <ar><k>[de] kwestie  ; strubbeling  ; zorg</k><t>trouble  ; problem</t></ar>
+        <ar><k>[de] twijfel</k><t>doubt  ; uncertainty  ; incertitude  ; dubiety  ; doubtfulness  ; dubiousness</t></ar>
+        <ar><k>[de] attentie</k><t>attention  ; attending</t></ar>
+        <ar><k>[het] lawaai</k><t>noise  ; dissonance  ; racket</t></ar>
+        <ar><k>[het] cijfer</k><t>grade  ; mark  ; score</t></ar>
+        <ar><k>[de] ervaring</k><t>experience</t></ar>
+        <ar><k>[het] feit</k><t>fact</t></ar>
+        <ar><k>[het] voorbeeld</k><t>example  ; illustration  ; instance  ; representative</t></ar>
+        <ar><k>[het] idee  ; [de] gedachte  ; [de] ingeving</k><t>idea  ; thought</t></ar>
+        <ar><k>[de] beslissing  ; [het] besluit</k><t>decision  ; determination  ; conclusion</t></ar>
+        <ar><k>[de] soort</k><t>kind  ; sort  ; form  ; variety</t></ar>
+        <ar><k>[het] merk</k><t>brand  ; make</t></ar>
+        <ar><k>[het] voorschrift</k><t>rule  ; regulation</t></ar>
+        <ar><k>[het] deel</k><t>part  ; section  ; division</t></ar>
+        <ar><k>[de] kern</k><t>center  ; kernel  ; substance  ; core  ; centre  ; essence  ; gist  ; heart  ; heart and soul  ; inwardness  ; marrow  ; meat  ; nub  ; pith  ; sum  ; nitty-gritty</t></ar>
+        <ar><k>[de] herinnering</k><t>memory</t></ar>
+        <ar><k>[de] mening  ; [de] opinie  ; [de] visie  ; [de] zienswijze</k><t>opinion  ; sentiment  ; persuasion  ; view  ; thought</t></ar>
+        <ar><k>[de] religie</k><t>religion  ; faith  ; religious belief</t></ar>
+        <ar><k>[de] hoop</k><t>promise  ; hope</t></ar>
+        <ar><k>[de] wens</k><t>will</t></ar>
+        <ar><k>[de] opleiding</k><t>education</t></ar>
+        <ar><k>[de] theorie</k><t>theory</t></ar>
+        <ar><k>[de] discipline</k><t>discipline  ; subject  ; subject area  ; subject field  ; field  ; field of study  ; study  ; bailiwick</t></ar>
+        <ar><k>[de] wetenschap</k><t>science  ; scientific discipline</t></ar>
+        <ar><k>[de] bladzijde  ; [de] pagina</k><t>page</t></ar>
+        <ar><k>[de] krant  ; [het] dagblad  ; [het] nieuwsblad</k><t>newspaper  ; paper</t></ar>
+        <ar><k>[de] taal</k><t>language  ; linguistic communication</t></ar>
+        <ar><k>[het] woord</k><t>word</t></ar>
+        <ar><k>[de] naam</k><t>name</t></ar>
+        <ar><k>[het] schrift</k><t>writing</t></ar>
+        <ar><k>[het] formulier</k><t>form</t></ar>
+        <ar><k>[de] lijst</k><t>list  ; listing</t></ar>
+        <ar><k>[de] rekening  ; [de] factuur</k><t>invoice  ; bill  ; account</t></ar>
+        <ar><k>[de] wet</k><t>law</t></ar>
+        <ar><k>[het] testament  ; [de] laatste wilsbeschikking</k><t>will  ; testament</t></ar>
+        <ar><k>[de] brief</k><t>letter  ; missive</t></ar>
+        <ar><k>[het] nieuws</k><t>news  ; intelligence  ; tidings  ; word</t></ar>
+        <ar><k>[het] argument</k><t>argument  ; statement</t></ar>
+        <ar><k>[het] geheim</k><t>secret</t></ar>
+        <ar><k>[de] verklaring</k><t>statement</t></ar>
+        <ar><k>[het] antwoord</k><t>answer  ; reply  ; response</t></ar>
+        <ar><k>[de] aantekening  ; [de] notitie</k><t>note  ; annotation  ; notation</t></ar>
+        <ar><k>[de] overeenstemming</k><t>agreement  ; understanding</t></ar>
+        <ar><k>[de] postzegel</k><t>stamp  ; postage  ; postage stamp</t></ar>
+        <ar><k>[de] lijn</k><t>line</t></ar>
+        <ar><k>[het] teken</k><t>sign</t></ar>
+        <ar><k>[de] letter  ; [het] karakter</k><t>letter  ; letter of the alphabet  ; alphabetic character</t></ar>
+        <ar><k>[de] noot  ; [de] muzieknoot</k><t>note  ; musical note  ; tone</t></ar>
+        <ar><k>[de] glimlach</k><t>smile  ; smiling  ; grin  ; grinning</t></ar>
+        <ar><k>[de] muziek</k><t>music</t></ar>
+        <ar><k>[het] lied  ; [het] liedje (diminutive)  ; [het] nummer</k><t>song  ; vocal</t></ar>
+        <ar><k>[het] ritme</k><t>rhythm  ; beat  ; musical rhythm</t></ar>
+        <ar><k>[de] stem</k><t>voice  ; vocalization  ; vocalisation  ; vocalism  ; phonation  ; vox</t></ar>
+        <ar><k>[de] schreeuw</k><t>cry  ; outcry  ; call  ; yell  ; shout  ; vociferation</t></ar>
+        <ar><k>[de] discussie</k><t>discussion  ; give-and-take  ; word</t></ar>
+        <ar><k>[het] voorstel</k><t>suggestion  ; proposition  ; proffer</t></ar>
+        <ar><k>[het] bevel</k><t>order</t></ar>
+        <ar><k>[de] ruzie</k><t>argument  ; controversy  ; contention  ; contestation  ; disputation  ; disceptation  ; tilt  ; arguing</t></ar>
+        <ar><k>[het] aanbod</k><t>offer  ; offering</t></ar>
+        <ar><k>[het] verzoek</k><t>request  ; asking</t></ar>
+        <ar><k>[de] vraag</k><t>question  ; inquiry  ; enquiry  ; query  ; interrogation</t></ar>
+        <ar><k>[het] examen</k><t>examination  ; exam  ; test</t></ar>
+        <ar><k>[het] protest</k><t>protest  ; protestation</t></ar>
+        <ar><k>[de] advertentie  ; [de] commercial</k><t>advertisement  ; ad  ; advertizement  ; advertising  ; advertizing  ; advert</t></ar>
+        <ar><k>[de] markering  ; aanduiding  ; teken</k><t>marker  ; marking  ; mark</t></ar>
+        <ar><k>[de] ervaring</k><t>experience</t></ar>
+        <ar><k>[de] beloning</k><t>wages  ; reward  ; payoff</t></ar>
+        <ar><k>[de] verplaatsing</k><t>movement  ; motion</t></ar>
+        <ar><k>[de] geboorte</k><t>birth  ; nativity  ; nascency  ; nascence</t></ar>
+        <ar><k>[de] oorzaak</k><t>cause</t></ar>
+        <ar><k>[de] ruk</k><t>jolt  ; jar  ; jounce  ; shock</t></ar>
+        <ar><k>[de] golf</k><t>wave  ; moving ridge</t></ar>
+        <ar><k>[de] sprong</k><t>jump  ; leap  ;  saltation</t></ar>
+        <ar><k>[de] stroom</k><t>current  ; stream</t></ar>
+        <ar><k>[de] aanraking</k><t>touch  ; touching</t></ar>
+        <ar><k>[de] schade</k><t>damage  ; harm  ; impairment</t></ar>
+        <ar><k>[de] uitbarsting</k><t>outburst  ; burst  ; flare-up</t></ar>
+        <ar><k>[de] strijd</k><t>contest  ; competition</t></ar>
+        <ar><k>[de] competitie</k><t>match</t></ar>
+        <ar><k>[het] plezier  ; genoegen</k><t>pleasure  ; pleasance</t></ar>
+        <ar><k>[de] verrassing</k><t>surprise</t></ar>
+        <ar><k>[de] schok</k><t>shock  ; daze  ; stupor</t></ar>
+        <ar><k>[de] vrees  ; [de] angst  ; [de] schrik  ; [de] bibber</k><t>fear  ; fearfulness  ; fright</t></ar>
+        <ar><k>[de] liefde</k><t>love</t></ar>
+        <ar><k>[de] haat</k><t>hate  ; hatred</t></ar>
+        <ar><k>[de] maaltijd</k><t>meal  ; repast</t></ar>
+        <ar><k>[de] soep</k><t>soup</t></ar>
+        <ar><k>[de] cake</k><t>cake</t></ar>
+        <ar><k>[het] vlees</k><t>meat</t></ar>
+        <ar><k>[het] brood</k><t>bread  ; breadstuff  ; staff of life</t></ar>
+        <ar><k>[de] aardappel</k><t>potato  ; white potato  ; Irish potato  ; murphy  ; spud  ; tater</t></ar>
+        <ar><k>[de] appel</k><t>apple</t></ar>
+        <ar><k>[de] sinaasappel</k><t>orange</t></ar>
+        <ar><k>[de] rijst</k><t>rice</t></ar>
+        <ar><k>[het] zout  ; [het] tafelzout</k><t>salt  ; table salt  ; common salt</t></ar>
+        <ar><k>[de] melk</k><t>milk</t></ar>
+        <ar><k>[de] boter</k><t>butter</t></ar>
+        <ar><k>[de] kaas</k><t>cheese</t></ar>
+        <ar><k>[het] drankje</k><t>drink  ; beverage  ; drinkable  ; potable</t></ar>
+        <ar><k>[de] wijn</k><t>wine  ; vino</t></ar>
+        <ar><k>[de] milkshake</k><t>milkshake  ; milk shake  ; shake</t></ar>
+        <ar><k>[de] gemeenschap</k><t>society</t></ar>
+        <ar><k>[de] familie</k><t>family  ; family unit</t></ar>
+        <ar><k>[de] sekse</k><t>sex</t></ar>
+        <ar><k>[het] pakket</k><t>package  ; bundle  ; packet  ; parcel</t></ar>
+        <ar><k>[de] organisatie  ; [het] samenwerkingsverband</k><t>organization  ; organisation</t></ar>
+        <ar><k>[de] regering</k><t>government  ; authorities  ; regime</t></ar>
+        <ar><k>[het] bedrijf  ; [de] zaak  ; [de] organisatie  ; [de] firma</k><t>company</t></ar>
+        <ar><k>[de] religie</k><t>religion  ; faith  ; organized religion</t></ar>
+        <ar><k>[de] natie</k><t>nation  ; land  ; country</t></ar>
+        <ar><k>[de] bevolking  ; [het] publiek</k><t>public  ; populace  ; world</t></ar>
+        <ar><k>[het] leger</k><t>army  ; regular army  ; ground forces</t></ar>
+        <ar><k>[de] band</k><t>band  ; dance band  ; dance orchestra</t></ar>
+        <ar><k>[de] tabel</k><t>table  ; tabular array</t></ar>
+        <ar><k>[het] comité</k><t>committee  ; commission</t></ar>
+        <ar><k>[het] systeem</k><t>system  ; scheme</t></ar>
+        <ar><k>[de] stroom</k><t>stream  ; flow  ; current</t></ar>
+        <ar><k>[het] land</k><t>country  ; state  ; land</t></ar>
+        <ar><k>[het] einde</k><t>end  ; terminal</t></ar>
+        <ar><k>[het] veld (crops)  ; [de] wei (animals)</k><t>field</t></ar>
+        <ar><k>[het] front</k><t>front  ; front end  ; forepart</t></ar>
+        <ar><k>[de] plaats  ; [de] positie</k><t>position  ; place</t></ar>
+        <ar><k>[de] plaats</k><t>seat  ; place</t></ar>
+        <ar><k>[de] zijde</k><t>side</t></ar>
+        <ar><k>[de] stad  ; [de] gemeente</k><t>town</t></ar>
+        <ar><k>[de] neiging</k><t>trend  ; tendency</t></ar>
+        <ar><k>[het] stuk</k><t>bit  ; chip  ; flake  ; fleck  ; scrap</t></ar>
+        <ar><k>[de] wolk</k><t>cloud</t></ar>
+        <ar><k>[de] barst</k><t>crack  ; cleft  ; crevice  ; fissure  ; scissure</t></ar>
+        <ar><k>[de] aarde</k><t>Earth  ; earth  ; world  ; globe</t></ar>
+        <ar><k>[het] graan</k><t>grain</t></ar>
+        <ar><k>[de] holte  ; put  ; kuil  ; gat  ; opening</k><t>hole</t></ar>
+        <ar><k>[het] eiland</k><t>island</t></ar>
+        <ar><k>[het] land</k><t>land  ; dry land  ; earth  ; ground  ; solid ground  ; terra firma</t></ar>
+        <ar><k>[de] maan</k><t>Moon  ; moon</t></ar>
+        <ar><k>[de] vlakte</k><t>plain  ; field  ; champaign</t></ar>
+        <ar><k>[de] rivier</k><t>river</t></ar>
+        <ar><k>[de] steen</k><t>stone  ; rock</t></ar>
+        <ar><k>[de] zee</k><t>sea</t></ar>
+        <ar><k>[de] hemel</k><t>sky</t></ar>
+        <ar><k>[de] bron</k><t>spring  ; fountain  ; outflow  ; outpouring  ; natural spring</t></ar>
+        <ar><k>[de] ster</k><t>star</t></ar>
+        <ar><k>[de] zon</k><t>sun  ; Sun</t></ar>
+        <ar><k>[de] vakman  ; [de] specialist  ; [de] expert</k><t>expert</t></ar>
+        <ar><k>[de] vrouw</k><t>female  ; female person</t></ar>
+        <ar><k>[de] man</k><t>male  ; male person</t></ar>
+        <ar><k>[de] baby</k><t>baby  ; babe  ; infant</t></ar>
+        <ar><k>[de] geliefde  ; [de] beminde</k><t>dear  ; beloved  ; dearest  ; honey  ; love</t></ar>
+        <ar><k>[de] broer</k><t>brother  ; blood brother</t></ar>
+        <ar><k>[de] kok</k><t>cook</t></ar>
+        <ar><k>[de] dochter</k><t>daughter  ; girl</t></ar>
+        <ar><k>[de] directeur  ; [de] directrice {f}</k><t>director  ; manager  ; managing director</t></ar>
+        <ar><k>[de] vader</k><t>father  ; male parent  ; begetter</t></ar>
+        <ar><k>[de] vriend</k><t>friend</t></ar>
+        <ar><k>[de] generaal</k><t>general  ; full general</t></ar>
+        <ar><k>[het] meisje</k><t>girl  ; miss  ; missy  ; young lady  ; young woman  ; fille</t></ar>
+        <ar><k>[de] rechter</k><t>judge  ; justice  ; jurist</t></ar>
+        <ar><k>[de] jongen</k><t>boy  ; male child</t></ar>
+        <ar><k>[de] man</k><t>man  ; adult male</t></ar>
+        <ar><k>[de] moeder</k><t>mother  ; female parent</t></ar>
+        <ar><k>[de] bezitter</k><t>owner  ; possessor</t></ar>
+        <ar><k>[de] plaatsvervanger</k><t>representative</t></ar>
+        <ar><k>[de] secretaresse</k><t>secretary  ; secretarial assistant</t></ar>
+        <ar><k>[de] dienstmeid</k><t>servant  ; retainer</t></ar>
+        <ar><k>[de] zus</k><t>sister  ; sis</t></ar>
+        <ar><k>[de] zoon</k><t>son  ; boy</t></ar>
+        <ar><k>[de] vrouw</k><t>woman  ; adult female</t></ar>
+        <ar><k>[het] gevolg</k><t>consequence  ; effect  ; outcome  ; result  ; event  ; issue  ; upshot</t></ar>
+        <ar><k>[de] reactie</k><t>reaction</t></ar>
+        <ar><k>[de] dood</k><t>death</t></ar>
+        <ar><k>[het] licht</k><t>light  ; visible light  ; visible radiation</t></ar>
+        <ar><k>[de] regen</k><t>rain  ; rainfall</t></ar>
+        <ar><k>[de] damp</k><t>smoke  ; fume</t></ar>
+        <ar><k>[het] weer</k><t>weather  ; weather condition  ; conditions  ; atmospheric condition</t></ar>
+        <ar><k>[de] wind</k><t>wind  ; air current  ; current of air</t></ar>
+        <ar><k>[de] bloem</k><t>flower</t></ar>
+        <ar><k>[het] gras</k><t>grass</t></ar>
+        <ar><k>[de] boom</k><t>tree</t></ar>
+        <ar><k>[de] wortel</k><t>root</t></ar>
+        <ar><k>[de] stengel</k><t>stem  ; stalk</t></ar>
+        <ar><k>[de] vrucht</k><t>fruit</t></ar>
+        <ar><k>[het] zaad</k><t>seed</t></ar>
+        <ar><k>[de] noot</k><t>nut</t></ar>
+        <ar><k>[het] blad</k><t>leaf  ; leafage  ; foliage</t></ar>
+        <ar><k>[de] tak</k><t>branch</t></ar>
+        <ar><k>[het] eigendom  ; [het] bezit</k><t>property  ; belongings  ; holding</t></ar>
+        <ar><k>[de] winst</k><t>profit  ; net income  ; net  ; net profit  ; lucre  ; profits  ; earnings</t></ar>
+        <ar><k>[het] cadeau</k><t>present</t></ar>
+        <ar><k>[de] betaling</k><t>payment</t></ar>
+        <ar><k>[de] belasting</k><t>tax  ; taxation  ; revenue enhancement</t></ar>
+        <ar><k>[de] rente</k><t>interest</t></ar>
+        <ar><k>[het] tarief</k><t>rate  ; charge per unit</t></ar>
+        <ar><k>[het] recht</k><t>right</t></ar>
+        <ar><k>[de] verzekering</k><t>insurance</t></ar>
+        <ar><k>[het] kleingeld</k><t>money</t></ar>
+        <ar><k>[het] wisselgeld</k><t>change</t></ar>
+        <ar><k>[het] bankbiljet</k><t>banknote  ; bill  ; note  ; government note  ; bank bill  ; banker's bill  ; bank note  ; Federal Reserve note  ; greenback</t></ar>
+        <ar><k>[de] evolutie</k><t>evolution  ; development</t></ar>
+        <ar><k>[de] brand</k><t>fire  ; flame  ; flaming</t></ar>
+        <ar><k>[de] groei</k><t>increase  ; increment  ; growth</t></ar>
+        <ar><k>[de] werking</k><t>operation  ; functioning  ; performance</t></ar>
+        <ar><k>[het] getal</k><t>number</t></ar>
+        <ar><k>[de] eenheid</k><t>unit  ; unit of measurement</t></ar>
+        <ar><k>[de] graad</k><t>degree</t></ar>
+        <ar><k>[het] kwadraat  ; [de] tweede macht</k><t>square  ; second power</t></ar>
+        <ar><k>[de] wortel</k><t>root</t></ar>
+        <ar><k>[de] stap  ; [de] voetstap</k><t>step  ; footstep  ; pace  ; stride</t></ar>
+        <ar><k>[de] druppel</k><t>drop  ; drib  ; driblet</t></ar>
+        <ar><k>[de] verbinding</k><t>connection  ; connexion  ; connectedness</t></ar>
+        <ar><k>[het] deel  ; onderdeel</k><t>part  ; portion  ; component part  ; component  ; constituent</t></ar>
+        <ar><k>[de] bijzonderheid</k><t>detail  ; particular  ; item</t></ar>
+        <ar><k>[de] rest</k><t>rest  ; remainder  ; balance  ; residual  ; residue  ; residuum</t></ar>
+        <ar><k>[de] richting</k><t>direction</t></ar>
+        <ar><k>[het] noorden</k><t>north  ; due north  ; northward  ; N</t></ar>
+        <ar><k>[het] oosten</k><t>east  ; due east  ; eastward  ; E</t></ar>
+        <ar><k>[het] zuiden</k><t>south  ; due south  ; southward  ; S</t></ar>
+        <ar><k>[het] westen</k><t>west  ; due west  ; westward  ; W</t></ar>
+        <ar><k>[de] concurrentie</k><t>competition</t></ar>
+        <ar><k>[het] tegendeel</k><t>opposite  ; reverse  ; contrary</t></ar>
+        <ar><k>[de] curve  ; [de] kromme lijn</k><t>curve  ; curved shape</t></ar>
+        <ar><k>[de] cirkel</k><t>circle</t></ar>
+        <ar><k>[het] vierkant</k><t>square  ; foursquare</t></ar>
+        <ar><k>[de] hoek</k><t>angle</t></ar>
+        <ar><k>[de] punt</k><t>point  ; dot</t></ar>
+        <ar><k>[de] status</k><t>condition  ; status</t></ar>
+        <ar><k>[de] zakenrelatie</k><t>account  ; business relationship</t></ar>
+        <ar><k>[het] gezelschap</k><t>company  ; companionship  ; fellowship  ; society</t></ar>
+        <ar><k>[het] toppunt</k><t>top  ; peak  ; summit  ; acme  ; height  ; elevation  ; pinnacle  ;  superlative  ; meridian  ; tiptop</t></ar>
+        <ar><k>[het] bestaan</k><t>existence  ; being  ; beingness</t></ar>
+        <ar><k>[de] volgorde</k><t>order</t></ar>
+        <ar><k>[de] vrede</k><t>peace</t></ar>
+        <ar><k>[de] oorlog</k><t>war  ; state of war</t></ar>
+        <ar><k>[het] evenwicht  ; [de] balans</k><t>balance</t></ar>
+        <ar><k>[de] slaap</k><t>sleep  ; slumber</t></ar>
+        <ar><k>[de] ziekte</k><t>disease</t></ar>
+        <ar><k>[de] verkoudheid</k><t>cold  ; common cold</t></ar>
+        <ar><k>[de] pijn</k><t>pain  ; hurting</t></ar>
+        <ar><k>[de] hoest</k><t>cough  ; coughing</t></ar>
+        <ar><k>[de] dominatie</k><t>domination</t></ar>
+        <ar><k>[de] kans  ; [de] mogelijkheid  ; [de] gelegenheid</k><t>chance  ; opportunity</t></ar>
+        <ar><k>[het] vocht  ; [de] vochtigheid</k><t>moisture  ; wet</t></ar>
+        <ar><k>[het] gevaar</k><t>danger</t></ar>
+        <ar><k>[het] materieel</k><t>material  ; stuff</t></ar>
+        <ar><k>[het] zuur</k><t>acid</t></ar>
+        <ar><k>[het] metaal</k><t>metallic element  ; metal</t></ar>
+        <ar><k>[het] goud</k><t>gold  ; Au  ; atomic number 79</t></ar>
+        <ar><k>[het] ijzer</k><t>iron  ; Fe  ; atomic number 26</t></ar>
+        <ar><k>[het] lood</k><t>lead  ; Pb  ; atomic number 82</t></ar>
+        <ar><k>[het] zilver</k><t>silver  ; Ag  ; atomic number 47</t></ar>
+        <ar><k>[het] leder  ; [het] leer</k><t>leather</t></ar>
+        <ar><k>[het] staal</k><t>steel</t></ar>
+        <ar><k>[de] chemicaliën</k><t>chemical  ; chemical substance</t></ar>
+        <ar><k>[de] steenkool</k><t>coal</t></ar>
+        <ar><k>[de] lucht</k><t>air</t></ar>
+        <ar><k>[de] adem</k><t>breath</t></ar>
+        <ar><k>[de] aarde</k><t>earth  ; ground</t></ar>
+        <ar><k>[het] water</k><t>water  ; H2O</t></ar>
+        <ar><k>[het] afval</k><t>waste  ; waste material  ; waste matter  ; waste product</t></ar>
+        <ar><k>[het] vet</k><t>fat</t></ar>
+        <ar><k>[het] glas</k><t>glass</t></ar>
+        <ar><k>[het] ijs</k><t>ice  ; water ice</t></ar>
+        <ar><k>[de] inkt</k><t>ink</t></ar>
+        <ar><k>[de] vloeistof</k><t>liquid</t></ar>
+        <ar><k>[de] olie</k><t>oil</t></ar>
+        <ar><k>[het] papier</k><t>paper</t></ar>
+        <ar><k>[de] aardolie</k><t>oil  ; petroleum  ; crude oil  ; crude  ; rock oil  ; fossil oil</t></ar>
+        <ar><k>[de] kleur</k><t>color  ; colour  ; coloring material  ; colouring material</t></ar>
+        <ar><k>[het] buskruit</k><t>powder  ; pulverization  ; pulverisation</t></ar>
+        <ar><k>[het] zand</k><t>sand</t></ar>
+        <ar><k>[het] vergif</k><t>poison  ; toxicant  ; poisonous substance</t></ar>
+        <ar><k>[de] stoom</k><t>steam</t></ar>
+        <ar><k>[het] hout</k><t>wood</t></ar>
+        <ar><k>[de] wol</k><t>wool</t></ar>
+        <ar><k>[het] verleden</k><t>past  ; past times  ; yesteryear</t></ar>
+        <ar><k>[de] geschiedenis</k><t>history</t></ar>
+        <ar><k>[de] toekomst</k><t>future  ; hereafter  ; futurity  ; time to come</t></ar>
+        <ar><k>[de] tijd</k><t>time  ; fourth dimension</t></ar>
+        <ar><k>[de] week</k><t>week  ; calendar week</t></ar>
+        <ar><k>[de] dag</k><t>day  ; twenty-four hours  ; twenty-four hour period  ; 24-hour interval  ; solar day  ; mean solar day</t></ar>
+        <ar><k>[de] ochtend</k><t>morning  ; morn  ; morning time  ; forenoon</t></ar>
+        <ar><k>[de] nacht</k><t>night  ; nighttime  ; dark</t></ar>
+        <ar><k>[het] jaar</k><t>year  ; twelvemonth  ; yr</t></ar>
+        <ar><k>[de] maand</k><t>month  ; calendar month</t></ar>
+        <ar><k>[het] uur</k><t>hour  ; hr  ; 60 minutes</t></ar>
+        <ar><k>[de] minuut</k><t>minute  ; min</t></ar>
+        <ar><k>[de] seconde</k><t>second  ; sec  ; s</t></ar>
+        <ar><k>[de] herfst</k><t>autumn  ; fall</t></ar>
+        <ar><k>[het] voorjaar</k><t>spring  ; springtime</t></ar>
+        <ar><k>[de] zomer</k><t>summer  ; summertime</t></ar>
+        <ar><k>[de] winter</k><t>winter  ; wintertime</t></ar>
+        <ar><k>[de] poos</k><t>while  ; piece  ; spell  ; patch</t></ar>
+        <ar><k>[het] begin</k><t>beginning  ; commencement  ; first  ; outset  ; get-go  ; start  ; kickoff  ; starting time  ; showtime  ; offset</t></ar>
+        <ar><k>[de] fase</k><t>phase  ; stage</t></ar>
+        <ar><k>[de] scheikunde  ; [de] chemie</k><t>chemistry  ; chemical science</t></ar>
+        <ar><k>[het] Duitsland</k><t>Germany  ; Federal Republic of Germany  ; Deutschland  ; FRG</t></ar>
+        <ar><k>[het] Frankrijk</k><t>France  ; French Republic</t></ar>
+        <ar><k>[het] India</k><t>India  ; Republic of India  ; Bharat</t></ar>
+        <ar><k>[het] Italië</k><t>Italy  ; Italian Republic  ; Italia</t></ar>
+        <ar><k>[het] Spanje</k><t>Spain  ; Kingdom of Spain  ; Espana</t></ar>
+        <ar><k>[de] leeuw</k><t>lion  ; king of beasts  ; Panthera leo</t></ar>
+        <ar><k>[het] bier</k><t>beer</t></ar>
+        <ar><k>[het] Japan</k><t>Japan  ; Nippon  ; Nihon</t></ar>
+        <ar><k>[de] suiker</k><t>sugar  ; refined sugar</t></ar>
+        <ar><k>[de] Verenigde Staten van Amerika  ; [de] VS</k><t>United States  ; United States of America  ; America  ; the States  ; US  ; U.S.  ; USA  ; U.S.A.</t></ar>
+        <ar><k>[de] maandag</k><t>Monday  ; Mon</t></ar>
+        <ar><k>[de] biologie</k><t>biology  ; biological science</t></ar>
+        <ar><k>[het] woordenboek</k><t>dictionary  ; lexicon</t></ar>
+        <ar><k>[de] vrijdag</k><t>Friday  ; Fri</t></ar>
+        <ar><k>[de] donderdag</k><t>Thursday  ; Th</t></ar>
+        <ar><k>[de] koffie</k><t>coffee  ; java</t></ar>
+        <ar><k>[de] woensdag</k><t>Wednesday  ; Midweek  ; Wed</t></ar>
+        <ar><k>[het] Verenigd Koninkrijk  ; [het] Groot-Brittannië</k><t>United Kingdom  ; UK  ; U.K.  ; Britain  ; United Kingdom of Great Britain and Northern Ireland  ; Great Britain</t></ar>
+        <ar><k>[de] zondag</k><t>Sunday  ; Lord's Day  ; Dominicus  ; Sun</t></ar>
+        <ar><k>[de] thee</k><t>tea</t></ar>
+        <ar><k>[de] energie</k><t>energy  ; free energy</t></ar>
+        <ar><k>[de] republiek  ; [de] democratie</k><t>democracy  ; republic  ; commonwealth</t></ar>
+        <ar><k>[het] Tsjechië</k><t>Czech Republic</t></ar>
+        <ar><k>[het] meer</k><t>lake</t></ar>
+        <ar><k>[de] chocola  ; [de] chocolade</k><t>chocolate</t></ar>
+        <ar><k>[het] Duits</k><t>German  ; High German  ; German language</t></ar>
+        <ar><k>[de] olifant</k><t>elephant</t></ar>
+        <ar><k>[de] auto  ; [de] wagen  ; [het] automobiel</k><t>car  ; auto  ; automobile  ; machine  ; motorcar</t></ar>
+        <ar><k>[de] schouwburg  ; [het] theater</k><t>theater  ; theatre  ; house</t></ar>
+        <ar><k>[de] dokter  ; [de] arts</k><t>doctor  ; doc  ; physician  ; MD  ; Dr.  ; medico</t></ar>
+        <ar><k>[de] cultuur</k><t>culture  ; civilization  ; civilisation</t></ar>
+        <ar><k>[het] tennis</k><t>tennis  ; lawn tennis</t></ar>
+        <ar><k>[de] stad</k><t>city  ; metropolis  ; urban center</t></ar>
+        <ar><k>[de] bank</k><t>bank  ; depository financial institution  ; banking concern  ; banking company</t></ar>
+        <ar><k>[de] poëzie</k><t>poetry  ; poesy  ; verse</t></ar>
+        <ar><k>[de] natuur</k><t>nature</t></ar>
+        <ar><k>[de] acteur</k><t>actor  ; histrion  ; player  ; thespian  ; role player</t></ar>
+        <ar><k>[het] spel</k><t>game</t></ar>
+        <ar><k>[de] bus  ; [de] autobus</k><t>bus  ; autobus  ; coach  ; charabanc  ; double-decker  ; jitney  ; motorbus  ; motorcoach  ; omnibus  ; passenger vehicle</t></ar>
+        <ar><k>[de] luchthaven  ; [het] vliegveld</k><t>airport  ; airdrome  ; aerodrome  ; drome</t></ar>
+        <ar><k>[het] strand</k><t>beach</t></ar>
+        <ar><k>[het] kasteel  ; [het] fort  ; [de] burcht</k><t>castle</t></ar>
+        <ar><k>[het] bos</k><t>forest  ; wood  ; woods</t></ar>
+        <ar><k>[de] beer</k><t>bear</t></ar>
+        <ar><k>[het] Hindi</k><t>Hindi</t></ar>
+        <ar><k>[de] technologie</k><t>technology  ; engineering</t></ar>
+        <ar><k>[de] snavel</k><t>beak  ; bill  ; neb  ; nib  ; pecker</t></ar>
+        <ar><k>[de] zaterdag</k><t>Saturday  ; Sabbatum  ; Sat</t></ar>
+        <ar><k>[de] eeuw</k><t>century</t></ar>
+        <ar><k>[de] spiegel</k><t>mirror</t></ar>
+        <ar><k>[het] element</k><t>chemical element  ; element</t></ar>
+        <ar><k>[de] politie</k><t>police  ; police force  ; constabulary  ; law</t></ar>
+        <ar><k>[het] China</k><t>China  ; People's Republic of China  ; mainland China  ; Communist China  ; Red China  ; PRC  ; Cathay</t></ar>
+        <ar><k>[de] gezondheid  ; [het] welzijn</k><t>health  ; wellness</t></ar>
+        <ar><k>[de] stoel  ; [de] zetel (.be)</k><t>chair</t></ar>
+        <ar><k>[het] leven</k><t>life</t></ar>
+        <ar><k>[de] leraar  ; [de] docent  ; [de] lerares {f}  ; [de] onderwijzer</k><t>teacher  ; instructor</t></ar>
+        <ar><k>[de] materie</k><t>matter</t></ar>
+        <ar><k>[de] koning  ; [de] heer</k><t>king  ; male monarch  ; Rex</t></ar>
+        <ar><k>[de] hoofdstad</k><t>capital</t></ar>
+        <ar><k>[de] bevolking</k><t>population</t></ar>
+        <ar><k>[de] avond</k><t>evening  ; eve  ; even  ; eventide</t></ar>
+        <ar><k>[het] touw</k><t>rope</t></ar>
+        <ar><k>[het] gen</k><t>gene  ; cistron  ; factor</t></ar>
+        <ar><k>[de] ouderdom  ; [de] leeftijd</k><t>age</t></ar>
+        <ar><k>[de] computer</k><t>computer  ; computing machine  ; computing device  ; data processor  ; electronic computer  ; information processing system</t></ar>
+        <ar><k>[het] museum</k><t>museum</t></ar>
+        <ar><k>[het] hotel</k><t>hotel</t></ar>
+        <ar><k>[de] student  ; [de] studente {f}</k><t>student  ; pupil  ; educatee</t></ar>
+        <ar><k>[het] ongeluk  ; [het] ongeval</k><t>accident</t></ar>
+        <ar><k>[het] Engels</k><t>English  ; English language</t></ar>
+        <ar><k>[de] schrijver  ; [de] schrijfster {f} ; [de] auteur</k><t>writer  ; author</t></ar>
+        <ar><k>[het] tapijt</k><t>carpet  ; rug  ; carpeting</t></ar>
+        <ar><k>[de] soldaat</k><t>soldier</t></ar>
+        <ar><k>[de] muzikant</k><t>musician  ; instrumentalist  ; player</t></ar>
+        <ar><k>[de] sneeuw</k><t>snow</t></ar>
+        <ar><k>[de] mobiele telefoon  ; [het] mobieltje</k><t>cellphone  ; cellular telephone  ; cellular phone  ; cell  ; mobile phone</t></ar>
+        <ar><k>[het] honkbal</k><t>baseball  ; baseball game</t></ar>
+        <ar><k>[de] mensen</k><t>people</t></ar>
+        <ar><k>[de] echtgenoot</k><t>husband  ; hubby  ; married man</t></ar>
+        <ar><k>[de] echtgenote  ; [de] vrouw</k><t>wife  ; married woman</t></ar>
+        <ar><k>[het] onderwerp  ; [het] thema</k><t>subject  ; topic  ; theme</t></ar>
+        <ar><k>[het] risico</k><t>risk  ; hazard  ; jeopardy  ; peril  ; endangerment</t></ar>
+        <ar><k>[de] collectie</k><t>set</t></ar>
+        <ar><k>[de] fabriek</k><t>factory  ; mill  ; manufacturing plant  ; manufactory</t></ar>
+        <ar><k>[het] dorp</k><t>village  ; small town  ; settlement</t></ar>
+        <ar><k>[de] verjaardag</k><t>birthday</t></ar>
+        <ar><k>[de] lading</k><t>charge  ; electric charge</t></ar>
+        <ar><k>[de] verkiezing</k><t>election</t></ar>
+        <ar><k>[het] adres</k><t>address</t></ar>
+        <ar><k>[de] bekendmaking</k><t>announcement  ; proclamation  ; annunciation  ; declaration</t></ar>
+        <ar><k>[de] grootvader  ; [de] opa  ; [de] opoe  ; [de] bompa (.be)</k><t>grandfather  ; gramps  ; granddad  ; grandad  ; granddaddy  ; grandpa</t></ar>
+        <ar><k>[het] werk</k><t>occupation  ; business  ; job  ; line of work  ; line</t></ar>
+        <ar><k>[de] raad  ; [het] advies</k><t>advice</t></ar>
+        <ar><k>[de] lunch  ; [het] middageten</k><t>lunch  ; luncheon  ; tiffin  ; dejeuner</t></ar>
+        <ar><k>[het] management  ; [de] directie</k><t>management  ; direction</t></ar>
+        <ar><k>[de] film</k><t>movie  ; film  ; picture  ; moving picture  ; moving-picture show  ; motion picture  ; motion-picture show  ; picture show  ; pic  ; flick</t></ar>
+        <ar><k>[het] orkest</k><t>orchestra</t></ar>
+        <ar><k>[de] gast  ; [de] bezoeker</k><t>guest  ; invitee</t></ar>
+        <ar><k>[de] zin</k><t>sentence</t></ar>
+        <ar><k>[het] concert</k><t>concert</t></ar>
+        <ar><k>[de] datum</k><t>date  ; day of the month</t></ar>
+        <ar><k>[de] post</k><t>mail  ; mail service  ; postal service  ; post</t></ar>
+        <ar><k>[het] seizoen</k><t>season</t></ar>
+        <ar><k>[de] staat</k><t>state</t></ar>
+        <ar><k>[de] minister</k><t>minister  ; government minister</t></ar>
+        <ar><k>[het] thuis</k><t>home  ; place</t></ar>
+        <ar><k>[de] stropdas</k><t>tie  ; necktie</t></ar>
+        <ar><k>[de] informatie</k><t>information  ; info</t></ar>
+        <ar><k>[de] taal</k><t>speech  ; speech communication  ; spoken communication  ; spoken language  ; language  ; voice communication  ; oral communication</t></ar>
+        <ar><k>[de] werker  ; [de] arbeider</k><t>worker</t></ar>
+        <ar><k>[het] gerechtshof</k><t>court  ; tribunal  ; judicature</t></ar>
+        <ar><k>[het] voorhoofd</k><t>forehead  ; brow</t></ar>
+        <ar><k>[de] klant</k><t>customer  ; client</t></ar>
+        <ar><k>[de] casus  ; [het] voorbeeld</k><t>case  ; instance  ; example</t></ar>
+        <ar><k>[het] interview</k><t>interview</t></ar>
+        <ar><k>[de] envelop  ; [de] enveloppe  ; [de] briefomslag (.be)</k><t>envelope</t></ar>
+        <ar><k>[de] garage</k><t>garage</t></ar>
+        <ar><k>[de] zeeman  ; [de] matroos</k><t>sailor  ; crewman</t></ar>
+        <ar><k>[de] heuvel</k><t>hill</t></ar>
+        <ar><k>[de] cel</k><t>cell</t></ar>
+        <ar><k>[het] huwelijk</k><t>marriage  ; matrimony  ; union  ; spousal relationship  ; wedlock</t></ar>
+        <ar><k>[het] onderzoek  ; speurwerk</k><t>research</t></ar>
+        <ar><k>[de] middag  ; [de] namiddag</k><t>afternoon</t></ar>
+        <ar><k>[de] methode</k><t>method</t></ar>
+        <ar><k>[het] contract</k><t>contract</t></ar>
+        <ar><k>[de] wijze  ; [de] manier  ; [de] stijl</k><t>manner  ; mode  ; style  ; way  ; fashion</t></ar>
+        <ar><k>[het] procent</k><t>percent  ; percentage  ; per centum  ; pct</t></ar>
+        <ar><k>[de] passagier</k><t>passenger  ; rider</t></ar>
+        <ar><k>[de] journalist</k><t>journalist</t></ar>
+        <ar><k>[de] verkoop</k><t>sale</t></ar>
+        <ar><k>[het] hek</k><t>gate</t></ar>
+        <ar><k>[het] huwelijk</k><t>wedding  ; marriage  ; marriage ceremony</t></ar>
+        <ar><k>[de] saus</k><t>sauce</t></ar>
+        <ar><k>[de] salade</k><t>salad</t></ar>
+        <ar><k>[het] element</k><t>component  ; constituent  ; element  ; factor  ; ingredient</t></ar>
+        <ar><k>[de] stijl</k><t>style</t></ar>
+        <ar><k>[de] opleiding</k><t>education</t></ar>
+        <ar><k>[de] douche</k><t>shower</t></ar>
+        <ar><k>[het] moment</k><t>moment  ; mo  ; minute  ; second  ; bit</t></ar>
+        <ar><k>[de] uitspraak</k><t>pronunciation</t></ar>
+        <ar><k>[de] hoogte</k><t>height  ; altitude</t></ar>
+        <ar><k>[de] keuken</k><t>kitchen</t></ar>
+        <ar><k>[de] werkwijze  ; [het] proces</k><t>procedure  ; process</t></ar>
+        <ar><k>[de] cheque</k><t>check  ; bank check  ; cheque</t></ar>
+        <ar><k>[het] project</k><t>project  ; projection</t></ar>
+        <ar><k>[het] verschil</k><t>difference</t></ar>
+        <ar><k>[het] inkomsten</k><t>income</t></ar>
+        <ar><k>[de] kast  ; [de] wandkast</k><t>cupboard  ; closet</t></ar>
+        <ar><k>[het] succes</k><t>success</t></ar>
+        <ar><k>[het] ontbijt</k><t>breakfast</t></ar>
+        <ar><k>[het] paspoort</k><t>passport</t></ar>
+        <ar><k>[het] ogenblik</k><t>moment  ; minute  ; second  ; instant</t></ar>
+        <ar><k>[de] keuze</k><t>choice  ; selection  ; option  ; pick</t></ar>
+        <ar><k>[de] artiest</k><t>artist  ; creative person</t></ar>
+        <ar><k>[het] departement</k><t>department  ; section</t></ar>
+        <ar><k>[het] meubilair</k><t>furniture  ; piece of furniture  ; article of furniture</t></ar>
+        <ar><k>[de] helft</k><t>half  ; one-half</t></ar>
+        <ar><k>[het] voordeel</k><t>advantage  ; vantage</t></ar>
+        <ar><k>[de] bioscoop</k><t>cinema  ; movie theater  ; movie theatre  ; movie house  ; picture palace</t></ar>
+        <ar><k>[het] beleid</k><t>policy</t></ar>
+        <ar><k>[het] park</k><t>park  ; commons  ; common  ; green</t></ar>
+        <ar><k>[de] druk</k><t>pressure  ; pressure level  ; force per unit area</t></ar>
+        <ar><k>[de] verandering  ; aanpassing</k><t>change  ; alteration  ; modification</t></ar>
+        <ar><k>[de] gegevens  ; [de] informatie  ; [de] data</k><t>data  ; information</t></ar>
+        <ar><k>[de] pauze</k><t>pause  ; intermission  ; break  ; interruption  ; suspension</t></ar>
+        <ar><k>[het] product</k><t>product  ; production</t></ar>
+        <ar><k>[de] patiënt</k><t>patient</t></ar>
+        <ar><k>[de] lijm</k><t>glue  ; gum  ; mucilage</t></ar>
+        <ar><k>[de] piloot</k><t>pilot  ; airplane pilot</t></ar>
+        <ar><k>[het] criterium</k><t>standard  ; criterion  ; measure  ; touchstone</t></ar>
+        <ar><k>[de] klas</k><t>class  ; form  ; grade  ; course</t></ar>
+        <ar><k>[het] kledingstuk</k><t>clothing  ; article of clothing  ; vesture  ; wear  ; wearable  ; habiliment</t></ar>
+        <ar><k>[het] werk</k><t>job  ; task  ; chore</t></ar>
+        <ar><k>[het] bezoek  ; [de] visite</k><t>visit</t></ar>
+        <ar><k>[de] oever</k><t>bank</t></ar>
+        <ar><k>[het] toilet  ; [de] WC  ; [het] watercloset</k><t>toilet  ; lavatory  ; lav  ; can  ; john  ; privy  ; bathroom</t></ar>
+        <ar><k>[de] aanklacht</k><t>complaint  ; charge</t></ar>
+        <ar><k>[de] streek</k><t>region  ; part</t></ar>
+        <ar><k>[het] kind</k><t>child  ; kid</t></ar>
+        <ar><k>[de] borst  ; [de] borstkast</k><t>chest  ; breast</t></ar>
+        <ar><k>[de] reden  ; [de] motivatie</k><t>reason  ; ground</t></ar>
+        <ar><k>[de] service</k><t>service</t></ar>
+        <ar><k>[de] club</k><t>club  ; social club  ; society  ; guild  ; gild  ; lodge  ; order</t></ar>
+        <ar><k>[de] training</k><t>training  ; preparation  ; grooming</t></ar>
+        <ar><k>[het] onderdeel  ; [het] stuk</k><t>piece</t></ar>
+        <ar><k>[het] kampioenschap</k><t>championship  ; title</t></ar>
+        <ar><k>[de] ploeg  ; [het] team</k><t>team  ; squad</t></ar>
+        <ar><k>[de] soort</k><t>type</t></ar>
+        <ar><k>[de] adviesraad  ; [het] raadgevend lichaam</k><t>council</t></ar>
+        <ar><k>[de] leugen</k><t>lie  ; prevarication</t></ar>
+        <ar><k>[de] zanger</k><t>singer  ; vocalist  ; vocalizer  ; vocaliser</t></ar>
+        <ar><k>[de] aangelegenheid</k><t>matter  ; affair  ; thing</t></ar>
+        <ar><k>[de] titel</k><t>title</t></ar>
+        <ar><k>[het] tijdschrift  ; [het] magazine  ; [het] blad</k><t>magazine  ; mag</t></ar>
+        <ar><k>[de] politieagent</k><t>policeman  ; police officer  ; officer</t></ar>
+        <ar><k>[de] schrijftafel</k><t>desk</t></ar>
+        <ar><k>[de] buurman</k><t>neighbor  ; neighbour</t></ar>
+        <ar><k>[de] economie</k><t>economy  ; economic system</t></ar>
+        <ar><k>[het] nu</k><t>now</t></ar>
+        <ar><k>[de] slaapkamer</k><t>bedroom  ; sleeping room  ; sleeping accommodation  ; chamber  ; bedchamber</t></ar>
+        <ar><k>[de] politicus</k><t>politician  ; politico  ; pol  ; political leader</t></ar>
+        <ar><k>[het] gedicht</k><t>poem  ; verse form</t></ar>
+        <ar><k>[de] kaart</k><t>menu  ; bill of fare  ; card  ; carte du jour  ; carte</t></ar>
+        <ar><k>[de] vakantie</k><t>holiday  ; vacation</t></ar>
+        <ar><k>[de] handeling  ; [de] actie</k><t>action</t></ar>
+        <ar><k>[de] hoofdstad</k><t>capital  ; working capital</t></ar>
+        <ar><k>[de] verpleegster</k><t>nurse</t></ar>
+        <ar><k>[de] instelling</k><t>institution  ; establishment</t></ar>
+        <ar><k>[de] hal</k><t>hall  ; anteroom  ; antechamber  ; entrance hall  ; foyer  ; lobby  ; vestibule</t></ar>
+        <ar><k>[de] fotograaf</k><t>photographer  ; lensman</t></ar>
+        <ar><k>[de] praktijk</k><t>practice</t></ar>
+        <ar><k>[de] wereld</k><t>world</t></ar>
+        <ar><k>[het] schilderij  ; [de] afbeelding  ; [de] prent  ; [het] portret  ; [de] illustratie</k><t>painting  ; picture</t></ar>
+        <ar><k>[de] som  ; [de] sommering  ; [het] totaal  ; [de] optelling</k><t>total  ; sum  ; amount</t></ar>
+        <ar><k>[de] oppervlakte</k><t>surface</t></ar>
+        <ar><k>[de] supermarkt</k><t>supermarket</t></ar>
+        <ar><k>[de] meerderheid</k><t>majority  ; bulk</t></ar>
+        <ar><k>[de] sectie  ; [het] gedeelte</k><t>section  ; subdivision</t></ar>
+        <ar><k>[de] dood</k><t>death  ; decease  ; expiry</t></ar>
+        <ar><k>[de] knuppel</k><t>club</t></ar>
+        <ar><k>[de] unie</k><t>union</t></ar>
+        <ar><k>[de] periode</k><t>period  ; time period  ; period of time</t></ar>
+        <ar><k>[de] omgeving</k><t>environment  ; environs  ; surroundings  ; surround</t></ar>
+        <ar><k>[de] leider  ; [de] leidster {f}</k><t>leader</t></ar>
+        <ar><k>[de] volgende</k><t>following  ; next</t></ar>
+        <ar><k>[de] sereniteit</k><t>quiet  ; repose  ; placidity  ; serenity  ; tranquillity  ; tranquility</t></ar>
+        <ar><k>[het] vermogen</k><t>ability  ; power</t></ar>
+        <ar><k>[de] ander</k><t>another  ; some other</t></ar>
+        <ar><k>[de] sandwich</k><t>sandwich</t></ar>
+        <ar><k>[de] verantwoordelijkheid</k><t>responsibility  ; responsibleness</t></ar>
+        <ar><k>[de] jas  ; [het] jasje (diminutive)</k><t>jacket</t></ar>
+        <ar><k>[de] campagne</k><t>campaign  ; cause  ; crusade  ; drive  ; movement  ; effort</t></ar>
+        <ar><k>[de] speler</k><t>player  ; participant</t></ar>
+        <ar><k>[het] personeel</k><t>staff</t></ar>
+        <ar><k>[het] aandeel</k><t>share</t></ar>
+        <ar><k>[de] bruiloft</k><t>wedding  ; wedding ceremony  ; nuptials  ; hymeneals</t></ar>
+        <ar><k>[de] strubbeling</k><t>difficulty</t></ar>
+        <ar><k>[de] universiteit</k><t>university</t></ar>
+        <ar><k>[de] rivaal</k><t>competitor  ; rival  ; challenger  ; competition  ; contender</t></ar>
+        <ar><k>[het] bedrijf  ; [de] zaak  ; [de] organisatie  ; [de] firma</k><t>firm  ; house  ; business firm</t></ar>
+        <ar><k>[het] verlof</k><t>leave  ; leave of absence</t></ar>
+        <ar><k>[de] aanbieding</k><t>proposal</t></ar>
+        <ar><k>[de] metro</k><t>subway  ; metro  ; tube  ; underground  ; subway system</t></ar>
+        <ar><k>[de] behandeling</k><t>treatment  ; handling</t></ar>
+        <ar><k>[de] afspraak</k><t>date  ; appointment  ; engagement</t></ar>
+        <ar><k>[het] feest</k><t>party</t></ar>
+        <ar><k>[de] mode</k><t>vogue  ; trend  ; style</t></ar>
+        <ar><k>[de] actrice</k><t>actress</t></ar>
+        <ar><k>[het] rugby  ; [het] voetbal</k><t>football  ; football game</t></ar>
+        <ar><k>[het] weekend  ; [het] weekeinde</k><t>weekend</t></ar>
+        <ar><k>[de] kwestie</k><t>issue</t></ar>
+        <ar><k>[het] Frans</k><t>French</t></ar>
+        <ar><k>[de] kosten</k><t>cost</t></ar>
+        <ar><k>[de] bestemming</k><t>finish  ; goal  ; destination</t></ar>
+        <ar><k>[de] gebruiker  ; [de] gebruikster {f}</k><t>user</t></ar>
+        <ar><k>[de] situatie</k><t>situation  ; state of affairs</t></ar>
+        <ar><k>[het] doel</k><t>goal</t></ar>
+        <ar><k>[het] probleem</k><t>problem  ; job</t></ar>
+        <ar><k>[de] omgeving  ; [het] mileu</k><t>environment</t></ar>
+        <ar><k>[de] terugkomst</k><t>return  ; homecoming</t></ar>
+        <ar><k>[de] relatie</k><t>relationship  ; human relationship</t></ar>
+        <ar><k>[de] slag</k><t>hit  ; hitting  ; striking</t></ar>
+        <ar><k>[de] spelling</k><t>spelling</t></ar>
+        <ar><k>[de] derde  ; 3de  ; 3e</k><t>third  ; 3rd  ; tertiary</t></ar>
+        <ar><k>[de] actie</k><t>activity  ; action  ; activeness</t></ar>
+        <ar><k>[het] Chinees (taal)</k><t>Chinese</t></ar>
+        <ar><k>[de] handtas  ; [de] tas</k><t>bag  ; handbag  ; pocketbook  ; purse</t></ar>
+        <ar><k>[het] teken  ; [het] symbool</k><t>character  ; grapheme  ; graphic symbol</t></ar>
+        <ar><k>[het] Italiaans</k><t>Italian</t></ar>
+        <ar><k>[de] verscheidenheid</k><t>diversity  ; diverseness  ; multifariousness  ; variety</t></ar>
+        <ar><k>[de] opgave</k><t>project  ; undertaking  ; task  ; labor</t></ar>
+        <ar><k>[de] eigenschap</k><t>feature  ; characteristic</t></ar>
+        <ar><k>[de] zakenman</k><t>businessman  ; man of affairs</t></ar>
+        <ar><k>[de] vriend</k><t>boyfriend  ; fellow  ; beau  ; swain  ; young man</t></ar>
+        <ar><k>[de] plicht</k><t>duty</t></ar>
+        <ar><k>[het] resultaat</k><t>result  ; resultant  ; final result  ; outcome  ; termination</t></ar>
+        <ar><k>[de] worp  ; [de] gooi</k><t>throw</t></ar>
+        <ar><k>[de] professional  ; [de] vakman  ; [de] specialist  ; [de] expert</k><t>professional  ; professional person</t></ar>
+        <ar><k>[de] tomaat</k><t>tomato</t></ar>
+        <ar><k>[de] vriendin</k><t>girlfriend  ; girl  ; lady friend</t></ar>
+        <ar><k>[het] paar</k><t>couple  ; pair  ; twosome  ; twain  ; brace  ; span  ; yoke  ; couplet  ; distich  ; duo  ; duet  ; dyad  ; duad</t></ar>
+        <ar><k>[de] menstruatie</k><t>menstruation  ; menses  ; menstruum  ; catamenia  ; period  ; flow</t></ar>
+        <ar><k>[de] televisie  ; [de] tv</k><t>television  ; tv set  ; television receiver  ; television set  ; tv  ; idiot box  ; boob tube  ; telly  ; goggle box</t></ar>
+        <ar><k>[de] badkamer</k><t>bathroom  ; bath</t></ar>
+        <ar><k>[het] Japans</k><t>Japanese</t></ar>
+        <ar><k>[het] restaurant</k><t>restaurant  ; eating house  ; eating place  ; eatery</t></ar>
+        <ar><k>[de] inspanning</k><t>effort  ; elbow grease  ; exertion  ; travail  ; sweat</t></ar>
+        <ar><k>[het] geheel</k><t>whole</t></ar>
+        <ar><k>[het] gemiddelde</k><t>mean  ; mean value</t></ar>
+        <ar><k>[de] koffer  ; [het] valies (.be)</k><t>suitcase  ; bag  ; traveling bag  ; travelling bag  ; grip</t></ar>
+        <ar><k>[de] basis</k><t>base</t></ar>
+        <ar><k>[de] ambtenaar</k><t>officer  ; officeholder</t></ar>
+        <ar><k>[de] productie</k><t>production</t></ar>
+        <ar><k>[de] oppervlakte</k><t>area  ; expanse  ; surface area</t></ar>
+        <ar><k>[de] overwinning</k><t>win</t></ar>
+        <ar><k>[het] publiek</k><t>public</t></ar>
+        <ar><k>[de] cursus</k><t>course  ; class  ; course of study  ; course of instruction</t></ar>
+        <ar><k>[de] wetenschapper</k><t>scientist</t></ar>
+        <ar><k>[het] karakter</k><t>personality</t></ar>
+        <ar><k>[de] taal</k><t>language  ; natural language  ; tongue</t></ar>
+        <ar><k>[de] onderscheiding</k><t>award  ; accolade  ; honor  ; honour  ; laurels</t></ar>
+        <ar><k>[de] status</k><t>state</t></ar>
+        <ar><k>[de] set</k><t>set</t></ar>
+        <ar><k>[het] deel</k><t>part  ; share  ; portion  ; percentage</t></ar>
+        <ar><k>[de] overeenkomst</k><t>bargain  ; deal</t></ar>
+        <ar><k>[de] gootsteen</k><t>sink</t></ar>
+        <ar><k>[het] bewijs</k><t>evidence</t></ar>
+        <ar><k>[het] Spaans</k><t>Spanish</t></ar>
+        <ar><k>[de] buitenkant</k><t>outside  ; exterior</t></ar>
+        <ar><k>[het] gedrag  ; [de] attitude</k><t>attitude  ; mental attitude</t></ar>
+        <ar><k>[het] rapport</k><t>report  ; study  ; written report</t></ar>
+        <ar><k>[de] ouder</k><t>parent</t></ar>
+        <ar><k>[het] Russisch</k><t>Russian</t></ar>
+        <ar><k>[het] bereik</k><t>reach  ; range</t></ar>
+        <ar><k>[het] middelpunt</k><t>center  ; centre  ; midpoint</t></ar>
+        <ar><k>[de] president</k><t>president</t></ar>
+        <ar><k>[de] zakenvrouw</k><t>businesswoman</t></ar>
+        <ar><k>[de] pas</k><t>pass  ; laissez passer</t></ar>
+        <ar><k>[de] hit</k><t>hit  ; smash  ; smasher  ; strike  ; bang</t></ar>
+        <ar><k>[de] oproep</k><t>call  ; phone call  ; telephone call</t></ar>
+        <ar><k>[het] leven</k><t>life</t></ar>
+        <ar><k>[de] ontdekking</k><t>discovery  ; breakthrough  ; find</t></ar>
+        <ar><k>[de] functie</k><t>function  ; office  ; part  ; role</t></ar>
+        <ar><k>[het] imago</k><t>image</t></ar>
+        <ar><k>[de] zetel</k><t>seat</t></ar>
+        <ar><k>[het] model  ; [het] type</k><t>model</t></ar>
+        <ar><k>[het] individu</k><t>individual</t></ar>
+        <ar><k>[het] lid</k><t>member  ; fellow member</t></ar>
+        <ar><k>[de] slijtage</k><t>wear</t></ar>
+        <ar><k>[de] eerste  ; 1e  ; 1ste</k><t>first  ; 1st</t></ar>
+        <ar><k>[de] citroen</k><t>lemon</t></ar>
+        <ar><k>[de] ecologie</k><t>ecology  ; bionomics  ; environmental science</t></ar>
+        <ar><k>[de] storm</k><t>storm  ; violent storm</t></ar>
+        <ar><k>[de] wortel</k><t>carrot  ; cultivated carrot  ; Daucus carota sativa</t></ar>
+        <ar><k>[de] regenboog</k><t>rainbow</t></ar>
+        <ar><k>[de] pruim</k><t>plum</t></ar>
+        <ar><k>[de] ui</k><t>onion  ; onion plant  ; Allium cepa</t></ar>
+        <ar><k>[de] komkommer</k><t>cucumber  ; cuke</t></ar>
+        <ar><k>[de] boon</k><t>bean  ; edible bean</t></ar>
+        <ar><k>[de] aardbei</k><t>strawberry</t></ar>
+        <ar><k>[de] perzik</k><t>peach</t></ar>
+        <ar><k>[de] knoest</k><t>wood knot</t></ar>
+        <ar><k>[de] banaan</k><t>banana</t></ar>
+        <ar><k>[de] framboos</k><t>raspberry</t></ar>
+        <ar><k>[de] kool</k><t>cabbage  ; chou</t></ar>
+        <ar><k>[de] bliksem</k><t>lightning</t></ar>
+        <ar><k>[de] abrikoos</k><t>apricot</t></ar>
+        <ar><k>[de] peer</k><t>pear</t></ar>
+        <ar><k>[de] ozon</k><t>ozone</t></ar>
+        <ar><k>[het] kussen</k><t>pillow</t></ar>
+        <ar><k>[de] dauw</k><t>dew</t></ar>
+        <ar><k>[de] olijf</k><t>olive</t></ar>
+        <ar><k>[de] atmosfeer</k><t>atmosphere  ; air</t></ar>
+        <ar><k>[de] vervuiling</k><t>pollution</t></ar>
+        <ar><k>[de] ananas</k><t>pineapple  ; ananas</t></ar>
+        <ar><k>[de] kers</k><t>cherry</t></ar>
+        <ar><k>[het] broeikaseffect</k><t>greenhouse effect  ; greenhouse warming</t></ar>
+        <ar><k>[het] hergebruik</k><t>recycling</t></ar>
+        <ar><k>[de] rijp</k><t>frost  ; hoar  ; hoarfrost  ; rime</t></ar>
+        <ar><k>[de] radijs</k><t>radish</t></ar>
+        <ar><k>[de] mist</k><t>fog</t></ar>
+        <ar><k>[de] braam</k><t>blackberry</t></ar>
+        <ar><k>[de] klimaatverandering</k><t>climate change  ; global climate change</t></ar>
+        <ar><k>[de] pastinaak</k><t>parsnip  ; Pastinaca sativa</t></ar>
+</resources>

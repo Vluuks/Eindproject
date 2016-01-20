@@ -21,6 +21,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="naam"
+        android:textSize="15dp"
+        android:textColor="#4D3E2D"
+        android:textStyle="bold"
+
         />
 
     <TextView
@@ -32,7 +36,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
         android:gravity="center_vertical"
-        android:textStyle="bold"
+        android:textColor="#856948"
         android:text="status" />
 
 </RelativeLayout>
