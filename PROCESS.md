@@ -132,7 +132,8 @@
 * Overbodige toasts uit de app gehaald.
 
 
-
+## Day 14
+* Alle afbeeldingen van de shop gemaakt.
 
 
 

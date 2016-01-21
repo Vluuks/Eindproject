@@ -64,7 +64,8 @@ public class ShopActivity extends AppCompatActivity {
         // if sharedpreferences exist, use those instead
         else {
             checkForReset();
-            shopItems = loadShopItems(jsonstring);
+            shopItems = createShopItems();
+            //shopItems = loadShopItems(jsonstring);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
             System.out.println("LOADING ITEMS FROM SHAREDPREFS");
             coins = 1000000; // TODO
