@@ -377,7 +377,7 @@ public class HighscoreActivity extends AppCompatActivity {
                             // if statements met equals van maken
                             switch(achievement.type) {
                                 case ("Beginner"):
-                                    coinsAmount = coinsAmount + 5;
+                                    coinsAmount = coinsAmount + 500; //todo terugzetten naar 5
                                     break;
 
                                 case ("Novice"):

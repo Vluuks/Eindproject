@@ -242,6 +242,14 @@
             android:paddingTop="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/sockImageView"
+            android:src="@drawable/bruinsock"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:paddingTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/tieImageView"
             android:src="@drawable/bruintie"
             android:layout_gravity="center_horizontal" />
@@ -276,14 +284,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/earmuffsImageView"
             android:src="@drawable/bruinearmuffs"
-            android:layout_gravity="center_horizontal" />
-
-        <ImageView
-            android:paddingTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sockImageView"
-            android:src="@drawable/bruinsock"
             android:layout_gravity="center_horizontal" />
 
         <ImageView
