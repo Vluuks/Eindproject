@@ -135,6 +135,13 @@
 ## Day 14
 * Alle afbeeldingen van de shop gemaakt.
 
+# Week 4
+
+## Day 15
+* String resources gedaan voor vrijwel alle activities.
+* Klasseverdeling verbeterd, dictionary heeft nu ook een aparte class.
+* Timer gefixt, bij 0 en een score hoger dan 0 gaat ie door naar onwin.
+
 
 
 
