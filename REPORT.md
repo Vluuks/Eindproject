@@ -29,7 +29,7 @@ De code is verdeeld over verschillened Activities en Classes.
 
 In het onderstaande schema is te zien welke methods er in welke class zitten en hoe deze zich tot elkaar verhouden. 
 
-![](doc/design.PNG)
+![](doc/design.png)
 
 
 
