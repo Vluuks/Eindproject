@@ -31,7 +31,7 @@ public class HighscoreActivity extends AppCompatActivity {
             ultimate_achiev1, ultimate_achiev2, ultimate_achiev3;
     public ArrayList<Achievement> achievements;
     public TextView coinsTextView;
-    private boolean resetvalue;
+    private boolean resetValue, eligibleCoins;
     private String jsonstring;
 
     @Override
@@ -39,50 +39,49 @@ public class HighscoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
 
-        // set listview
+        // Set listview and other layout components.
         ListView listView = (ListView) findViewById(R.id.listView);
         coinsTextView = (TextView) findViewById(R.id.coins);
         achievements = new ArrayList<Achievement>();
 
-        // check for sharedpreferences
+        // Obtain SharedPreferences.
         SharedPreferences savedprefs = this.getSharedPreferences("storedachievements", MODE_PRIVATE);
         jsonstring = savedprefs.getString("jsonachievements", null);
         coinsAmount = savedprefs.getInt("coinsamount", 0);
+        System.out.println(coinsAmount + "from sharedprefs");
 
+        // If there are not SharedPreferences or user did a reset, create achievements from scratch.
+        if (savedprefs == null || jsonstring == null || checkForReset()) {
 
-        // if it's the first time the app is loaded or achievements have been reset create achievement objects
-        if(savedprefs == null || jsonstring == null  || checkForReset()) {
-
-            if(checkForReset() && jsonstring != null){
+            if (checkForReset() && jsonstring != null) {
                 jsonstring = null;
             }
-
             coinsAmount = 0;
             achievements = createAchievements();
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
         }
 
-        // if sharedpreferences exist, use those instead
+        // If sharedpreferences exist, use those instead.
         else {
             achievements = loadAchievements(jsonstring);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
-            System.out.println("LOADING FROM SHAREDPREFS SUCCESFULL");
-
         }
 
-        // check where the user came from (if not from game, then no need to check for achievements)
+        // Check where the user came from, the menu or a game.
         saveAchievements(achievements);
         checkSource();
     }
 
-
-
-    // Check if the user has opted to reset the achievements.
-    public boolean checkForReset(){
+    /**
+     * Check if the user has opted to reset achievements and coins.
+     */
+    public boolean checkForReset() {
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
-        resetvalue = useroptions.getBoolean("RESET", false);
+        resetValue = useroptions.getBoolean("RESET", false);
 
-        if(resetvalue == true) {
+        System.out.println(resetValue);
+
+        if (resetValue == true) {
             SharedPreferences.Editor editor = useroptions.edit();
             editor.putBoolean("RESET", false);
             editor.commit();
@@ -90,179 +89,92 @@ public class HighscoreActivity extends AppCompatActivity {
             SharedPreferences prefs = this.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = prefs.edit();
 
-            edit.putInt("currentcoins", 0);
+            // reset coins to 0
+            edit.putInt("coinsamount", 0);
             edit.commit();
+            System.out.println("RESET ACHIEVEMENTS AND COINS");
         }
 
-        return resetvalue;
+        return resetValue;
     }
 
-    // Creates achievements from scratch.
-    public ArrayList<Achievement> createAchievements(){
+    /**
+     * Create achievements from scratch.
+     */
+    public ArrayList<Achievement> createAchievements() {
 
-        // create list to put everything inside array in bulk
+        // Create list to put everything inside array in bulk.
         Achievement[] achievementlist = new Achievement[]{
 
-                // beginner achievements
-                beginner_achiev1 = new Achievement("Score 50 points or more", "@mipmap/icontest", 0, "Beginner"),
-                beginner_achiev2 = new Achievement("Score a combo of at least 5", "@mipmap/icontest", 0, "Beginner"),
-                beginner_achiev3 = new Achievement("Finish a game with at least 1 life left", "@mipmap/icontest", 0, "Beginner"),
-                beginner_achiev4 = new Achievement("Correctly assign 25 articles", "@mipmap/icontest", 0, "Beginner"),
+                // Beginner achievements
+                beginner_achiev1 = new Achievement(getString(R.string.beginnerachievement1),
+                        getString(R.string.beginnertype)),
+                beginner_achiev2 = new Achievement(getString(R.string.beginnerachievement2),
+                        getString(R.string.beginnertype)),
+                beginner_achiev3 = new Achievement(getString(R.string.beginnerachievement3),
+                        getString(R.string.beginnertype)),
+                beginner_achiev4 = new Achievement(getString(R.string.beginnerachievement4),
+                        getString(R.string.beginnertype)),
 
-                // novice achievements
-                novice_achiev1 = new Achievement("Score 100 points or more", "@mipmap/icontest", 0, "Novice"),
-                novice_achiev2 = new Achievement("Score a combo of at least 10", "@mipmap/icontest", 0, "Novice"),
-                novice_achiev3 = new Achievement("Finish a game with at least 2 lives left", "@mipmap/icontest", 0, "Novice"),
-                novice_achiev4 = new Achievement("Correctly assign 50 articles", "@mipmap/icontest", 0, "Novice"),
+                // Novice achievements
+                novice_achiev1 = new Achievement(getString(R.string.noviceachievement1),
+                        getString(R.string.novicetype)),
+                novice_achiev2 = new Achievement(getString(R.string.noviceachievement2),
+                        getString(R.string.novicetype)),
+                novice_achiev3 = new Achievement(getString(R.string.noviceachievement3),
+                        getString(R.string.novicetype)),
+                novice_achiev4 = new Achievement(getString(R.string.noviceachievement4),
+                        getString(R.string.novicetype)),
 
-                // intermediate achievements
-                intermediate_achiev1 = new Achievement("Score 250 points or more", "@mipmap/icontest", 0, "Intermediate"),
-                intermediate_achiev2 = new Achievement("Score a combo of at least 25", "@mipmap/icontest", 0, "Intermediate"),
-                intermediate_achiev3 = new Achievement("Finish a game with 3 lives left", "@mipmap/icontest", 0, "Intermediate"),
-                intermediate_achiev4 = new Achievement("Correctly assign 75 articles", "@mipmap/icontest", 0, "Intermediate"),
+                // Intermediate achievements
+                intermediate_achiev1 = new Achievement(getString(R.string.intermediateachievement1),
+                        getString(R.string.intermediatetype)),
+                intermediate_achiev2 = new Achievement(getString(R.string.intermediateachievement2),
+                        getString(R.string.intermediatetype)),
+                intermediate_achiev3 = new Achievement(getString(R.string.intermediateachievement3),
+                        getString(R.string.intermediatetype)),
+                intermediate_achiev4 = new Achievement(getString(R.string.intermediateachievement4),
+                        getString(R.string.intermediatetype)),
 
-                // master achievements
-                master_achiev1 = new Achievement("Score 750 points or more", "@mipmap/icontest", 0, "Master"),
-                master_achiev2 = new Achievement("Score a combo of at least 50", "@mipmap/icontest", 0, "Master"),
-                master_achiev3 = new Achievement("Correctly assign 100 articles", "@mipmap/icontest", 0, "Master"),
+                // Master achievements
+                master_achiev1 = new Achievement(getString(R.string.masterachievement1),
+                        getString(R.string.mastertype)),
+                master_achiev2 = new Achievement(getString(R.string.masterachievement2),
+                        getString(R.string.mastertype)),
+                master_achiev3 = new Achievement(getString(R.string.masterachievement3),
+                        getString(R.string.mastertype)),
 
-                // ultimate achievements
-                master_achiev1 = new Achievement("Score 1500 points or more", "@mipmap/icontest", 0, "Ultimate"),
-                master_achiev2 = new Achievement("Score a combo of at least 100", "@mipmap/icontest", 0, "Ultimate"),
-                master_achiev3 = new Achievement("Correctly assign 150 articles", "@mipmap/icontest", 0, "Ultimate")
+                // Ultimate achievements
+                ultimate_achiev1 = new Achievement(getString(R.string.ultimateachievement1),
+                        getString(R.string.ultimatetype)),
+                ultimate_achiev2 = new Achievement(getString(R.string.ultimateachievement2),
+                        getString(R.string.ultimatetype)),
+                ultimate_achiev3 = new Achievement(getString(R.string.ultimateachievement3),
+                        getString(R.string.ultimatetype))
         };
 
-        // add the array created above to the arraylist and set the listadapter on this arraylist
+        // Add the array created above to the arraylist and set the listadapter on this arraylist.
         ArrayList<Achievement> newAchievements = new ArrayList<Achievement>();
         newAchievements.addAll(Arrays.asList(achievementlist));
         return newAchievements;
     }
 
-
-
-    // Checks where the user came from, the game or the menu.
-    public void checkSource(){
-
-        // if the user came from the game
-        if(getIntent().getExtras()!=null) {
-            Intent intent = getIntent();
-            finalscore = intent.getExtras().getInt("SCORE");
-            finalmultiplier = intent.getExtras().getInt("MAXMULTIPLIER");
-            finallives = intent.getExtras().getInt("LIVES");
-            correctcounter = intent.getExtras().getInt("CORRECTCOUNTER");
-
-            // check if the user is eligible for achievements
-            checkForAchievement();
-            }
-        else
-            coinsTextView.setText("Coins: " + Integer.toString(coinsAmount));
-        }
-
-
-    // Checks if the user is eligible for one or more achievements.
-    public void checkForAchievement(){
-
-        // check if they're eligible for an achievement
-        if(finalscore >= 50) {
-            beginner_achiev1.setStatus(1);
-            beginner_achiev1.counter++;
-        }
-        if(finalmultiplier >= 5) {
-            beginner_achiev2.setStatus(1);
-            beginner_achiev2.counter++;
-        }
-        if(finallives >= 1) {
-            beginner_achiev3.setStatus(1);
-            beginner_achiev3.counter++;
-        }
-        if(correctcounter >= 25) {
-            beginner_achiev4.setStatus(1);
-            beginner_achiev4.counter++;
-        }
-
-
-        if(finalscore >= 100) {
-            novice_achiev1.setStatus(1);
-            novice_achiev1.counter++;
-        }
-        if(finalmultiplier >= 10) {
-            novice_achiev2.setStatus(1);
-            novice_achiev2.counter++;
-        }
-        if(finallives >= 2) {
-            novice_achiev3.setStatus(1);
-            novice_achiev3.counter++;
-        }
-        if(correctcounter >= 50) {
-            novice_achiev4.setStatus(1);
-            novice_achiev4.counter++;
-        }
-
-
-        if(finalscore >= 250) {
-            intermediate_achiev1.setStatus(1);
-            intermediate_achiev1.counter++;
-        }
-        if(finalmultiplier >= 25) {
-            intermediate_achiev2.setStatus(1);
-            intermediate_achiev2.counter++;
-        }
-        if(finallives == 3) {
-            intermediate_achiev3.setStatus(1);
-            intermediate_achiev3.counter++;
-        }
-        if(correctcounter >= 75) {
-            intermediate_achiev4.setStatus(1);
-            intermediate_achiev4.counter++;
-        }
-
-
-        if(finalscore >= 750) {
-            master_achiev1.setStatus(1);
-            master_achiev1.counter++;
-        }
-        if(finalmultiplier >= 50) {
-            master_achiev2.setStatus(1);
-            master_achiev2.counter++;
-        }
-        if(finalmultiplier >= 100) {
-            master_achiev3.setStatus(1);
-            master_achiev3.counter++;
-        }
-
-
-        if(finalscore >= 1500) {
-            ultimate_achiev1.setStatus(1);
-            ultimate_achiev1.counter++;
-        }
-        if(finalmultiplier >= 100) {
-            ultimate_achiev2.setStatus(1);
-            ultimate_achiev2.counter++;
-        }
-        if(finalmultiplier >= 150) {
-            ultimate_achiev3.setStatus(1);
-            ultimate_achiev3.counter++;
-        }
-        // Save the status of the achievements.
-        saveAchievements(achievements);
-    }
-
-
-    // Load exisiting achievements from sharedpreferences.
-    public ArrayList<Achievement> loadAchievements(String jsonstring){
+    /**
+     * Loads existing achievements from SharedPreferences.
+     */
+    public ArrayList<Achievement> loadAchievements(String jsonstring) {
 
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
         JsonArray jArray = parser.parse(jsonstring).getAsJsonArray();
         ArrayList<Achievement> sharedprefslist = new ArrayList<Achievement>();
 
-        for(JsonElement obj : jArray )
-        {
-            Achievement ach = gson.fromJson( obj , Achievement.class);
+        for (JsonElement obj : jArray) {
+            Achievement ach = gson.fromJson(obj, Achievement.class);
             sharedprefslist.add(ach);
         }
 
-        // create list to put everything inside array in bulk
+        // Ccreate list to put everything inside array in bulk.
         Achievement[] achievementlist = new Achievement[]{
 
                 beginner_achiev1 = sharedprefslist.get(0),
@@ -282,25 +194,136 @@ public class HighscoreActivity extends AppCompatActivity {
 
                 ultimate_achiev1 = sharedprefslist.get(11),
                 ultimate_achiev2 = sharedprefslist.get(12),
-
         };
 
-        // add the list created above to the actual arraylist
+        // Add the list created above to the actual arraylist
         ArrayList<Achievement> savedAchievements = new ArrayList<Achievement>();
         savedAchievements.addAll(Arrays.asList(achievementlist));
         return savedAchievements;
-
     }
 
+    /**
+     * Check where the user came from and redirect accordingly.
+     */
+    public void checkSource() {
 
+        // If the user came from the game, obtain data from intent.
+        if (getIntent().getExtras() != null) {
+            System.out.println("INTENT IS NOT NULL, SHOULD BE COMING FROM GAME");
+            Intent intent = getIntent();
+            finalscore = intent.getExtras().getInt("SCORE");
+            finalmultiplier = intent.getExtras().getInt("MAXMULTIPLIER");
+            finallives = intent.getExtras().getInt("LIVES");
+            correctcounter = intent.getExtras().getInt("CORRECTCOUNTER");
 
+            // Check if the user is eligible for achievements.
+            checkForAchievement();
+        } else
+            coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
+    }
 
-    // Store achievements in sharedpreferences as Json string.
+    /**
+     * Checks if the user is eligible for one ore more achievements.
+     */
+    public void checkForAchievement() {
+
+        eligibleCoins = true;
+
+        // Beginner achievements.
+        if (finalscore >= 50) {
+            beginner_achiev1.setStatus(1);
+            beginner_achiev1.counter++;
+        }
+        if (finalmultiplier >= 5) {
+            beginner_achiev2.setStatus(1);
+            beginner_achiev2.counter++;
+        }
+        if (finallives >= 1) {
+            beginner_achiev3.setStatus(1);
+            beginner_achiev3.counter++;
+        }
+        if (correctcounter >= 25) {
+            beginner_achiev4.setStatus(1);
+            beginner_achiev4.counter++;
+        }
+
+        // Novice achievements.
+        if (finalscore >= 100) {
+            novice_achiev1.setStatus(1);
+            novice_achiev1.counter++;
+        }
+        if (finalmultiplier >= 10) {
+            novice_achiev2.setStatus(1);
+            novice_achiev2.counter++;
+        }
+        if (finallives >= 2) {
+            novice_achiev3.setStatus(1);
+            novice_achiev3.counter++;
+        }
+        if (correctcounter >= 50) {
+            novice_achiev4.setStatus(1);
+            novice_achiev4.counter++;
+        }
+
+        // Intermediate achievements.
+        if (finalscore >= 250) {
+            intermediate_achiev1.setStatus(1);
+            intermediate_achiev1.counter++;
+        }
+        if (finalmultiplier >= 25) {
+            intermediate_achiev2.setStatus(1);
+            intermediate_achiev2.counter++;
+        }
+        if (finallives == 3) {
+            intermediate_achiev3.setStatus(1);
+            intermediate_achiev3.counter++;
+        }
+        if (correctcounter >= 75) {
+            intermediate_achiev4.setStatus(1);
+            intermediate_achiev4.counter++;
+        }
+
+        // Master achievements.
+        if (finalscore >= 750) {
+            master_achiev1.setStatus(1);
+            master_achiev1.counter++;
+        }
+        if (finalmultiplier >= 50) {
+            master_achiev2.setStatus(1);
+            master_achiev2.counter++;
+        }
+        if (finalmultiplier >= 100) {
+            master_achiev3.setStatus(1);
+            master_achiev3.counter++;
+        }
+
+        // Ultimate achievements.
+        if (finalscore >= 1500) {
+            ultimate_achiev1.setStatus(1);
+            ultimate_achiev1.counter++;
+        }
+        if (finalmultiplier >= 100) {
+            ultimate_achiev2.setStatus(1);
+            ultimate_achiev2.counter++;
+        }
+        if (finalmultiplier >= 150) {
+            ultimate_achiev3.setStatus(1);
+            ultimate_achiev3.counter++;
+        }
+
+        // Save the status of the achievements.
+        saveAchievements(achievements);
+    }
+
+    /**
+     * Store achievements in SharedPreferences.
+     */
     public void saveAchievements(ArrayList<Achievement> achievements) {
         Gson gson = new Gson();
 
         JsonElement element =
-                gson.toJsonTree(achievements, new TypeToken<ArrayList<Achievement>>() {}.getType());
+                gson.toJsonTree(achievements, new TypeToken<ArrayList<Achievement>>() {
+                }.getType());
 
         JsonArray jsonArray = element.getAsJsonArray();
         String jsonArrayString = jsonArray.toString();
@@ -311,26 +334,16 @@ public class HighscoreActivity extends AppCompatActivity {
         edit.putString("jsonachievements", jsonArrayString);
         edit.putInt("coinsamount", coinsAmount);
         edit.commit();
-        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // source: http://codehenge.net/blog/2011/05/customizing-android-listview-item-layout/
-    // and http://android-developers.blogspot.nl/2009/02/android-layout-tricks-1.html
+    /**
+     * The adapter of the listview, handles all changes made to the shopitem objects.
+     * source: http://codehenge.net/blog/2011/05/customizing-android-listview-item-layout/
+     * and http://android-developers.blogspot.nl/2009/02/android-layout-tricks-1.html
+     */
     public class UserItemAdapter extends ArrayAdapter<Achievement> {
         protected ArrayList<Achievement> achievements;
+
         public UserItemAdapter(Context context, int textViewResourceId, ArrayList<Achievement> achievements) {
             super(context, textViewResourceId, achievements);
             this.achievements = achievements;
@@ -340,71 +353,54 @@ public class HighscoreActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.listitem, null);
             }
 
-            // iterate over the items in achievement arraylist
+            // Iterate over the items in achievement arraylist.
             Achievement achievement = achievements.get(position);
             if (achievement != null) {
 
-                // initialize layout components from the listitem
+                // Initialize layout components from the listitem.
                 TextView achievementname = (TextView) v.findViewById(R.id.name);
                 TextView achievementprogress = (TextView) v.findViewById(R.id.status);
                 ImageView achievementicon = (ImageView) v.findViewById(R.id.icon);
-
-
-                // go over the components of the object, name and progress
 
                 // set textview to show achievement name
                 if (achievementname != null)
                     achievementname.setText(achievement.name);
 
-                if(achievementprogress != null) {
+                if (achievementprogress != null) {
                     // if the achievement is completed, set text to complete and update picture
-                    if(achievement.status == 1){
-                        achievementprogress.setText("Complete!");
+                    if (achievement.status == 1) {
+                        achievementprogress.setText(R.string.achievementcomplete);
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
 
                         // check if the achievement is repeated and award coins appropriately
-                        if(achievement.counter > 1) {
-                            System.out.println(coinsAmount);
-                            System.out.println("COUNTERNEW IS BIGGER THAN OLD COUNTER");
-                            System.out.println(achievement.counter + "|" + achievement.countercurrent);
-                            achievementprogress.setText("Completed " + Integer.toString(achievement.counter) + " times");
+                        if (achievement.counter > 1 && eligibleCoins) {
+                            achievementprogress.setText(getString(R.string.completedpart1) + Integer.toString(achievement.counter) + getString(R.string.completedpart2));
 
-
-                            // if statements met equals van maken
-                            switch(achievement.type) {
+                            switch (achievement.type) {
                                 case ("Beginner"):
                                     coinsAmount = coinsAmount + 500; //todo terugzetten naar 5
+                                    System.out.println("COINS ADDED");
                                     break;
-
                                 case ("Novice"):
                                     coinsAmount = coinsAmount + 10;
                                     break;
-
                                 case ("Intermediate"):
                                     coinsAmount = coinsAmount + 15;
                                     break;
-
                                 case ("Master"):
                                     coinsAmount = coinsAmount + 25;
                                     break;
-
                                 case ("Ultimate"):
                                     coinsAmount = coinsAmount + 50;
                                     break;
                             }
-
                             // update the amount of coins the user has
-                            coinsTextView.setText("Coins: " + Integer.toString(coinsAmount));
-                            System.out.println("AMOUNT OF COINS" + coinsAmount);
-
-                            // update the current counter
-                            //achievement.countercurrent = achievement.counternew;
-                            System.out.println(achievement.counter + achievement.countercurrent);
-
+                            coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
+                            eligibleCoins = false;
                         }
                     }
                     // otherwise just show the type of achievement as text
@@ -413,12 +409,11 @@ public class HighscoreActivity extends AppCompatActivity {
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.icontest));
                     }
                 }
+            }
 
             saveAchievements(achievements);
-
-
-            }
             return v;
         }
     }
 }
+

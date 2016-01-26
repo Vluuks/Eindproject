@@ -15,10 +15,11 @@ public class Stopwatch {
     static Timer timer;
     public boolean timerstatus, finished;
     public TextView thetextview;
+    public TimerHandler callback;
 
 
-    public Stopwatch(int time, TextView textview){
-
+    public Stopwatch(int time, TextView textview, TimerHandler the_callback){
+        callback = the_callback;
         finished = false;
         thetextview = textview;
         interval = time;
@@ -40,7 +41,7 @@ public class Stopwatch {
         if (interval == 1) {
             timer.cancel();
             finished = true;
-            // trigger onwin uit gameplay: hoe?
+            callback.onTimerFinish();
             
         }
         return --interval;

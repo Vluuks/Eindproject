@@ -87,7 +87,6 @@ public class OptionsActivity extends AppCompatActivity {
                             resetValue = false;
                         }
                         break;
-
                 }
                 saveOptions();
             }
@@ -96,6 +95,7 @@ public class OptionsActivity extends AppCompatActivity {
         gamemodeSwitch.setOnCheckedChangeListener(multipleListener);
         textToSpeechSwitch.setOnCheckedChangeListener(multipleListener);
         translationSwitch.setOnCheckedChangeListener(multipleListener);
+        resetCheckBox.setOnCheckedChangeListener(multipleListener);
     }
 
     public void saveOptions(){

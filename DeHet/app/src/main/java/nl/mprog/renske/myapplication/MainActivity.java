@@ -21,11 +21,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity  {
 
     private GamePlay gameplay;
-    private TextView woordTextView, translationTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView;
-    private ImageView item1ImageView, item2ImageView, item3ImageView, item4ImageView, item5ImageView,
-            item6ImageView, item7ImageView, item8ImageView, item9ImageView, item10ImageView;
-    public ImageView finishedImageView;
-    public Button deButton, hetButton;
+    private TextView woordTextView;
+    private Button deButton, hetButton;
     private TextToSpeech t1;
     private static final int MY_DATA_CHECK_CODE = 1234;
     private boolean textToSpeechStatus, translationStatus;
@@ -36,15 +33,8 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         gameplay = new GamePlay(MainActivity.this);
+        gameplay.loadDictionary();
 
-        // Load the dictionary.
-        try {
-            gameplay.loadDictionary();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         // Prepare game components and mascot.
         initializeGameComponents();
@@ -56,11 +46,13 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     /**
-     * Gives gameplay class access to interface elements.
+     * Gives gameplay class access to interface layout elements.
      */
     public void initializeGameComponents()
     {
-        // initialize layout components
+        TextView translationTextView, scoreTextView, livesTextView, multiplierTextView,
+                timerTextView, correctTextView, incorrectTextView;
+
         TextView[] textViewArray = new TextView[]{
             woordTextView = (TextView) findViewById(R.id.woordTextview),
             scoreTextView = (TextView) findViewById(R.id.scoreTextview),
@@ -84,6 +76,8 @@ public class MainActivity extends AppCompatActivity  {
         ArrayList<Button> buttonList = new ArrayList<Button>();
         buttonList.addAll(Arrays.asList(buttonArray));
 
+
+        ImageView finishedImageView;
 
         ImageView[] imageviewArray = new ImageView[]{
                 finishedImageView = (ImageView) findViewById(R.id.finishedImageView)
@@ -116,6 +110,9 @@ public class MainActivity extends AppCompatActivity  {
         SharedPreferences storedachievements = getSharedPreferences("storedachievements", this.MODE_PRIVATE);
         bruin.setSharedPreferences(storedachievements);
 
+        ImageView item1ImageView, item2ImageView, item3ImageView, item4ImageView, item5ImageView,
+                item6ImageView, item7ImageView, item8ImageView, item9ImageView, item10ImageView;
+
         ImageView[] imageViewArray = new ImageView[]{
                 item1ImageView = (ImageView) findViewById(R.id.scarfImageView),
                 item2ImageView = (ImageView) findViewById(R.id.hatImageView),
@@ -135,6 +132,9 @@ public class MainActivity extends AppCompatActivity  {
         bruin.checkEquipped();
     }
 
+    /**
+     * Interface redirecting methods.
+     */
     public void checkSharedPreferences(){
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         textToSpeechStatus = useroptions.getBoolean("TTS", true);
@@ -182,7 +182,6 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void onWordClick(View view){
-
         if(textToSpeechStatus) {
             String speech = woordTextView.getText().toString();
             t1.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
@@ -217,12 +216,30 @@ public class MainActivity extends AppCompatActivity  {
         startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
     }
 
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == MY_DATA_CHECK_CODE)
+        {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
+                startTTS();
+
+            else
+            {
+                // Missing TTS data, install it
+                Intent installIntent = new Intent();
+                installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installIntent);
+            }
+        }
+    }
+
     public void startTTS() {
-        // create new TTS
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+
+            // Set locale/language on intialization.
             @Override
             public void onInit(int status) {
-
                 Locale[] locales = Locale.getAvailableLocales();
                 List<Locale> localeList = new ArrayList<Locale>();
                 for (Locale locale : locales) {
@@ -233,32 +250,10 @@ public class MainActivity extends AppCompatActivity  {
                     }
                 }
                 if (status != TextToSpeech.ERROR) {
-                    Locale loc = new Locale("fr", "FR");
+                    Locale loc = new Locale("nl", "NL");
                     int result = t1.setLanguage(loc);
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        System.out.println("LANGUAGE NOT SUPPORTED");
-                    }
                 }
             }
         });
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        if (requestCode == MY_DATA_CHECK_CODE)
-        {
-            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
-            {
-                startTTS();
-            }
-            else
-            {
-                // missing data, install it
-                Intent installIntent = new Intent();
-                installIntent.setAction(
-                        TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-                startActivity(installIntent);
-            }
-        }
     }
 }

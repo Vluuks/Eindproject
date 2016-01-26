@@ -3,18 +3,14 @@ package nl.mprog.renske.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -26,7 +22,7 @@ import java.util.Random;
 /**
  * Created by Renske on 7-1-2016.
  */
-public class GamePlay {
+public class GamePlay implements TimerHandler {
 
     private Context activityContext;
     private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView, translationTextView;
@@ -39,9 +35,7 @@ public class GamePlay {
     private boolean gameStatus;
     private SharedPreferences useroptions;
     private Map<String, String> dictionarymap = new HashMap<String, String>();
-    private String dictValue, dictKey;
     private FrameLayout finishedLayout;
-
 
     /**
      * Obtains context from MainActivity layout.
@@ -54,7 +48,6 @@ public class GamePlay {
      * Obtains TextViews from MainActivity layout.
      */
     public void setTextViews(ArrayList<TextView> textViewList){
-
         this.woordTextView = textViewList.get(0);
         this.scoreTextView = textViewList.get(1);
         this.livesTextView = textViewList.get(2);
@@ -80,7 +73,9 @@ public class GamePlay {
         this.hetButton = buttonList.get(1);
     }
 
-
+    /**
+     * Obtains framelayout from MainActivity.
+     */
     public void setLayout(FrameLayout framefinishedLayout){
         finishedLayout = framefinishedLayout;
     }
@@ -88,53 +83,19 @@ public class GamePlay {
     /**
      * Loads the dicitionary from an XDXF XML file.
      */
-    public void loadDictionary()
-            throws XmlPullParserException, IOException {
-        // create the xmlpullparser and factory
-        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-        factory.setNamespaceAware(false);
-        XmlPullParser xpp = factory.newPullParser();
+    public void loadDictionary() {
 
-        // set the input stream
-        Reader myReader = new InputStreamReader(activityContext.getAssets().open("dictionary2.xml"), "UTF-8");
-        xpp.setInput(myReader);
-
-        // go over xml file
-        int eventType = xpp.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-
-            // get the name of the tag
-            String name = xpp.getName();
-
-            switch (eventType) {
-                case XmlPullParser.START_TAG:
-                    // if the tag's name is <k>
-                    if (name.equals("k")) {
-                        if (xpp.next() == XmlPullParser.TEXT)
-                            dictKey = xpp.getText();
-                    }
-                    if (name.equals("t")) {
-                        if (xpp.next() == XmlPullParser.TEXT)
-                            dictValue = xpp.getText();
-                    }
-                    System.out.println(dictValue);
-                    break;
-
-                case XmlPullParser.END_TAG:
-                    break;
-            }
-            dictionarymap.put(dictKey, dictValue);
-            eventType = xpp.next();
+        // Load the dictionary.
+        Dictionary dictionary = new Dictionary(activityContext);
+        try {
+            dictionarymap = dictionary.loadDictionaryFromXML();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println("Finished loading dictionary");
 
-        // store keys in arraylist to facilitate random picking
-        keylist = new ArrayList<String>();
-
-        for (Map.Entry<String, String> entry : dictionarymap.entrySet()) {
-            String theWord = entry.getKey();
-            keylist.add(theWord);
-        }
+        keylist = dictionary.getKeyList();
     }
 
     /**
@@ -143,7 +104,6 @@ public class GamePlay {
     public void setSharedPreferences(SharedPreferences pickedOptions){
         useroptions = pickedOptions;
     }
-
 
     /**
      * Initializes the values and elements used in the game.
@@ -169,9 +129,9 @@ public class GamePlay {
         woordTextView.setVisibility(View.VISIBLE);
         correctTextView.setVisibility(View.VISIBLE);
         incorrectTextView.setVisibility(View.VISIBLE);
-        correctTextView.setText("0 RIGHT");
-        incorrectTextView.setText("WRONG 0");
-        woordTextView.setText(" ");
+        correctTextView.setText(R.string.standardtextright);
+        incorrectTextView.setText(R.string.standardtextwrong);
+        woordTextView.setText(R.string.standardtextword);
 
         // Set the right game modes.
         if (gameVersion.equals("DEMPRO"))
@@ -199,11 +159,9 @@ public class GamePlay {
         timerTextView.setVisibility(View.VISIBLE);
 
         scoreTextView.setText(Integer.toString(score));
-        livesTextView.setText("LIVES " + Integer.toString(lives));
+        livesTextView.setText(activityContext.getString(R.string.lives) + Integer.toString(lives));
         multiplierTextView.setText(" ");
-
-        initializeTimer(181);
-        System.out.println("NEW TIMER STARTED");
+        initializeTimer(180);
     }
 
     /**
@@ -217,23 +175,21 @@ public class GamePlay {
         timerTextView.setVisibility(View.INVISIBLE);
     }
 
-
     /**
      * Sets the game mode to deze/die/dit/dat instead of de/het.
      */
     private void setDemonstrativePronounMode(){
-        deButton.setText("DEZE / DIE");
-        hetButton.setText("DIT / DAT");
+        deButton.setText(R.string.thesethosethatthis1);
+        hetButton.setText(R.string.thesethosethatthis2);
     }
 
     /**
      * Sets the game mode to de/het basic mode.
      */
     private void setArticleMode(){
-        deButton.setText("DE");
-        hetButton.setText("HET");
+        deButton.setText(R.string.articlebuttonde);
+        hetButton.setText(R.string.articlebuttonhet);
     }
-
 
     /**
      * Stops the game and redirects user to achievement panel.
@@ -266,13 +222,11 @@ public class GamePlay {
         activityContext.startActivity(intent);
     }
 
-
-
     /**
      * Initializes the game's timer.
      */
     private void initializeTimer(int chosentime){
-        gameTimer = new Stopwatch(chosentime, timerTextView);
+        gameTimer = new Stopwatch(chosentime, timerTextView, this);
         gameTimer.timerstatus = true;
     }
 
@@ -289,11 +243,9 @@ public class GamePlay {
         // Obtain random word from keylist.
         Random randomizer = new Random();
         pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
-        System.out.println("Gekozen woord raw:" + pickedWord);
 
         while(pickedWord == null) {
             pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
-            System.out.println("Gekozen woord raw:" + pickedWord);
         }
 
         pickedWordTranslation = dictionarymap.get(pickedWord);
@@ -302,9 +254,6 @@ public class GamePlay {
         String[] wordparts = pickedWord.split(" ", 2);
         lidwoord = wordparts[0];
         String znwparts = wordparts[1];
-
-        System.out.println("Bijbehorend lidwoord:" + lidwoord);
-        System.out.println("Znw:" + znwparts);
 
         // If the dictionary entries comes with multiple nouns, only use the first.
         if(znwparts.indexOf(';') != -1) {
@@ -316,9 +265,6 @@ public class GamePlay {
             znw = znwparts.trim();
 
         woordTextView.setText(znw);
-
-
-        System.out.println(znw);
 
     }
 
@@ -341,49 +287,35 @@ public class GamePlay {
             }
         }
 
-        //calculate score increase
+        // Calculate score increase and update layout elements.
         score = score + multiplier;
-
-        // update layout elements
         scoreTextView.setText(Integer.toString(score));
-        livesTextView.setText("LIVES " + Integer.toString(lives));
+        livesTextView.setText(activityContext.getString(R.string.levens) + Integer.toString(lives));
 
-        // if the user has lives left or chill mode is active (which sets the start lives to -1)
+        // Check whether the game should continue or stop.
         if(lives > 0 || lives < 0){
             pickWord();
         }
-
-        if(gameType.equals("NORMAL") && timerTextView.getText().equals("0") && correctcount > 0)
-            onWin();
-
-        // else go to achievement screen/game over screen
         if(lives == 0)
             onLose();
     }
-
 
     /**
      * To be executed when the guess is correct.
      */
     public void ifCorrect(){
-
         keylist.remove(pickedWord);
         correctcount++;
-        correctTextView.setText(Integer.toString(correctcount) + " RIGHT");
+        correctTextView.setText(Integer.toString(correctcount)
+                + activityContext.getString(R.string.correctguesses));
 
         if(gameType.equals("NORMAL")) {
             multiplier++;
-            multiplierTextView.setText("COMBO x" + Integer.toString(multiplier));
+            multiplierTextView.setText(activityContext.getString(R.string.combo) + Integer.toString(multiplier));
 
-            //decide if this multiplier is bigger than he ones before
+            // Check whether the multiplier has increased.
             if (multiplier > maxmultiplier)
                 maxmultiplier = multiplier;
-
-        }
-        else {
-            Toast toast = Toast.makeText(activityContext, "CORRECT!", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-            toast.show();
         }
     }
 
@@ -393,35 +325,33 @@ public class GamePlay {
     public void ifIncorrect(){
         keylist.add(pickedWord);
         incorrectcount++;
-        incorrectTextView.setText("WRONG " + Integer.toString(incorrectcount));
+        incorrectTextView.setText(activityContext.getString(R.string.incorrectguesses)
+                + Integer.toString(incorrectcount));
 
         if(gameType.equals("NORMAL")) {
             lives--;
             multiplier = 0;
             multiplierTextView.setText(" ");
         }
-        else{
-            Toast toast = Toast.makeText(activityContext, "INCORRECT!", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-            toast.show();
-        }
     }
 
-
+    /**
+     * Methods handling the game's end.
+     */
+    @Override
+    public void onTimerFinish() {
+        if(gameType.equals("NORMAL") && correctcount > 0)
+            onWin();
+        else
+            initializeGame();
+    }
 
     private void onLose(){
-
         finishedImageView.setImageResource(R.drawable.onlosebruin);
-
-        Toast toast = Toast.makeText(activityContext, "NOOB", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-        toast.show();
-
         stopGame();
     }
 
     private void onWin(){
-
         if(gameType.equals("NORMAL"))
             gameTimer.cancelTimer();
 
@@ -429,40 +359,35 @@ public class GamePlay {
         stopGame();
     }
 
+    /**
+     * Methods managing the game's lifecycle.
+     */
     public void pauseGame(){
-
         if(gameType.equals("NORMAL") && !timerTextView.getText().equals("0")) {
             storedtimervalue = gameTimer.pauseTimer();
-            System.out.println("PAUSED" + storedtimervalue);
-
         }
-
     }
-
 
     public void resumeGame(){
         if(gameStatus != false) {
-            //resume the timer where it left off
             if (gameType.equals("NORMAL"))
                 gameTimer.resumeTimer();
-
         }
         else
             initializeGame();
-
     }
 
     public void startNewGame(){
         if(gameType.equals("NORMAL")) {
             gameTimer.cancelTimer();
             timerTextView.setText(" ");
-            System.out.println("TIMER CANCELLED: NEW GAME INITIATED");
         }
-
         initializeGame();
     }
 
-
+    /**
+     * Translation.
+     */
     public void showTranslation(){
         pickedWordTranslation = dictionarymap.get(pickedWord);
         translationTextView.setText(pickedWordTranslation);
