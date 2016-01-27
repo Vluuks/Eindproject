@@ -17,35 +17,60 @@ De code is verdeeld over verschillened Activities en Classes.
 * ShopActivity: bevat de shop waar de gebruiker items kan kopen en equippen
 * OptionsActivity: bevat de opties van het spel
 
-### Model Classes
+### Classes
 * Dictionary
-* GamePlay
-* Stopwatch
+De dictionary klasse laadt door middel van XML parsing een woordenboek in uit een XML bestand. Dit woordenboek wordt in de app gebruikt om zowel de Nederlandse combinaties van lidwoorden en zelfstandige naamwoorden te kiezen, maar ook om de vertaling te kunnen tonen.
+Het woordenboek wordt opgeslagen in een map met String, String format. Van de keys van het woordenboek wordt een lijst gemaakt, zodat hieruit gemakkelijk pseudorandom een woord gekozen kan worden. 
 
-### Object Classes
+* GamePlay
+Gameplay houdt zich bezig met het echte spel. In deze class zitten de meeste methods en gebeurt ook het meest.
+
+* Stopwatch
+De stopwatch class is puur de implementatie van de timer, welke gebruikt wordt in gameplay.
+
+* ShopLoader & AchievementLoader
+Zowel shoploader als achievementloader zorgen dat de listviews in respectievelijk de shop- en achievementactivity de juiste items uit SharedPreferences krijgen en omgezet worden van Gson naar een array en andersom. Ook maken deze classes de items opnieuw aan als er geen opgeslagen versies van zijn, bijvoorbeeld als de app voor het eerst wordt opgestart of de gebruiker een reset heeft doorgevoerd.
+
 * Bruin
+Bevat alle ImageViews die te maken hebben met de mascotte Bruin en zorgt ervoor dat de juiste informatie uit de shop wordt opgehaald.
+
 * Achievement
+Bevat informatie over de naam van het achievement, de status (compleet of incompleet), de hoeveelheid keer dat de gebruiker hem herhaald heeft en de moeilijkheidsgraad.
+
 * ShopItem 
+Bevat informatie over de prijs van een item, het uiterlijk, of de gebruiker het item in bezit heeft of niet en of de gebruiker het item equipped heeft of niet.
 
 In de onderstaande schema's is te zien welke methods er in welke class zitten, welke argumenten deze vereisen en wat ze returnen.
 
 ![](doc/design.png)
 
 
+
+### Verdeling van methods over activities
+
+TODO
+
+
+
+
+
 ## App design
 
-Het hoofdscherm van de app ziet er als volgt uit in normal game mode:
+Het hoofdscherm van de app (MainActivity) ziet er als volgt uit in normal game mode:
 
 ![](doc/appdesign1.png)
 
-
-Het hints en opties scherm kunnen via het menu worden bereikt. In het hints scherm staan een aantal suggesties om de gebruiker op weg te helpen bij het leren van de lidwoorden.
+Het hints en opties scherm (HintsActivity en OptionsActivity) kunnen via het menu worden bereikt. In het hints scherm staan een aantal suggesties om de gebruiker op weg te helpen bij het leren van de lidwoorden.
 De opties geven de gebruiker de mogelijkheid om te kiezen voor chill mode, een mode waarbij de score, achievements, timer en levens niet van belang zijn maar de gebruiker rustig kan oefenen.
+Ook kan de gebruiker er voor kiezen om vertalingen of TextToSpeech uit te zetten. Tot slot is er ook een functie om de achievements en coins te resetten, voor als iemand weer opnieuw wil beginnen met achievements. 
 
-![](doc/hintsopties.png)
+![](doc/hintoptions.png)
 
+Als de chill mode actief is, worden alle layoutelementen die niet van belang zijn verborgen. Chill mode kan ook met die/deze dit/dat geactiveerd worden. De mascotte is nog wel gewoon actief.
 
-In de shopactivity kunnen accessories voor de mascotte Bruin gekocht worden:
+![](doc/chilldezedie.png)
+
+In de ShopActivity kunnen accessories voor de mascotte Bruin gekocht worden:
 
 ![](doc/shop.png)
 
