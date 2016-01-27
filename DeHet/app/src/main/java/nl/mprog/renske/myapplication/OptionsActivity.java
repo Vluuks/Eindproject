@@ -16,7 +16,7 @@ public class OptionsActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton dehetRadioButton, dezedieditdatRadioButton;
     private CheckBox resetCheckBox;
-    private boolean resetValue, textToSpeech, translation;
+    private boolean resetValue, textToSpeech, translationValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,8 @@ public class OptionsActivity extends AppCompatActivity {
         dezedieditdatRadioButton = (RadioButton) findViewById(R.id.dezedieditdatradioButton);
         resetCheckBox = (CheckBox) findViewById(R.id.checkBox);
 
+        // Obtain saved options.
         loadOptions();
-
 
         // Set listeners.
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -56,28 +56,28 @@ public class OptionsActivity extends AppCompatActivity {
                     case R.id.switch1:
                         if (isChecked) {
                             chosenGametype = "CHILL";
-                            gamemodeSwitch.setText("ON");
+                            gamemodeSwitch.setText(R.string.ON);
                         } else {
                             chosenGametype = "NORMAL";
-                            gamemodeSwitch.setText("OFF");
+                            gamemodeSwitch.setText(R.string.OFF);
                         }
                         break;
                     case R.id.switch2:
                         if (isChecked) {
                             textToSpeech = true;
-                            textToSpeechSwitch.setText("ON");
+                            textToSpeechSwitch.setText(R.string.ON);
                         } else {
                             textToSpeech = false;
-                            textToSpeechSwitch.setText("OFF");
+                            textToSpeechSwitch.setText(R.string.OFF);
                         }
                         break;
                     case R.id.switch3:
                         if (isChecked) {
-                            translation = true;
-                            translationSwitch.setText("ON");
+                            translationValue = true;
+                            translationSwitch.setText(R.string.ON);
                         } else {
-                            translation = false;
-                            translationSwitch.setText("OFF");
+                            translationValue = false;
+                            translationSwitch.setText(R.string.OFF);
                         }
                         break;
                     case R.id.checkBox:
@@ -98,6 +98,9 @@ public class OptionsActivity extends AppCompatActivity {
         resetCheckBox.setOnCheckedChangeListener(multipleListener);
     }
 
+    /**
+     * Store state of options in SharedPreferences.
+     */
     public void saveOptions(){
 
         SharedPreferences useroptions = this.getSharedPreferences("settings",
@@ -107,45 +110,48 @@ public class OptionsActivity extends AppCompatActivity {
         editor.putString("GAMEVERSION", chosenGameversion);
         editor.putBoolean("RESET", resetValue);
         editor.putBoolean("TTS", textToSpeech);
-        editor.putBoolean("TRANSLATION", translation);
+        editor.putBoolean("TRANSLATION", translationValue);
         editor.commit();
     }
 
-
+    /**
+     * Obtain state of options from SharedPreferences.
+     */
     public void loadOptions(){
 
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         chosenGametype = useroptions.getString("GAMETYPE", "NORMAL");
         chosenGameversion = useroptions.getString("GAMEVERSION", "DEHET");
         textToSpeech = useroptions.getBoolean("TTS", true);
-        translation = useroptions.getBoolean("TRANSLATION", true);
+        translationValue = useroptions.getBoolean("TRANSLATION", true);
 
+        // Set all layout elements accordingly.
         if (chosenGametype.equals("NORMAL")) {
             gamemodeSwitch.setChecked(false);
-            gamemodeSwitch.setText("OFF");
+            gamemodeSwitch.setText(R.string.OFF);
         }
         else {
             gamemodeSwitch.setChecked(true);
-            gamemodeSwitch.setText("ON");
+            gamemodeSwitch.setText(R.string.ON);
 
         }
 
         if(textToSpeech == true) {
             textToSpeechSwitch.setChecked(true);
-            textToSpeechSwitch.setText("ON");
+            textToSpeechSwitch.setText(R.string.ON);
         }
         else {
             textToSpeechSwitch.setChecked(false);
-            textToSpeechSwitch.setText("OFF");
+            textToSpeechSwitch.setText(R.string.OFF);
         }
 
-        if(translation == true) {
+        if(translationValue == true) {
             translationSwitch.setChecked(true);
-            translationSwitch.setText("ON");
+            translationSwitch.setText(R.string.ON);
         }
         else {
             translationSwitch.setChecked(false);
-            translationSwitch.setText("OFF");
+            translationSwitch.setText(R.string.OFF);
         }
 
         if(chosenGameversion.equals("DEMPRO"))

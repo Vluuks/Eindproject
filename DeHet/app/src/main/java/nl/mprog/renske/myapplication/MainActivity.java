@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +20,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private GamePlay gameplay;
     private TextView woordTextView;
-    private Button deButton, hetButton;
-    private TextToSpeech t1;
+    private TextToSpeech textToSpeech;
     private static final int MY_DATA_CHECK_CODE = 1234;
     private boolean textToSpeechStatus, translationStatus;
 
@@ -32,9 +29,9 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Create Gameplay instance.
         gameplay = new GamePlay(MainActivity.this);
         gameplay.loadDictionary();
-
 
         // Prepare game components and mascot.
         initializeGameComponents();
@@ -50,6 +47,7 @@ public class MainActivity extends AppCompatActivity  {
      */
     public void initializeGameComponents()
     {
+        // Pass TextViews on to GamePlay.
         TextView translationTextView, scoreTextView, livesTextView, multiplierTextView,
                 timerTextView, correctTextView, incorrectTextView;
 
@@ -66,7 +64,10 @@ public class MainActivity extends AppCompatActivity  {
 
         ArrayList<TextView> textViewList = new ArrayList<TextView>();
         textViewList.addAll(Arrays.asList(textViewArray));
+        gameplay.setTextViews(textViewList);
 
+        // Pass buttons on to GamePlay.
+        Button deButton, hetButton;
 
         Button[] buttonArray = new Button[]{
                 deButton = (Button) findViewById(R.id.de_button),
@@ -75,8 +76,9 @@ public class MainActivity extends AppCompatActivity  {
 
         ArrayList<Button> buttonList = new ArrayList<Button>();
         buttonList.addAll(Arrays.asList(buttonArray));
+        gameplay.setButtons(buttonList);
 
-
+        // Pass ImageViews on to GamePlay.
         ImageView finishedImageView;
 
         ImageView[] imageviewArray = new ImageView[]{
@@ -85,18 +87,16 @@ public class MainActivity extends AppCompatActivity  {
 
         ArrayList<ImageView> imageviewList = new ArrayList<ImageView>();
         imageviewList.addAll(Arrays.asList(imageviewArray));
-
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.finishedLayout);
-
-        gameplay.setTextViews(textViewList);
-        gameplay.setButtons(buttonList);
         gameplay.setImageViews(imageviewList);
+
+        // Pass layout on to GamePlay.
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.finishedLayout);
         gameplay.setLayout(frameLayout);
 
+        // Pass user settings on to GamePlay.
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
         gameplay.setSharedPreferences(useroptions);
         gameplay.initializeGame();
-
     }
 
     /**
@@ -106,10 +106,11 @@ public class MainActivity extends AppCompatActivity  {
 
         Bruin bruin = new Bruin();
 
-        // set sharedpreferences
+        // Set SharedPreferences for Bruin.
         SharedPreferences storedachievements = getSharedPreferences("storedachievements", this.MODE_PRIVATE);
         bruin.setSharedPreferences(storedachievements);
 
+        // Pass ImageViews to Bruin.
         ImageView item1ImageView, item2ImageView, item3ImageView, item4ImageView, item5ImageView,
                 item6ImageView, item7ImageView, item8ImageView, item9ImageView, item10ImageView;
 
@@ -129,11 +130,13 @@ public class MainActivity extends AppCompatActivity  {
         ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
         imageViewList.addAll(Arrays.asList(imageViewArray));
         bruin.setItemImageViews(imageViewList);
+
+        // Check which items are equipped and update ImageViews accordingly.
         bruin.checkEquipped();
     }
 
     /**
-     * Interface redirecting methods.
+     * Obtains user's chosen options concerning TextToSpeech and translations.
      */
     public void checkSharedPreferences(){
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
@@ -184,7 +187,7 @@ public class MainActivity extends AppCompatActivity  {
     public void onWordClick(View view){
         if(textToSpeechStatus) {
             String speech = woordTextView.getText().toString();
-            t1.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+            textToSpeech.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
         }
         if (translationStatus){
             gameplay.showTranslation();
@@ -216,17 +219,17 @@ public class MainActivity extends AppCompatActivity  {
         startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
     }
 
-
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         if (requestCode == MY_DATA_CHECK_CODE)
         {
+            // If TTS can be launched without problem.
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
                 startTTS();
 
             else
             {
-                // Missing TTS data, install it
+                // Missing TTS data, install it.
                 Intent installIntent = new Intent();
                 installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                 startActivity(installIntent);
@@ -235,7 +238,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void startTTS() {
-        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
 
             // Set locale/language on intialization.
             @Override
@@ -243,7 +246,7 @@ public class MainActivity extends AppCompatActivity  {
                 Locale[] locales = Locale.getAvailableLocales();
                 List<Locale> localeList = new ArrayList<Locale>();
                 for (Locale locale : locales) {
-                    int res = t1.isLanguageAvailable(locale);
+                    int res = textToSpeech.isLanguageAvailable(locale);
                     if (res == TextToSpeech.LANG_COUNTRY_AVAILABLE) {
                         localeList.add(locale);
                         System.out.println(locale);
@@ -251,7 +254,7 @@ public class MainActivity extends AppCompatActivity  {
                 }
                 if (status != TextToSpeech.ERROR) {
                     Locale loc = new Locale("nl", "NL");
-                    int result = t1.setLanguage(loc);
+                    int result = textToSpeech.setLanguage(loc);
                 }
             }
         });

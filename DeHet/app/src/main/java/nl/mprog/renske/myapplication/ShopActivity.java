@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -29,11 +28,10 @@ public class ShopActivity extends AppCompatActivity {
     private TextView coinsTextView;
     private int coins;
     private ArrayList<ShopItem> shopItems;
-    private boolean resetvalue;
+    private boolean resetValue;
     private ShopItem item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
     private ListView listView;
-    private String jsonstring;
-
+    private String jsonString;
     private Parcelable state;
 
     @Override
@@ -46,13 +44,23 @@ public class ShopActivity extends AppCompatActivity {
         shopItems = new ArrayList<ShopItem>();
         coinsTextView = (TextView) findViewById(R.id.cointsTextView);
 
+        // Create or load shopitems, adapter and listener.
+        initializeShop();
+        setListener();
+    }
+
+    /**
+     * Initializes the shop either from SharedPreferences or from scratch.
+     */
+    private void initializeShop(){
+
         // Obtain SharedPreferences.
         SharedPreferences savedprefs = this.getSharedPreferences("storedachievements", MODE_PRIVATE);
-        jsonstring = savedprefs.getString("jsonshop", null);
+        jsonString = savedprefs.getString("jsonshop", null);
         coins = savedprefs.getInt("coinsamount", 0);
 
         // If there are not SharedPreferences, create shop items from scratch.
-        if(savedprefs == null || jsonstring == null) {
+        if(savedprefs == null || jsonString == null) {
             coins = 0;
             shopItems = createShopItems();
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
@@ -62,15 +70,17 @@ public class ShopActivity extends AppCompatActivity {
         // If sharedpreferences exist, use those instead.
         else {
             checkForReset();
-            shopItems = loadShopItems(jsonstring);
+            shopItems = loadShopItems(jsonString);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
             coinsTextView.setText(getString(R.string.coins) + Integer.toString(coins));
         }
+    }
 
-        /**
-         * Create the listview, set the adapter and onclicklistener.
-         */
-        listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
+    /**
+     * Set an OnClickListener for the items in the ListView.
+     */
+    private void setListener(){
+        // listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -112,7 +122,6 @@ public class ShopActivity extends AppCompatActivity {
         });
     }
 
-
     /**
      * Buy or equip an item.
      */
@@ -151,12 +160,12 @@ public class ShopActivity extends AppCompatActivity {
      */
     public boolean checkForReset(){
         SharedPreferences useroptions = getSharedPreferences("settings", this.MODE_PRIVATE);
-        resetvalue = useroptions.getBoolean("RESET", false);
+        resetValue = useroptions.getBoolean("RESET", false);
 
-        if(resetvalue == true) {
+        if(resetValue == true) {
             coins = 0;
         }
-        return resetvalue;
+        return resetValue;
     }
 
     /**
@@ -216,7 +225,7 @@ public class ShopActivity extends AppCompatActivity {
                 item10 = sharedprefslist.get(9)
         };
 
-        // add the list created above to the actual arraylist
+        // Add the list created above to the actual arraylist.
         ArrayList<ShopItem> savedShopItems = new ArrayList<ShopItem>();
         savedShopItems.addAll(Arrays.asList(savedItemList));
         return savedShopItems;

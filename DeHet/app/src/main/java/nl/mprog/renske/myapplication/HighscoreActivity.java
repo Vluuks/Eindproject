@@ -366,24 +366,25 @@ public class HighscoreActivity extends AppCompatActivity {
                 TextView achievementprogress = (TextView) v.findViewById(R.id.status);
                 ImageView achievementicon = (ImageView) v.findViewById(R.id.icon);
 
-                // set textview to show achievement name
+                // Set TextView to show achievement name.
                 if (achievementname != null)
                     achievementname.setText(achievement.name);
 
                 if (achievementprogress != null) {
-                    // if the achievement is completed, set text to complete and update picture
+                    // If the achievement is completed, set text to complete and update picture.
                     if (achievement.status == 1) {
                         achievementprogress.setText(R.string.achievementcomplete);
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
 
-                        // check if the achievement is repeated and award coins appropriately
+                        // Check if the achievement is repeated and award coins appropriately.
                         if (achievement.counter > 1 && eligibleCoins) {
-                            achievementprogress.setText(getString(R.string.completedpart1) + Integer.toString(achievement.counter) + getString(R.string.completedpart2));
+                            achievementprogress.setText(getString(R.string.completedpart1) +
+                                    Integer.toString(achievement.counter)
+                                    + getString(R.string.completedpart2));
 
                             switch (achievement.type) {
                                 case ("Beginner"):
                                     coinsAmount = coinsAmount + 500; //todo terugzetten naar 5
-                                    System.out.println("COINS ADDED");
                                     break;
                                 case ("Novice"):
                                     coinsAmount = coinsAmount + 10;
@@ -398,12 +399,12 @@ public class HighscoreActivity extends AppCompatActivity {
                                     coinsAmount = coinsAmount + 50;
                                     break;
                             }
-                            // update the amount of coins the user has
+                            // Update TextView to show the amount of coins the user has.
                             coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
                             eligibleCoins = false;
                         }
                     }
-                    // otherwise just show the type of achievement as text
+                    // Otherwise just show the type of achievement as text.
                     else {
                         achievementprogress.setText(achievement.type);
                         achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.icontest));
@@ -416,4 +417,3 @@ public class HighscoreActivity extends AppCompatActivity {
         }
     }
 }
-

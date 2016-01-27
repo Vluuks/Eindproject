@@ -10,7 +10,7 @@ public class Achievement {
 
     public Achievement(String the_name, String the_type){
         this.name = the_name;
-        this.imageviewpath = "@mipmap/icontest"; // todo in string resource zetten
+        this.imageviewpath = "@mipmap/icontest";
         this.status = 0;
         this.type = the_type;
         this.counter = 0;

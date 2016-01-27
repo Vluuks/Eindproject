@@ -77,4 +77,6 @@
     <string name="standardtextright">0 RIGHT</string>
     <string name="standardtextwrong">WRONG 0</string>
     <string name="standardtextword">" "</string>
+    <string name="OFF">OFF</string>
+    <string name="ON">ON</string>
 </resources>

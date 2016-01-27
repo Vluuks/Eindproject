@@ -8,12 +8,10 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import org.xmlpull.v1.XmlPullParser;
+
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,12 +27,12 @@ public class GamePlay implements TimerHandler {
     public ImageView finishedImageView;
     private Button deButton, hetButton;
     private String lidwoord, znw, gameType, pickedWord, pickedWordTranslation, gameVersion;
-    private int score, lives, multiplier, maxmultiplier, correctcount, incorrectcount, storedtimervalue;
+    private int score, lives, multiplier, maxMultiplier, correctCount, incorrectCount, storedTimerValue;
     private ArrayList<String> keylist;
     private Stopwatch gameTimer;
     private boolean gameStatus;
-    private SharedPreferences useroptions;
-    private Map<String, String> dictionarymap = new HashMap<String, String>();
+    private SharedPreferences userOptions;
+    private Map<String, String> dictionaryMap = new HashMap<String, String>();
     private FrameLayout finishedLayout;
 
     /**
@@ -88,7 +86,7 @@ public class GamePlay implements TimerHandler {
         // Load the dictionary.
         Dictionary dictionary = new Dictionary(activityContext);
         try {
-            dictionarymap = dictionary.loadDictionaryFromXML();
+            dictionaryMap = dictionary.loadDictionaryFromXML();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -102,7 +100,7 @@ public class GamePlay implements TimerHandler {
      * Gets SharedPreferences from MainActivity.
      */
     public void setSharedPreferences(SharedPreferences pickedOptions){
-        useroptions = pickedOptions;
+        userOptions = pickedOptions;
     }
 
     /**
@@ -112,14 +110,14 @@ public class GamePlay implements TimerHandler {
     {
         // Set values.
         gameStatus = true;
-        gameType = useroptions.getString("GAMETYPE", "NORMAL");
-        gameVersion = useroptions.getString("GAMEVERSION", "DEHET");
+        gameType = userOptions.getString("GAMETYPE", "NORMAL");
+        gameVersion = userOptions.getString("GAMEVERSION", "DEHET");
         score = 0;
         lives = 3;
         multiplier = 0;
-        maxmultiplier = -1;
-        correctcount = 0;
-        incorrectcount = 0;
+        maxMultiplier = -1;
+        correctCount = 0;
+        incorrectCount = 0;
 
         System.out.println(gameVersion);
 
@@ -214,8 +212,8 @@ public class GamePlay implements TimerHandler {
             intent.putExtra("GAMETYPE", gameType);
             intent.putExtra("SCORE", score);
             intent.putExtra("LIVES", lives);
-            intent.putExtra("MAXMULTIPLIER", maxmultiplier);
-            intent.putExtra("CORRECTCOUNT", correctcount);
+            intent.putExtra("MAXMULTIPLIER", maxMultiplier);
+            intent.putExtra("CORRECTCOUNT", correctCount);
             intent.putExtra("TIMERSECONDS", Integer.parseInt(timerTextView.getText().toString()));
         }
 
@@ -248,7 +246,7 @@ public class GamePlay implements TimerHandler {
             pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
         }
 
-        pickedWordTranslation = dictionarymap.get(pickedWord);
+        pickedWordTranslation = dictionaryMap.get(pickedWord);
 
         // Split keystring so that you have the article and the noun.
         String[] wordparts = pickedWord.split(" ", 2);
@@ -305,8 +303,8 @@ public class GamePlay implements TimerHandler {
      */
     public void ifCorrect(){
         keylist.remove(pickedWord);
-        correctcount++;
-        correctTextView.setText(Integer.toString(correctcount)
+        correctCount++;
+        correctTextView.setText(Integer.toString(correctCount)
                 + activityContext.getString(R.string.correctguesses));
 
         if(gameType.equals("NORMAL")) {
@@ -314,8 +312,8 @@ public class GamePlay implements TimerHandler {
             multiplierTextView.setText(activityContext.getString(R.string.combo) + Integer.toString(multiplier));
 
             // Check whether the multiplier has increased.
-            if (multiplier > maxmultiplier)
-                maxmultiplier = multiplier;
+            if (multiplier > maxMultiplier)
+                maxMultiplier = multiplier;
         }
     }
 
@@ -324,9 +322,9 @@ public class GamePlay implements TimerHandler {
      */
     public void ifIncorrect(){
         keylist.add(pickedWord);
-        incorrectcount++;
+        incorrectCount++;
         incorrectTextView.setText(activityContext.getString(R.string.incorrectguesses)
-                + Integer.toString(incorrectcount));
+                + Integer.toString(incorrectCount));
 
         if(gameType.equals("NORMAL")) {
             lives--;
@@ -340,7 +338,7 @@ public class GamePlay implements TimerHandler {
      */
     @Override
     public void onTimerFinish() {
-        if(gameType.equals("NORMAL") && correctcount > 0)
+        if(gameType.equals("NORMAL") && correctCount > 0)
             onWin();
         else
             initializeGame();
@@ -364,7 +362,7 @@ public class GamePlay implements TimerHandler {
      */
     public void pauseGame(){
         if(gameType.equals("NORMAL") && !timerTextView.getText().equals("0")) {
-            storedtimervalue = gameTimer.pauseTimer();
+            storedTimerValue = gameTimer.pauseTimer();
         }
     }
 
@@ -389,7 +387,7 @@ public class GamePlay implements TimerHandler {
      * Translation.
      */
     public void showTranslation(){
-        pickedWordTranslation = dictionarymap.get(pickedWord);
+        pickedWordTranslation = dictionaryMap.get(pickedWord);
         translationTextView.setText(pickedWordTranslation);
     }
 }
