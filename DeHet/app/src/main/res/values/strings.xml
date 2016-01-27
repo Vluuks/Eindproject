@@ -79,4 +79,6 @@
     <string name="standardtextword">" "</string>
     <string name="OFF">OFF</string>
     <string name="ON">ON</string>
+    <string name="equippedsuccess">Equipped item!</string>
+    <string name="unequippedsuccess">Unequipped item!</string>
 </resources>

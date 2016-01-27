@@ -5,7 +5,6 @@ import android.content.Context;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -61,13 +60,13 @@ public class Dictionary {
             switch (eventType) {
                 case XmlPullParser.START_TAG:
 
-                    // If the tag's name is <k>.
+                    // Obtain the word/article combo.
                     if (name.equals("k")) {
                         if (xpp.next() == XmlPullParser.TEXT)
                             dictKey = xpp.getText();
                     }
 
-                    // If the tag's name is <t>.
+                    // Obtain the translation.
                     if (name.equals("t")) {
                         if (xpp.next() == XmlPullParser.TEXT)
                             dictValue = xpp.getText();

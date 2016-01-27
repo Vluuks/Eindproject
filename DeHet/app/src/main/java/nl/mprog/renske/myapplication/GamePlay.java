@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -207,7 +205,7 @@ public class GamePlay implements TimerHandler {
         incorrectTextView.setVisibility(View.INVISIBLE);
 
         // Collect data for highscores/achievements.
-        Intent intent = new Intent(activityContext, HighscoreActivity.class);
+        Intent intent = new Intent(activityContext, AchievementActivity.class);
         if(gameType.equals("NORMAL")) {
             intent.putExtra("GAMETYPE", gameType);
             intent.putExtra("SCORE", score);

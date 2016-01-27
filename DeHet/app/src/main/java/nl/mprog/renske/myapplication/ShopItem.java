@@ -17,4 +17,20 @@ public class ShopItem {
         this.price = the_price;
         this.equipped = false;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setEquipped(boolean equipped) {
+        this.equipped = equipped;
+    }
+
+    public boolean isEquipped(){
+        return equipped;
+    }
 }

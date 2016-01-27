@@ -66,7 +66,7 @@ Ook kan de gebruiker er voor kiezen om vertalingen of TextToSpeech uit te zetten
 
 ![](doc/hintoptions.png)
 
-Als de chill mode actief is, worden alle layoutelementen die niet van belang zijn verborgen. Chill mode kan ook met die/deze dit/dat geactiveerd worden. De mascotte is nog wel gewoon actief.
+Als de chill mode actief is, worden alle layoutelementen die niet van belang zijn verborgen. Chill mode kan ook met die/deze dit/dat geactiveerd worden. De mascotte is nog wel gewoon actief. Als die/deze dit/dat mode actief is dan verandert er verder weinig aan het spel zelf, alleen de tekst op de buttons verandert.
 
 ![](doc/chilldezedie.png)
 

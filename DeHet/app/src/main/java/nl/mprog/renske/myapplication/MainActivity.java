@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -195,7 +194,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void displayAchievementScreen(View view) {
-        Intent intent = new Intent(this, HighscoreActivity.class);
+        Intent intent = new Intent(this, AchievementActivity.class);
         startActivity(intent);
     }
 
