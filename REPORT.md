@@ -27,11 +27,27 @@ De code is verdeeld over verschillened Activities en Classes.
 * Achievement
 * ShopItem 
 
-In het onderstaande schema is te zien welke methods er in welke class zitten en hoe deze zich tot elkaar verhouden. 
+In de onderstaande schema's is te zien welke methods er in welke class zitten, welke argumenten deze vereisen en wat ze returnen.
 
 ![](doc/design.png)
 
 
+## App design
+
+Het hoofdscherm van de app ziet er als volgt uit in normal game mode:
+
+![](doc/appdesign1.png)
+
+
+Het hints en opties scherm kunnen via het menu worden bereikt. In het hints scherm staan een aantal suggesties om de gebruiker op weg te helpen bij het leren van de lidwoorden.
+De opties geven de gebruiker de mogelijkheid om te kiezen voor chill mode, een mode waarbij de score, achievements, timer en levens niet van belang zijn maar de gebruiker rustig kan oefenen.
+
+![](doc/hintsopties.png)
+
+
+In de shopactivity kunnen accessories voor de mascotte Bruin gekocht worden:
+
+![](doc/shop.png)
 
 
 ## Challenges
@@ -43,4 +59,4 @@ Tot slot heb ik ook veel problemen gehad met de timer in het spel. Oorspronkelij
 
 Naast deze meer specifieke problemen heb ik ook een beetje last gehad van mijn gebrek aan kennis over fragments. Op dit moment heb ik in mijn app diverse schermen, maar deze zijn allemaal van het type activity. Dit is voor sommige schermen niet echt nodig omdat er eigenlijk alleen maar tekst getoond wordt, bijvoorbeeld. Zoiets had dan beter in een fragment gekund. Tot aan de derde week had ik echter nog nooit van fragments gehoord en was het voor mij dus ook niet te doen om dat dan nog te implementeren. Als ik verder ga werken aan deze app ben ik wel van plan om te kijken of ik het wat handiger aan kan pakken, omdat het vermoedelijk ook een stuk sneller is.
 
-In vergelijkin met mijn oriinele design zitten de meeste functionaliteiten van de app in het eindproduct, maar de verdeling/indeling van methods over de classes is wel veranderd. Ik vind het nog steeds lastig om van te voren te bedenken welke classes er allemaal moeten komen en hoe die zich tot elkaar verhouden, omdat in de praktijk vaak blijkt dat het moeilijk is om bepaalde dingen buiten de activity zelf te doen. Meestal maak ik eerst alles in één bestand en ga ik dan pas kijken hoe het eventueel op te splitsen is. Dit is met deze app ook gebeurd, hoewel ik een designdoc had met een verdeling over classes stond in het begin 90% van de code gewoon in MainActivity. Vaak vind ik het lastig om het op te splitsen omdat bepaalde dingen die bijvoorbeeld met layoutcomponenten van de originele activity te maken hebben niet meer werken, omdat ze niet over de juiste context beschikken. Inmiddels kom ik er meestal wel uit, maar ik blijf dat toch moeilijk vinden. Ook bijvoorbeeld dingen als ListViewAdapters verplaats ik niet zo snel uit de Activity zelf, omdat ik geen idee heb hoe ik zoiets weer goed werkend krijg in een aparte class. Dit geldt bijvoorbeeld ook voor (onclick)listeners. Voor mijzelf wordt het er vaak niet overzichtelijker van als ik een deel wel verplaats naar een class maar een ander deel niet, dus kies ik er dan vaak voor alles maar bij elkaar te laten staan. 
+In vergelijkin met mijn originele design zitten de meeste functionaliteiten van de app in het eindproduct, maar de verdeling/indeling van methods over de classes is wel veranderd. Ik vind het nog steeds lastig om van te voren te bedenken welke classes er allemaal moeten komen en hoe die zich tot elkaar verhouden, omdat in de praktijk vaak blijkt dat het moeilijk is om bepaalde dingen buiten de activity zelf te doen. Meestal maak ik eerst alles in één bestand en ga ik dan pas kijken hoe het eventueel op te splitsen is. Dit is met deze app ook gebeurd, hoewel ik een designdoc had met een verdeling over classes stond in het begin 90% van de code gewoon in MainActivity. Vaak vind ik het lastig om het op te splitsen omdat bepaalde dingen die bijvoorbeeld met layoutcomponenten van de originele activity te maken hebben niet meer werken, omdat ze niet over de juiste context beschikken. Inmiddels kom ik er meestal wel uit, maar ik blijf dat toch moeilijk vinden. Ook bijvoorbeeld dingen als ListViewAdapters verplaats ik niet zo snel uit de Activity zelf, omdat ik geen idee heb hoe ik zoiets weer goed werkend krijg in een aparte class. Dit geldt bijvoorbeeld ook voor (onclick)listeners. Voor mijzelf wordt het er vaak niet overzichtelijker van als ik een deel wel verplaats naar een class maar een ander deel niet, dus kies ik er dan vaak voor alles maar bij elkaar te laten staan. 
