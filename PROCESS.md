@@ -142,7 +142,12 @@
 * Klasseverdeling verbeterd, dictionary heeft nu ook een aparte class.
 * Timer gefixt, bij 0 en een score hoger dan 0 gaat ie door naar onwin.
 
+## Day 16
+* Comments in de meeste java files zijn gedaan, moet no controleren op witregels.
+* Gewerkt aan report, overzicht klasseverdeling toegevoegd, ga nog screenshots met layoutelementen gekoppeld aan methods toevoegen.
+* Hier en daar wat code in eigen methods gezet in plaats van een groot blok in onCreate.
 
+## Day 17
 
 
 
