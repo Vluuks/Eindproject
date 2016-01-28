@@ -22,22 +22,25 @@ De code is verdeeld over verschillened Activities en Classes.
 De dictionary klasse laadt door middel van XML parsing een woordenboek in uit een XML bestand. Dit woordenboek wordt in de app gebruikt om zowel de Nederlandse combinaties van lidwoorden en zelfstandige naamwoorden te kiezen, maar ook om de vertaling te kunnen tonen.
 Het woordenboek wordt opgeslagen in een map met String, String format. Van de keys van het woordenboek wordt een lijst gemaakt, zodat hieruit gemakkelijk pseudorandom een woord gekozen kan worden. 
 
-* GamePlay
+* GamePlay - 
 Gameplay houdt zich bezig met het echte spel. In deze class zitten de meeste methods en gebeurt ook het meest.
 
-* Stopwatch
+* Stopwatch -
 De stopwatch class is puur de implementatie van de timer, welke gebruikt wordt in gameplay.
 
-* ShopLoader & AchievementLoader
-Zowel shoploader als achievementloader zorgen dat de listviews in respectievelijk de shop- en achievementactivity de juiste items uit SharedPreferences krijgen en omgezet worden van Gson naar een array en andersom. Ook maken deze classes de items opnieuw aan als er geen opgeslagen versies van zijn, bijvoorbeeld als de app voor het eerst wordt opgestart of de gebruiker een reset heeft doorgevoerd.
+* AchievementManager - 
+Achievementmanager laadt achievements, slaat ze op of maakt ze aan afhankelijk van wat nodig is. Daarnaats checkt de manager of de gebruiker in aanmerking komt voor achievements en past deze de achievement objecten zonodig aan.
 
-* Bruin
+* ShopItemLoader -
+Deze class houdt zich bezig met het laden en opslaan van de shopitems en zorgt ervoor dat de status netjes geupdatet wordt als de gebruiker een item koopt, equipped of unequipped.
+
+* Bruin -
 Bevat alle ImageViews die te maken hebben met de mascotte Bruin en zorgt ervoor dat de juiste informatie uit de shop wordt opgehaald.
 
-* Achievement
+* Achievement - 
 Bevat informatie over de naam van het achievement, de status (compleet of incompleet), de hoeveelheid keer dat de gebruiker hem herhaald heeft en de moeilijkheidsgraad.
 
-* ShopItem 
+* ShopItem -
 Bevat informatie over de prijs van een item, het uiterlijk, of de gebruiker het item in bezit heeft of niet en of de gebruiker het item equipped heeft of niet.
 
 In de onderstaande schema's is te zien welke methods er in welke class zitten, welke argumenten deze vereisen en wat ze returnen.

@@ -148,6 +148,12 @@
 * Hier en daar wat code in eigen methods gezet in plaats van een groot blok in onCreate.
 
 ## Day 17
+* Begonnen met het opsplitsen van andere Activities in classes, zodat de eigenlijke activity niet vol staat met code.
+* ShopActivity en AchievementActivity verdeeld in classes.
+* Code Review gedaan.
+* Report vrijwel afgemaakt, screenshots toegevoegd en beschrijvingen.
+* Begonnen met het maken van de readme.
+
 
 
 
