@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Context;
@@ -16,6 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
+/**
+ * Activity that displays all items that a user can buy using coins, allowin the user to buy them
+ * using long taps and equip/unequip using long taps. The equipped items will show on Bruin.
+ */
 public class ShopActivity extends AppCompatActivity {
 
     private TextView coinsTextView;
@@ -226,6 +232,5 @@ public class ShopActivity extends AppCompatActivity {
             }
             return v;
         }
-
     }
 }

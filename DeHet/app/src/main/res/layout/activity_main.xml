@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/emptyonwinonlose"
             android:scaleType = "centerCrop" />
+
     </FrameLayout>
 
     <LinearLayout
@@ -38,7 +39,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HINTS"
+            android:text="@string/menuhints"
             android:id="@+id/hintTextview"
             android:layout_gravity="center_horizontal"
             android:onClick="displayHintScreen"/>
@@ -49,7 +50,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OPTIONS"
+            android:text="@string/menuoptions"
             android:id="@+id/optionsTextview"
             android:layout_gravity="center_horizontal"
             android:onClick="goToOptions"/>
@@ -60,7 +61,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACHIEVEMENTS"
+            android:text="@string/menuachievements"
             android:id="@+id/achievementsTextview"
             android:layout_gravity="center_horizontal"
             android:onClick="displayAchievementScreen"/>
@@ -71,7 +72,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SHOP"
+            android:text="@string/menushop"
             android:id="@+id/shopTextview"
             android:layout_gravity="center_horizontal"
             android:onClick="goToShop"/>
@@ -82,7 +83,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NEW GAME"
+            android:text="@string/menunewgame"
             android:id="@+id/newgameTextview"
             android:layout_gravity="center_horizontal"
             android:onClick="startNewGame"/>
@@ -92,14 +93,12 @@
             android:textColor="#856948"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HELP"
+            android:text="@string/menuhelp"
             android:id="@+id/helpTextview"
             android:layout_gravity="center_horizontal"
             android:onClick="displayHelpScreen"/>
 
-
     </LinearLayout>
-
 
     <LinearLayout
         android:orientation="horizontal"
@@ -112,7 +111,7 @@
         android:paddingRight="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RIGHT"
+        android:text="@string/rigthbasictext"
         android:textStyle="bold"
         android:id="@+id/correctcounter"
         android:textColor="#99cc00"/>
@@ -121,24 +120,22 @@
             android:paddingTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LIVES"
+            android:text="@string/livesbasictext"
             android:textColor="#856948"
             android:id="@+id/livesTextview"
             android:layout_gravity="center_horizontal"/>
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingLeft="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WRONG"
-        android:textStyle="bold"
-        android:id="@+id/incorrectcounter"
-        android:textColor="#ff3300"/>
+        <TextView
+            android:paddingTop="10dp"
+            android:paddingLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wrongbasictext"
+            android:textStyle="bold"
+            android:id="@+id/incorrectcounter"
+            android:textColor="#ff3300"/>
 
     </LinearLayout>
-
-
 
     <TextView
         android:paddingTop="30dp"
@@ -154,7 +151,7 @@
         android:paddingTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SCORE"
+        android:text=" "
         android:textColor="#FF6F00"
         android:textSize="20dp"
         android:id="@+id/scoreTextview"
@@ -175,7 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="HET WOORD WOW"
+        android:text=" "
         android:textStyle="bold"
         android:textColor="#4D3E2D"
         android:id="@+id/woordTextview"
@@ -187,7 +184,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="MULTIPLIER"
+        android:text=" "
         android:textColor="#FF6F00"
         android:id="@+id/multiplierTextview"
         android:layout_gravity="center_horizontal" />
@@ -202,7 +199,7 @@
             android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DE"
+            android:text="@string/articledebutton"
             android:id="@+id/de_button"
             android:textColor="#4D3E2D"
             android:onClick="checkArticle"/>
@@ -211,10 +208,11 @@
             android:layout_marginLeft="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HET"
+            android:text="@string/articlehetbutton"
             android:id="@+id/het_button"
             android:textColor="#4D3E2D"
             android:onClick="checkArticle"/>
+
     </LinearLayout>
 
     <FrameLayout

@@ -1,22 +1,50 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 /**
- * Created by Renske on 11-1-2016.
+ * Object that contains information about every achievement, such as state of completion, amount
+ * of times repeated, name and difficulty.
  */
 public class Achievement {
 
     public String name, imageviewpath, type;
     public int status, counter;
 
-    public Achievement(String the_name, String the_type){
-        this.name = the_name;
-        this.imageviewpath = "@mipmap/icontest";
+    /**
+     * Constructor.
+     */
+    public Achievement(String theName, String theType){
+        this.name = theName;
         this.status = 0;
-        this.type = the_type;
+        this.type = theType;
         this.counter = 0;
+    }
+
+    /**
+     * Get/set methods.
+     */
+    public int getStatus() {
+        return status;
     }
 
     public void setStatus(int status_value){
         this.status = status_value;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounterPlusOne() {
+        this.counter++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
     }
 }

@@ -1,7 +1,8 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Context;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -13,33 +14,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Renske on 25-1-2016.
+ * Dictionary loads the dictionary from an XML file using XML parsing and convertis it to a map of
+ * String, String format. After that a list of the keys of the map is constructed to facilitiate
+ * pseudorandom picking of words.
  */
 public class Dictionary {
 
     private Map<String, String> dictionarymap = new HashMap<String, String>();
     private String dictValue, dictKey;
     private Context activityContext;
-    private ArrayList<String> keylist;
+    private ArrayList<String> keyList;
 
+    /**
+     * Constructor.
+     */
     public Dictionary(Context context){
         activityContext = context;
     }
 
-    public ArrayList<String> getKeyList(){
-
-        // Store keys in arraylist to facilitate random picking.
-        keylist = new ArrayList<String>();
-
-        for (Map.Entry<String, String> entry : dictionarymap.entrySet()) {
-            String theWord = entry.getKey();
-            keylist.add(theWord);
-        }
-        return keylist;
-    }
-
+    /**
+     * Obtain dictionary from XML file.
+     */
     public Map<String, String> loadDictionaryFromXML()
-        throws XmlPullParserException, IOException {
+            throws XmlPullParserException, IOException {
 
         // Create the xmlpullparser and factory.
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
@@ -81,5 +78,20 @@ public class Dictionary {
             eventType = xpp.next();
         }
         return dictionarymap;
+    }
+
+    /**
+     * Obtain list of dictionary's keys which consists of all Dutch words.
+     */
+    public ArrayList<String> getKeyList(){
+
+        // Store keys in arraylist to facilitate random picking.
+        keyList = new ArrayList<String>();
+
+        for (Map.Entry<String, String> entry : dictionarymap.entrySet()) {
+            String theWord = entry.getKey();
+            keyList.add(theWord);
+        }
+        return keyList;
     }
 }

@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Intent;
@@ -15,6 +17,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * MainActivity is where the actual game takes place. It contains all layout components necessary
+ * for the game.
+ */
 public class MainActivity extends AppCompatActivity  {
 
     private GamePlay gameplay;
@@ -79,7 +85,6 @@ public class MainActivity extends AppCompatActivity  {
 
         // Pass ImageViews on to GamePlay.
         ImageView finishedImageView;
-
         ImageView[] imageviewArray = new ImageView[]{
                 finishedImageView = (ImageView) findViewById(R.id.finishedImageView)
         };
@@ -218,6 +223,9 @@ public class MainActivity extends AppCompatActivity  {
         startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
     }
 
+    /**
+     * Upon the result of the check, determine if TTS can run as is or is in need of more data.
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         if (requestCode == MY_DATA_CHECK_CODE)
@@ -226,9 +234,9 @@ public class MainActivity extends AppCompatActivity  {
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS)
                 startTTS();
 
+            // If not, it means there is missing TTS data, install it.
             else
             {
-                // Missing TTS data, install it.
                 Intent installIntent = new Intent();
                 installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                 startActivity(installIntent);
@@ -236,6 +244,9 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    /**
+     * Starts TextToSpeech functionality and attempt to set the language to Dutch.
+     */
     public void startTTS() {
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
 
@@ -248,12 +259,11 @@ public class MainActivity extends AppCompatActivity  {
                     int res = textToSpeech.isLanguageAvailable(locale);
                     if (res == TextToSpeech.LANG_COUNTRY_AVAILABLE) {
                         localeList.add(locale);
-                        System.out.println(locale);
                     }
                 }
                 if (status != TextToSpeech.ERROR) {
                     Locale loc = new Locale("nl", "NL");
-                    int result = textToSpeech.setLanguage(loc);
+                    textToSpeech.setLanguage(loc);
                 }
             }
         });

@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="6dip"
@@ -20,7 +20,7 @@
         android:layout_toRightOf="@id/icon"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="naam"
+        android:text=" "
         android:textSize="15dp"
         android:textColor="#4D3E2D"
         android:textStyle="bold"
@@ -37,6 +37,6 @@
         android:layout_alignWithParentIfMissing="true"
         android:gravity="center_vertical"
         android:textColor="#856948"
-        android:text="status" />
+        android:text=" " />
 
 </RelativeLayout>

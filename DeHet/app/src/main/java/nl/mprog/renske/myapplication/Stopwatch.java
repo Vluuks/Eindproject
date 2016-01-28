@@ -1,12 +1,14 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
-// http://stackoverflow.com/questions/14393423/how-to-make-a-countdown-timer-in-java
-
+/**
+ * Implementation of a countodwn timer that is used in the game.
+ * source: http://stackoverflow.com/questions/14393423/how-to-make-a-countdown-timer-in-java
+ */
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.TextView;
-
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,7 +19,9 @@ public class Stopwatch {
     public TextView thetextview;
     public TimerHandler callback;
 
-
+    /**
+     * Constructor.
+     */
     public Stopwatch(int time, TextView textview, TimerHandler the_callback){
         callback = the_callback;
         finished = false;
@@ -37,6 +41,9 @@ public class Stopwatch {
         }, delay, period);
     }
 
+    /**
+     * Set the amount of time that is left.
+     */
     private final int setInterval() {
         if (interval == 1) {
             timer.cancel();
@@ -47,6 +54,9 @@ public class Stopwatch {
         return --interval;
     }
 
+    /**
+     * Timer life cycle.
+     */
     public void resumeTimer(){
         timerstatus = true;
     }
@@ -61,19 +71,16 @@ public class Stopwatch {
         return savedinterval;
     }
 
-    public int getTimerSeconds(){
-        return interval;
-    }
-
+    /**
+     * Updates the TextView that displays the amount of time left.
+     * source: http://stackoverflow.com/questions/3280141/calledfromwrongthreadexception-only-the-original-thread-that-created-a-view-hie
+     */
     public void setTextView(){
-        // source: http://stackoverflow.com/questions/3280141/calledfromwrongthreadexception-only-the-original-thread-that-created-a-view-hie
         Handler refresh = new Handler(Looper.getMainLooper());
         refresh.post(new Runnable() {
             public void run() {
                 thetextview.setText(Integer.toString(setInterval()));
             }
         });
-
-
     }
 }

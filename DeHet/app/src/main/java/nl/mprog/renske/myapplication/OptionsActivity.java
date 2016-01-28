@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.SharedPreferences;
@@ -9,6 +11,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 
+/**
+ * Activity that allows the user to control the game mode, TextToSpeech, translation functionality
+ * and resetting of coins and achievements.
+ */
 public class OptionsActivity extends AppCompatActivity {
 
     private Switch gamemodeSwitch, textToSpeechSwitch, translationSwitch;
@@ -133,7 +139,6 @@ public class OptionsActivity extends AppCompatActivity {
         else {
             gamemodeSwitch.setChecked(true);
             gamemodeSwitch.setText(R.string.ON);
-
         }
 
         if(textToSpeech == true) {

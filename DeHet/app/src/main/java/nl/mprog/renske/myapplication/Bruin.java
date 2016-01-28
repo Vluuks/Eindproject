@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.SharedPreferences;
@@ -13,41 +15,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Renske on 18-1-2016.
+ * Bruin is the game's mascot. This class takes care of displaying the items that can be bought in
+ * the shop using coins and updating the imageviews when an item is equipped or unequipped.
  */
 public class Bruin {
 
-    private ShopItem item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
     private ImageView item1ImageView, item2ImageView, item3ImageView, item4ImageView, item5ImageView,
             item6ImageView, item7ImageView, item8ImageView, item9ImageView, item10ImageView;
-    private SharedPreferences savedShopItems;
     private String jsonstring;
     private ArrayList<ShopItem> equippedItems;
 
-    public Bruin(){
-
-        // turn json string back to objects
-
-        // loop over objects
-
-        // get information about which items are equipped from objects in json
-
-        // if a certain object has true as value for equipped, show appropriate image
-
-        // if a certain object has false, hide the appropriate image
-
-        // all are hidden by default
-
-        // upon relaunch of the app reload also the users chosesn accessories
-
-        // the first time the app launches the jsonstring is null, should check for that
-
-        // only after the user visits the shop at least once it will exist
-
-
-    }
-
-
+    /**
+     * Gives class access to SharedPreferences needed to obtain item status.
+     */
     public void setSharedPreferences(SharedPreferences savedPreferences){
 
         if(savedPreferences != null)
@@ -56,7 +36,9 @@ public class Bruin {
             jsonstring = null;
     }
 
-
+    /**
+     * Initializes the ImageViews used to display Bruin and all items he can equip.
+     */
     public void setItemImageViews(ArrayList<ImageView> imageViewList){
 
         this.item1ImageView = imageViewList.get(0);
@@ -70,8 +52,7 @@ public class Bruin {
         this.item9ImageView = imageViewList.get(8);
         this.item10ImageView = imageViewList.get(9);
 
-
-        // set all to invisible initially
+        // Set all to invisible initially.
         this.item1ImageView.setVisibility(View.GONE);
         this.item2ImageView.setVisibility(View.GONE);
         this.item3ImageView.setVisibility(View.GONE);
@@ -82,19 +63,19 @@ public class Bruin {
         this.item8ImageView.setVisibility(View.GONE);
         this.item9ImageView.setVisibility(View.GONE);
         this.item10ImageView.setVisibility(View.GONE);
-
     }
 
-
-
+    /**
+     * Check whether items are equipped or not and display them accordingly.
+     */
     public void checkEquipped(){
 
         if(jsonstring != null) {
             loadShopItems(jsonstring);
 
+            // Iterate over all items.
             for (ShopItem item : equippedItems) {
 
-                // if an item is marked as equipped, set the right imageviews to visible
                 if(item.equipped == true){
                     switch(item.id){
                         case 1:
@@ -133,9 +114,9 @@ public class Bruin {
         }
     }
 
-
-
-
+    /**
+     * Loads status of shopitems using SharedPreferences.
+     */
     public void loadShopItems(String jsonstring){
 
         Gson gson = new Gson();
@@ -143,13 +124,15 @@ public class Bruin {
         JsonArray jArray = parser.parse(jsonstring).getAsJsonArray();
         ArrayList<ShopItem> sharedprefslist = new ArrayList<ShopItem>();
 
+        // Iterate over objects in Json Array.
         for(JsonElement obj : jArray )
         {
             ShopItem savedItem = gson.fromJson( obj , ShopItem.class);
             sharedprefslist.add(savedItem);
         }
 
-        // create list to put everything inside array in bulk
+        // Create list to put everything inside array in bulk.
+        ShopItem item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
         ShopItem[] savedItemList = new ShopItem[]{
 
                 item1 = sharedprefslist.get(0),
@@ -165,10 +148,8 @@ public class Bruin {
 
         };
 
-        // add the list created above to the actual arraylist
+        // Add the list created above to the actual arraylist.
         equippedItems = new ArrayList<ShopItem>();
         equippedItems.addAll(Arrays.asList(savedItemList));
-
     }
-
 }

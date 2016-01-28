@@ -1,7 +1,10 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 /**
- * Created by Renske on 18-1-2016.
+ * Object that contains information about shop items such as their appearance, name, price, whether
+ * the user owns the item or not and whether the user has the item equipped or not.
  */
 public class ShopItem {
 
@@ -9,15 +12,21 @@ public class ShopItem {
     public int status, price, id;
     public boolean equipped;
 
-    public ShopItem (String the_itemname, String the_imageviewpath, int the_id, int the_price){
-        this.itemname = the_itemname;
-        this.imageviewpath = the_imageviewpath;
-        this.id = the_id;
+    /**
+     * Constructor.
+     */
+    public ShopItem (String theItemName, String theImageviewpath, int theId, int thePrice){
+        this.itemname = theItemName;
+        this.imageviewpath = theImageviewpath;
+        this.id = theId;
         this.status = 0;
-        this.price = the_price;
+        this.price = thePrice;
         this.equipped = false;
     }
 
+    /**
+     * Get/set methods.
+     */
     public int getPrice() {
         return price;
     }

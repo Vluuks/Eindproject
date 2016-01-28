@@ -1,7 +1,7 @@
 package nl.mprog.renske.myapplication;
 
 /**
- * Created by Renske on 25-1-2016.
+ * Allows onWin to trigger when timer finishes.
  */
 public interface TimerHandler {
 

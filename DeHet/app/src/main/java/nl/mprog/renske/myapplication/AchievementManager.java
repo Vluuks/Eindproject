@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Context;
@@ -13,11 +15,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Renske on 27-1-2016.
+ * AchievementManager makes sure that achievements are properly created, saved and loaded and checks
+ * whether the user is eligible for one or more achievements and updates achievements accordingly.
  */
 public class AchievementManager {
 
-    public Achievement
+    private Achievement
             beginner_achiev1, beginner_achiev2, beginner_achiev3, beginner_achiev4,
             novice_achiev1, novice_achiev2, novice_achiev3, novice_achiev4,
             intermediate_achiev1, intermediate_achiev2, intermediate_achiev3, intermediate_achiev4,
@@ -28,10 +31,16 @@ public class AchievementManager {
     private boolean eligibleCoins;
     private ArrayList<Achievement> achievementList;
 
+    /**
+     * Constructor.
+     */
     public AchievementManager(Context context){
         this.activityContext = context;
     }
 
+    /**
+     * Get/set methods.
+     */
     public void setEligibleCoins(boolean eligibleCoins) {
         this.eligibleCoins = eligibleCoins;
     }
@@ -96,7 +105,8 @@ public class AchievementManager {
         };
 
         // Add the array created above to the arraylist and set the listadapter on this arraylist.
-        achievementList = new ArrayList<Achievement>();
+
+        ArrayList<Achievement> achievementList = new ArrayList<Achievement>();
         achievementList.addAll(Arrays.asList(achievementlist));
         return achievementList;
     }
@@ -111,42 +121,43 @@ public class AchievementManager {
         JsonArray jArray = parser.parse(jsonstring).getAsJsonArray();
         ArrayList<Achievement> sharedprefslist = new ArrayList<Achievement>();
 
+        // Iterate over objects in Json Array.
         for (JsonElement obj : jArray) {
             Achievement ach = gson.fromJson(obj, Achievement.class);
             sharedprefslist.add(ach);
         }
 
-        // Ccreate list to put everything inside array in bulk.
-        Achievement[] achievementlist = new Achievement[]{
+        // Create list to put everything inside array in bulk.
+        Achievement[] achievementList = new Achievement[]{
 
                 beginner_achiev1 = sharedprefslist.get(0),
                 beginner_achiev2 = sharedprefslist.get(1),
                 beginner_achiev3 = sharedprefslist.get(2),
+                beginner_achiev4 = sharedprefslist.get(3),
 
-                novice_achiev1 = sharedprefslist.get(3),
-                novice_achiev2 = sharedprefslist.get(4),
-                novice_achiev3 = sharedprefslist.get(5),
+                novice_achiev1 = sharedprefslist.get(4),
+                novice_achiev2 = sharedprefslist.get(5),
+                novice_achiev3 = sharedprefslist.get(6),
+                novice_achiev4 = sharedprefslist.get(7),
 
-                intermediate_achiev1 = sharedprefslist.get(6),
-                intermediate_achiev2 = sharedprefslist.get(7),
-                intermediate_achiev3 = sharedprefslist.get(8),
+                intermediate_achiev1 = sharedprefslist.get(8),
+                intermediate_achiev2 = sharedprefslist.get(9),
+                intermediate_achiev3 = sharedprefslist.get(10),
+                intermediate_achiev4 = sharedprefslist.get(11),
 
-                master_achiev1 = sharedprefslist.get(9),
-                master_achiev2 = sharedprefslist.get(10),
+                master_achiev1 = sharedprefslist.get(12),
+                master_achiev2 = sharedprefslist.get(13),
+                master_achiev3 = sharedprefslist.get(14),
 
-                ultimate_achiev1 = sharedprefslist.get(11),
-                ultimate_achiev2 = sharedprefslist.get(12),
+                ultimate_achiev1 = sharedprefslist.get(15),
+                ultimate_achiev2 = sharedprefslist.get(16),
+                master_achiev3 = sharedprefslist.get(17)
         };
 
         // Add the list created above to the actual arraylist
-        achievementList = new ArrayList<Achievement>();
-        achievementList.addAll(Arrays.asList(achievementlist));
-        return achievementList;
-    }
-
-
-    public Achievement getAchievement(int index){
-        return achievementList.get(index);
+        ArrayList<Achievement> savedAchievementList = new ArrayList<Achievement>();
+        savedAchievementList.addAll(Arrays.asList(achievementList));
+        return savedAchievementList;
     }
 
     /**
@@ -159,7 +170,7 @@ public class AchievementManager {
                 gson.toJsonTree(achievements, new TypeToken<ArrayList<Achievement>>() {
                 }.getType());
 
-        JsonArray jsonArray = element.getAsJsonArray();
+        JsonArray jsonArray = element.getAsJsonArray(); // waarom crasht ie hier?? TODO
         String jsonArrayString = jsonArray.toString();
 
         SharedPreferences prefs = activityContext.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
@@ -175,93 +186,88 @@ public class AchievementManager {
      */
     public void checkForAchievement(int finalscore, int finalmultiplier, int finallives, int correctcounter, int currentcoins) {
 
-        eligibleCoins = true;
+        setEligibleCoins(true);
 
         // Beginner achievements.
         if (finalscore >= 50) {
             beginner_achiev1.setStatus(1);
-            beginner_achiev1.counter++;
+            beginner_achiev1.setCounterPlusOne();
         }
         if (finalmultiplier >= 5) {
             beginner_achiev2.setStatus(1);
-            beginner_achiev2.counter++;
+            beginner_achiev2.setCounterPlusOne();
         }
         if (finallives >= 1) {
             beginner_achiev3.setStatus(1);
-            beginner_achiev3.counter++;
+            beginner_achiev3.setCounterPlusOne();
         }
         if (correctcounter >= 25) {
             beginner_achiev4.setStatus(1);
-            beginner_achiev4.counter++;
+            beginner_achiev4.setCounterPlusOne();
         }
 
         // Novice achievements.
         if (finalscore >= 100) {
             novice_achiev1.setStatus(1);
-            novice_achiev1.counter++;
+            novice_achiev1.setCounterPlusOne();
         }
         if (finalmultiplier >= 10) {
             novice_achiev2.setStatus(1);
-            novice_achiev2.counter++;
+            novice_achiev2.setCounterPlusOne();
         }
         if (finallives >= 2) {
             novice_achiev3.setStatus(1);
-            novice_achiev3.counter++;
+            novice_achiev3.setCounterPlusOne();
         }
         if (correctcounter >= 50) {
             novice_achiev4.setStatus(1);
-            novice_achiev4.counter++;
+            novice_achiev4.setCounterPlusOne();
         }
 
         // Intermediate achievements.
         if (finalscore >= 250) {
             intermediate_achiev1.setStatus(1);
-            intermediate_achiev1.counter++;
+            intermediate_achiev1.setCounterPlusOne();
         }
         if (finalmultiplier >= 25) {
             intermediate_achiev2.setStatus(1);
-            intermediate_achiev2.counter++;
+            intermediate_achiev2.setCounterPlusOne();
         }
         if (finallives == 3) {
             intermediate_achiev3.setStatus(1);
-            intermediate_achiev3.counter++;
+            intermediate_achiev3.setCounterPlusOne();
         }
         if (correctcounter >= 75) {
             intermediate_achiev4.setStatus(1);
-            intermediate_achiev4.counter++;
+            intermediate_achiev4.setCounterPlusOne();
         }
 
         // Master achievements.
         if (finalscore >= 750) {
             master_achiev1.setStatus(1);
-            master_achiev1.counter++;
+            master_achiev1.setCounterPlusOne();
         }
         if (finalmultiplier >= 50) {
             master_achiev2.setStatus(1);
-            master_achiev2.counter++;
+            master_achiev2.setCounterPlusOne();
         }
         if (finalmultiplier >= 100) {
             master_achiev3.setStatus(1);
-            master_achiev3.counter++;
+            master_achiev3.setCounterPlusOne();
         }
 
         // Ultimate achievements.
         if (finalscore >= 1500) {
             ultimate_achiev1.setStatus(1);
-            ultimate_achiev1.counter++;
+            ultimate_achiev1.setCounterPlusOne();
         }
         if (finalmultiplier >= 100) {
             ultimate_achiev2.setStatus(1);
-            ultimate_achiev2.counter++;
+            ultimate_achiev2.setCounterPlusOne();
         }
         if (finalmultiplier >= 150) {
             ultimate_achiev3.setStatus(1);
-            ultimate_achiev3.counter++;
+            ultimate_achiev3.setCounterPlusOne();
         }
-
-        // Save the status of the achievements.
-        saveAchievements(achievementList, currentcoins);
     }
-
-
 }

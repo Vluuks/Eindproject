@@ -21,7 +21,7 @@
         android:layout_height="80dip"
         android:layout_toRightOf="@id/icon"
         android:layout_alignParentRight="true"
-        android:text="ITEM PRICE"
+        android:text=" "
         />
 
     <TextView
@@ -35,7 +35,7 @@
         android:textStyle="bold"
         android:textColor="#4D3E2D"
         android:textSize="15dp"
-        android:text="Flowery Scarf"
+        android:text=" "
         android:paddingTop="20dp"
         android:paddingBottom="15dp"/>
 

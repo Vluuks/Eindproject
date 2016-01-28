@@ -81,4 +81,17 @@
     <string name="ON">ON</string>
     <string name="equippedsuccess">Equipped item!</string>
     <string name="unequippedsuccess">Unequipped item!</string>
+    <string name="basiccoinstext">Coins: 0</string>
+    <string name="articledebutton">DE</string>
+    <string name="articlehetbutton">HET</string>
+    <string name="wrongbasictext">WRONG</string>
+    <string name="livesbasictext">LIVES</string>
+    <string name="rigthbasictext">RIGHT</string>
+    <string name="menuhints">HINTS</string>
+    <string name="menuoptions">OPTIONS</string>
+    <string name="menuachievements">ACHIEVEMENTS</string>
+    <string name="menushop">SHOP</string>
+    <string name="menunewgame">NEW GAME</string>
+    <string name="menuhelp">HELP</string>
+    <string name="shopcoinsbasictext">Coins:</string>
 </resources>

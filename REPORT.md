@@ -73,9 +73,13 @@ Als de chill mode actief is, worden alle layoutelementen die niet van belang zij
 
 ![](doc/chilldezedie.png)
 
+De gebruiker kan verschillende achievements halen in het spel. Bij het herhaaldelijk completen van deze achievement verdient de gebruiker "coins" afhankelijk van de moeilijkheidsgraad van de achievements.
+![](doc/achievements.png)
+
 In de ShopActivity kunnen accessories voor de mascotte Bruin gekocht worden:
 
 ![](doc/shop.png)
+
 
 
 ## Challenges

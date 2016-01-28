@@ -1,8 +1,11 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,12 +17,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+/**
+ * Activity that shows the user a list of all achievements with their according status. Accessed
+ * directly after finishing a game and by the main menu.
+ */
 public class AchievementActivity extends AppCompatActivity {
 
-    public int finalscore, finalmultiplier, finallives, coinsAmount, correctcounter;
+    public int finalScore, finalMultiplier, finalLives, coinsAmount, correctCounter;
     public ArrayList<Achievement> achievements;
     public TextView coinsTextView;
-    private String jsonstring;
+    private String jsonString;
     private AchievementManager achievementManager;
 
     @Override
@@ -35,15 +42,15 @@ public class AchievementActivity extends AppCompatActivity {
 
         // Obtain SharedPreferences.
         SharedPreferences savedprefs = this.getSharedPreferences("storedachievements", MODE_PRIVATE);
-        jsonstring = savedprefs.getString("jsonachievements", null);
+        jsonString = savedprefs.getString("jsonachievements", null);
         coinsAmount = savedprefs.getInt("coinsamount", 0);
 
         // If there are not SharedPreferences or user did a reset, create achievements from scratch.
-        if (savedprefs == null || jsonstring == null || checkForReset()) {
+        if (savedprefs == null || jsonString == null || checkForReset()) {
 
             // If the user has opted to reset, also reset json string.
-            if (checkForReset() && jsonstring != null) {
-                jsonstring = null;
+            if (checkForReset() && jsonString != null) {
+                jsonString = null;
             }
             coinsAmount = 0;
             achievements = achievementManager.createAchievements();
@@ -52,12 +59,12 @@ public class AchievementActivity extends AppCompatActivity {
 
         // If sharedpreferences exist, use those instead.
         else {
-            achievements = achievementManager.loadAchievements(jsonstring);
+            achievements = achievementManager.loadAchievements(jsonString);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, achievements));
         }
 
         // Check where the user came from, the menu or a game.
-        achievementManager.saveAchievements(achievements, coinsAmount);
+        //achievementManager.saveAchievements(achievements, coinsAmount);
         checkSource();
     }
 
@@ -73,10 +80,9 @@ public class AchievementActivity extends AppCompatActivity {
             editor.putBoolean("RESET", false);
             editor.commit();
 
+            // Reset coins to 0.
             SharedPreferences prefs = this.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = prefs.edit();
-
-            // reset coins to 0
             edit.putInt("coinsamount", 0);
             edit.commit();
         }
@@ -91,14 +97,14 @@ public class AchievementActivity extends AppCompatActivity {
         // If the user came from the game, obtain data from intent.
         if (getIntent().getExtras() != null) {
             Intent intent = getIntent();
-            finalscore = intent.getExtras().getInt("SCORE");
-            finalmultiplier = intent.getExtras().getInt("MAXMULTIPLIER");
-            finallives = intent.getExtras().getInt("LIVES");
-            correctcounter = intent.getExtras().getInt("CORRECTCOUNTER");
+            finalScore = intent.getExtras().getInt("SCORE");
+            finalMultiplier = intent.getExtras().getInt("MAXMULTIPLIER");
+            finalLives = intent.getExtras().getInt("LIVES");
+            correctCounter = intent.getExtras().getInt("CORRECTCOUNTER");
 
             // Check if the user is eligible for achievements.
-            achievementManager.checkForAchievement(finalscore, finalmultiplier, finallives,
-                    correctcounter, coinsAmount);
+            achievementManager.checkForAchievement(finalScore, finalMultiplier, finalLives,
+                    correctCounter, coinsAmount);
         } else
             coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
     }
@@ -129,29 +135,34 @@ public class AchievementActivity extends AppCompatActivity {
             if (achievement != null) {
 
                 // Initialize layout components from the listitem.
-                TextView achievementname = (TextView) v.findViewById(R.id.name);
-                TextView achievementprogress = (TextView) v.findViewById(R.id.status);
-                ImageView achievementicon = (ImageView) v.findViewById(R.id.icon);
+                TextView achievementName = (TextView) v.findViewById(R.id.name);
+                TextView achievementProgress = (TextView) v.findViewById(R.id.status);
+                ImageView achievementIcon = (ImageView) v.findViewById(R.id.icon);
 
                 // Set TextView to show achievement name.
-                if (achievementname != null)
-                    achievementname.setText(achievement.name);
+                if (achievementName != null)
+                    achievementName.setText(achievement.getName());
 
-                if (achievementprogress != null) {
+                if (achievementProgress != null) {
                     // If the achievement is completed, set text to complete and update picture.
-                    if (achievement.status == 1) {
-                        achievementprogress.setText(R.string.achievementcomplete);
-                        achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.testicon2));
+                    if (achievement.getStatus() == 1) {
+                        achievementProgress.setText(R.string.achievementcomplete);
+                        Drawable myDrawable = getResources().getDrawable(R.drawable.achievementdone);
+                        achievementIcon.setImageDrawable(myDrawable);
+
+                        System.out.println(achievement.getCounter());
+                        System.out.println(achievementManager.isEligibleCoins());
 
                         // Check if the achievement is repeated and award coins appropriately.
-                        if (achievement.counter > 1 && achievementManager.isEligibleCoins()) {
-                            achievementprogress.setText(getString(R.string.completedpart1) +
-                                    Integer.toString(achievement.counter)
-                                    + getString(R.string.completedpart2));
+                        if (achievement.getCounter() > 1) {
 
-                            switch (achievement.type) {
+                            // waarom doet deze het niet
+                            achievementProgress.setText(getString(R.string.completedpart1) + Integer.toString(achievement.getCounter()) + getString(R.string.completedpart2));
+
+                            if  (achievementManager.isEligibleCoins()){
+                            switch (achievement.getType()) {
                                 case ("Beginner"):
-                                    coinsAmount = coinsAmount + 500; //todo terugzetten naar 5
+                                    coinsAmount = coinsAmount + 500;
                                     break;
                                 case ("Novice"):
                                     coinsAmount = coinsAmount + 10;
@@ -166,6 +177,7 @@ public class AchievementActivity extends AppCompatActivity {
                                     coinsAmount = coinsAmount + 50;
                                     break;
                             }
+                            }
                             // Update TextView to show the amount of coins the user has.
                             coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
                             achievementManager.setEligibleCoins(false);
@@ -173,8 +185,9 @@ public class AchievementActivity extends AppCompatActivity {
                     }
                     // Otherwise just show the type of achievement as text.
                     else {
-                        achievementprogress.setText(achievement.type);
-                        achievementicon.setImageDrawable(getResources().getDrawable(R.mipmap.icontest));
+                        achievementProgress.setText(achievement.type);
+                        Drawable myDrawable = getResources().getDrawable(R.drawable.achievementtodo);
+                        achievementIcon.setImageDrawable(myDrawable);
                     }
                 }
             }

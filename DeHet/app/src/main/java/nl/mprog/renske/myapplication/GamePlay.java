@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Context;
@@ -16,7 +18,8 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by Renske on 7-1-2016.
+ * GamePlay is where the actual game takes place. It picks every word, updates all layout elements
+ * related to the game accordingly and checks whether the user has answered correctly.
  */
 public class GamePlay implements TimerHandler {
 
@@ -25,7 +28,7 @@ public class GamePlay implements TimerHandler {
     public ImageView finishedImageView;
     private Button deButton, hetButton;
     private String lidwoord, znw, gameType, pickedWord, pickedWordTranslation, gameVersion;
-    private int score, lives, multiplier, maxMultiplier, correctCount, incorrectCount, storedTimerValue;
+    private int score, lives, multiplier, maxMultiplier, correctCount, incorrectCount;
     private ArrayList<String> keylist;
     private Stopwatch gameTimer;
     private boolean gameStatus;
@@ -34,7 +37,7 @@ public class GamePlay implements TimerHandler {
     private FrameLayout finishedLayout;
 
     /**
-     * Obtains context from MainActivity layout.
+     * Constructor.
      */
     public GamePlay (Context context){
         this.activityContext = context;
@@ -117,8 +120,6 @@ public class GamePlay implements TimerHandler {
         correctCount = 0;
         incorrectCount = 0;
 
-        System.out.println(gameVersion);
-
         // Set views accordingly.
         finishedLayout.setVisibility(View.GONE);
         finishedImageView.setVisibility(View.GONE);
@@ -172,19 +173,19 @@ public class GamePlay implements TimerHandler {
     }
 
     /**
-     * Sets the game mode to deze/die/dit/dat instead of de/het.
-     */
-    private void setDemonstrativePronounMode(){
-        deButton.setText(R.string.thesethosethatthis1);
-        hetButton.setText(R.string.thesethosethatthis2);
-    }
-
-    /**
      * Sets the game mode to de/het basic mode.
      */
     private void setArticleMode(){
         deButton.setText(R.string.articlebuttonde);
         hetButton.setText(R.string.articlebuttonhet);
+    }
+
+    /**
+     * Sets the game mode to deze/die/dit/dat instead of de/het.
+     */
+    private void setDemonstrativePronounMode(){
+        deButton.setText(R.string.thesethosethatthis1);
+        hetButton.setText(R.string.thesethosethatthis2);
     }
 
     /**
@@ -260,8 +261,8 @@ public class GamePlay implements TimerHandler {
         else
             znw = znwparts.trim();
 
+        // Set the TextView to display the trimmed word without article.
         woordTextView.setText(znw);
-
     }
 
     /**
@@ -269,13 +270,16 @@ public class GamePlay implements TimerHandler {
      */
     public void checkArticle(View view) {
 
+        // If "de" was picked
         if (view.getId() == R.id.de_button) {
             if (lidwoord.equals("[de]")) {
                 ifCorrect();
             } else {
                 ifIncorrect();
             }
-        } else if (view.getId() == R.id.het_button) {
+        }
+        // if "het" was picked
+        else if (view.getId() == R.id.het_button) {
             if (lidwoord.equals("[het]")) {
                 ifCorrect();
             } else {
@@ -360,7 +364,7 @@ public class GamePlay implements TimerHandler {
      */
     public void pauseGame(){
         if(gameType.equals("NORMAL") && !timerTextView.getText().equals("0")) {
-            storedTimerValue = gameTimer.pauseTimer();
+            gameTimer.pauseTimer();
         }
     }
 

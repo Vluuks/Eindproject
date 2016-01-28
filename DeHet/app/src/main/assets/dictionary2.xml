@@ -80,7 +80,6 @@
         <ar><k>[de] kunst</k><t>art  ; fine art</t></ar>
         <ar><k>[de] achterkant</k><t>back</t></ar>
         <ar><k>[de] zak  ; [de] tas</k><t>bag</t></ar>
-        <ar><k>[de] bal</k><t>ball</t></ar>
         <ar><k>[de] basis  ; [de] kazerne</k><t>base  ; base of operations</t></ar>
         <ar><k>[de] mand  ; [de] korf</k><t>basket  ; handbasket</t></ar>
         <ar><k>[het] bed</k><t>bed</t></ar>
@@ -269,7 +268,6 @@
         <ar><k>[het] voorbeeld</k><t>example  ; illustration  ; instance  ; representative</t></ar>
         <ar><k>[het] idee  ; [de] gedachte  ; [de] ingeving</k><t>idea  ; thought</t></ar>
         <ar><k>[de] beslissing  ; [het] besluit</k><t>decision  ; determination  ; conclusion</t></ar>
-        <ar><k>[de] soort</k><t>kind  ; sort  ; form  ; variety</t></ar>
         <ar><k>[het] merk</k><t>brand  ; make</t></ar>
         <ar><k>[het] voorschrift</k><t>rule  ; regulation</t></ar>
         <ar><k>[het] deel</k><t>part  ; section  ; division</t></ar>
@@ -378,7 +376,7 @@
         <ar><k>[de] stroom</k><t>stream  ; flow  ; current</t></ar>
         <ar><k>[het] land</k><t>country  ; state  ; land</t></ar>
         <ar><k>[het] einde</k><t>end  ; terminal</t></ar>
-        <ar><k>[het] veld (crops)  ; [de] wei (animals)</k><t>field</t></ar>
+        <ar><k>[het] veld; [de] wei (animals)</k><t>field</t></ar>
         <ar><k>[het] front</k><t>front  ; front end  ; forepart</t></ar>
         <ar><k>[de] plaats  ; [de] positie</k><t>position  ; place</t></ar>
         <ar><k>[de] plaats</k><t>seat  ; place</t></ar>
@@ -508,7 +506,7 @@
         <ar><k>[het] lood</k><t>lead  ; Pb  ; atomic number 82</t></ar>
         <ar><k>[het] zilver</k><t>silver  ; Ag  ; atomic number 47</t></ar>
         <ar><k>[het] leder  ; [het] leer</k><t>leather</t></ar>
-        <ar><k>[het] staal</k><t>steel</t></ar>
+        <ar><k>[het] staal (materiaal)</k><t>steel</t></ar>
         <ar><k>[de] chemicaliën</k><t>chemical  ; chemical substance</t></ar>
         <ar><k>[de] steenkool</k><t>coal</t></ar>
         <ar><k>[de] lucht</k><t>air</t></ar>

@@ -1,3 +1,5 @@
+// Renske Talsma, UvA 10896503, vluuks@gmail.com
+
 package nl.mprog.renske.myapplication;
 
 import android.content.Context;
@@ -11,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Renske on 27-1-2016.
+ * ShopItemLoader creates, loads and saves the items in the shop. Saving and loading is done by
+ * converting from ArrayList to Json and vice versa.
  */
 public class ShopItemLoader {
 
@@ -19,6 +22,9 @@ public class ShopItemLoader {
     private Context activityContext;
     private ArrayList<ShopItem> savedShopItems;
 
+    /**
+     * Constructor.
+     */
     public ShopItemLoader(Context context){
         this.activityContext = context;
     }
@@ -28,7 +34,7 @@ public class ShopItemLoader {
      */
     public ArrayList<ShopItem> createShopItems(){
 
-        // create list to put everything inside array in bulk
+        // Create list to put everything inside array in bulk.
         ShopItem[] shopItemList = new ShopItem[]{
 
                 item1 = new ShopItem(activityContext.getString(R.string.bruinscarf), "bruinscarf", 1, 50),
@@ -43,7 +49,7 @@ public class ShopItemLoader {
                 item10 = new ShopItem(activityContext.getString(R.string.bruincrown), "bruincrown", 10, 10000)
         };
 
-        // add the array created above to the arraylist and set the listadapter on this arraylist
+        // Addd the array created above to the arraylist.
         ArrayList<ShopItem> newShopItems = new ArrayList<ShopItem>();
         newShopItems.addAll(Arrays.asList(shopItemList));
         return newShopItems;
@@ -59,6 +65,7 @@ public class ShopItemLoader {
         JsonArray jArray = parser.parse(jsonstring).getAsJsonArray();
         ArrayList<ShopItem> sharedprefslist = new ArrayList<ShopItem>();
 
+        // Iterate over objects in Json Array.
         for(JsonElement obj : jArray )
         {
             ShopItem savedItem = gson.fromJson( obj , ShopItem.class);
@@ -86,10 +93,6 @@ public class ShopItemLoader {
         return savedShopItems;
     }
 
-    public ShopItem getShopItem(int index){
-        return savedShopItems.get(index);
-    }
-
     /**
      * Save shop items and their status to SharedPreferences.
      */
@@ -109,5 +112,12 @@ public class ShopItemLoader {
         edit.putString("jsonshop", jsonArrayString);
         edit.putInt("coinsamount", coins);
         edit.commit();
+    }
+
+    /**
+     * Obtain a certain shopitem from ArrayList.
+     */
+    public ShopItem getShopItem(int index){
+        return savedShopItems.get(index);
     }
 }
