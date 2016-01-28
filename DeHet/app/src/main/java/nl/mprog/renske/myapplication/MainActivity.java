@@ -166,6 +166,14 @@ public class MainActivity extends AppCompatActivity  {
         gameplay.pauseGame();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        finish();
+        System.exit(0);
+        super.onBackPressed();
+    }
+
     /**
      * Layout redirecting methods.
      */
