@@ -10,8 +10,9 @@ De App DeHet is een app waarmee gebruikers de combinaties van lidwoorden en zelf
 ![](doc/screenshotsreadme.png)
 
 ## Data Sources
-### Dictionary
-http://www.dicts.info
+
+[Dictionary](http://www.dicts.info)
+[Gson by Google] (https://github.com/google/gson) (Apache License 2.0)
 
 ### Code hulp
 http://codehenge.net/blog/2011/05/customizing-android-listview-item-layout/
@@ -19,10 +20,8 @@ http://android-developers.blogspot.nl/2009/02/android-layout-tricks-1.html
 http://stackoverflow.com/questions/3280141/calledfromwrongthreadexception-only-the-original-thread-that-created-a-view-hie
 http://stackoverflow.com/questions/14393423/how-to-make-a-countdown-timer-in-java
 
-
 ## Licentie
 Zie licence file.
-
 Bruin en alle tekeningen van Bruin + accessoires © Renske Talsma
 Dictionary © www.dicts.info
 
