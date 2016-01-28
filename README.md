@@ -21,8 +21,9 @@ http://stackoverflow.com/questions/14393423/how-to-make-a-countdown-timer-in-jav
 
 
 ## Licentie
-DeHet © by Renske Talsma
-App is alleen voor persoonlijk gebruik.
+Zie licence file.
+
+Bruin en alle tekeningen van Bruin + accessoires © Renske Talsma
 Dictionary © www.dicts.info
 
 

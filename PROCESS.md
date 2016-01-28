@@ -135,24 +135,36 @@
 ## Day 14
 * Alle afbeeldingen van de shop gemaakt.
 
+## Day 15
+* Begonnen met schets van klasseverdeling.
+
 # Week 4
 
-## Day 15
+## Day 16
 * String resources gedaan voor vrijwel alle activities.
 * Klasseverdeling verbeterd, dictionary heeft nu ook een aparte class.
 * Timer gefixt, bij 0 en een score hoger dan 0 gaat ie door naar onwin.
 
-## Day 16
+## Day 17
 * Comments in de meeste java files zijn gedaan, moet no controleren op witregels.
 * Gewerkt aan report, overzicht klasseverdeling toegevoegd, ga nog screenshots met layoutelementen gekoppeld aan methods toevoegen.
 * Hier en daar wat code in eigen methods gezet in plaats van een groot blok in onCreate.
 
-## Day 17
+## Day 18
 * Begonnen met het opsplitsen van andere Activities in classes, zodat de eigenlijke activity niet vol staat met code.
 * ShopActivity en AchievementActivity verdeeld in classes.
 * Code Review gedaan.
 * Report vrijwel afgemaakt, screenshots toegevoegd en beschrijvingen.
 * Begonnen met het maken van de readme.
+
+## Day 19
+* Code doorgelopen en waar nodig comments toegevoegd.
+* Schetsen klasseverdeling afgerond.
+* Bug gefixt waarbij helft van de achievements niet werd aangemaakt na save.
+* Plaatje achievement compleet/incompleet toegevoegd.
+* Readme en license afgemaakt.
+* Report afgemaakt.
+* Master en andere branch gemerged.
 
 
 

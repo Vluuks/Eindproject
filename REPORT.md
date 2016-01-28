@@ -47,14 +47,15 @@ In de onderstaande schema's is te zien welke methods er in welke class zitten, w
 
 ![](doc/design.png)
 
-
+![](doc/design2.png)
 
 ### Verdeling van methods over activities
 
-TODO
+![](doc/activities1.png)
 
+![](doc/activities2.png)
 
-
+![](doc/activities3.png)
 
 
 ## App design
