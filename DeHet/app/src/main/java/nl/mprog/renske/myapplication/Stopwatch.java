@@ -22,8 +22,8 @@ public class Stopwatch {
     /**
      * Constructor.
      */
-    public Stopwatch(int time, TextView textView, TimerHandler the_callback){
-        callback = the_callback;
+    public Stopwatch(int time, TextView textView, TimerHandler theCallback){
+        callback = theCallback;
         finished = false;
         theTextView = textView;
         interval = time;
