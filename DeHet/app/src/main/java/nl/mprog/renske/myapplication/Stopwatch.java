@@ -15,17 +15,17 @@ import java.util.TimerTask;
 public class Stopwatch {
     static int interval;
     static Timer timer;
-    public boolean timerstatus, finished;
-    public TextView thetextview;
+    public boolean timerStatus, finished;
+    public TextView theTextView;
     public TimerHandler callback;
 
     /**
      * Constructor.
      */
-    public Stopwatch(int time, TextView textview, TimerHandler the_callback){
+    public Stopwatch(int time, TextView textView, TimerHandler the_callback){
         callback = the_callback;
         finished = false;
-        thetextview = textview;
+        theTextView = textView;
         interval = time;
         int delay = 1000;
         int period = 1000;
@@ -33,7 +33,7 @@ public class Stopwatch {
         timer.scheduleAtFixedRate(new TimerTask() {
 
             public void run() {
-                if(timerstatus != false) {
+                if(timerStatus != false) {
                     setTextView();
                 }
 
@@ -58,7 +58,7 @@ public class Stopwatch {
      * Timer life cycle.
      */
     public void resumeTimer(){
-        timerstatus = true;
+        timerStatus = true;
     }
 
     public void cancelTimer(){
@@ -66,9 +66,9 @@ public class Stopwatch {
     }
 
     public int pauseTimer(){
-        timerstatus = false;
-        int savedinterval = interval;
-        return savedinterval;
+        timerStatus = false;
+        int savedInterval = interval;
+        return savedInterval;
     }
 
     /**
@@ -79,7 +79,7 @@ public class Stopwatch {
         Handler refresh = new Handler(Looper.getMainLooper());
         refresh.post(new Runnable() {
             public void run() {
-                thetextview.setText(Integer.toString(setInterval()));
+                theTextView.setText(Integer.toString(setInterval()));
             }
         });
     }

@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class Dictionary {
 
-    private Map<String, String> dictionarymap = new HashMap<String, String>();
+    private Map<String, String> dictionaryMap = new HashMap<String, String>();
     private String dictValue, dictKey;
     private Context activityContext;
     private ArrayList<String> keyList;
@@ -75,10 +75,10 @@ public class Dictionary {
                 case XmlPullParser.END_TAG:
                     break;
             }
-            dictionarymap.put(dictKey, dictValue);
+            dictionaryMap.put(dictKey, dictValue);
             eventType = xpp.next();
         }
-        return dictionarymap;
+        return dictionaryMap;
     }
 
     /**
@@ -89,7 +89,7 @@ public class Dictionary {
         // Store keys in arraylist to facilitate random picking.
         keyList = new ArrayList<String>();
 
-        for (Map.Entry<String, String> entry : dictionarymap.entrySet()) {
+        for (Map.Entry<String, String> entry : dictionaryMap.entrySet()) {
             String theWord = entry.getKey();
             keyList.add(theWord);
         }

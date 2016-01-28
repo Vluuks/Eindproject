@@ -27,9 +27,9 @@ public class GamePlay implements TimerHandler {
     private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView, translationTextView;
     private ImageView finishedImageView;
     private Button deButton, hetButton;
-    private String lidwoord, znw, gameType, pickedWord, pickedWordTranslation, gameVersion;
+    private String article, finalNoun, gameType, pickedWord, pickedWordTranslation, gameVersion;
     private int score, lives, multiplier, maxMultiplier, correctCount, incorrectCount;
-    private ArrayList<String> keylist;
+    private ArrayList<String> keyList;
     private Stopwatch gameTimer;
     private boolean gameStatus;
     private SharedPreferences userOptions;
@@ -94,7 +94,7 @@ public class GamePlay implements TimerHandler {
             e.printStackTrace();
         }
 
-        keylist = dictionary.getKeyList();
+        keyList = dictionary.getKeyList();
     }
 
     /**
@@ -224,7 +224,7 @@ public class GamePlay implements TimerHandler {
      */
     private void initializeTimer(int chosentime){
         gameTimer = new Stopwatch(chosentime, timerTextView, this);
-        gameTimer.timerstatus = true;
+        gameTimer.timerStatus = true;
     }
 
     /**
@@ -234,35 +234,35 @@ public class GamePlay implements TimerHandler {
 
         translationTextView.setText(" ");
 
-        if (keylist.isEmpty())
+        if (keyList.isEmpty())
             onWin();
 
         // Obtain random word from keylist.
         Random randomizer = new Random();
-        pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
+        pickedWord = keyList.get(randomizer.nextInt(keyList.size()));
 
         while(pickedWord == null) {
-            pickedWord = keylist.get(randomizer.nextInt(keylist.size()));
+            pickedWord = keyList.get(randomizer.nextInt(keyList.size()));
         }
 
         pickedWordTranslation = dictionaryMap.get(pickedWord);
 
         // Split keystring so that you have the article and the noun.
-        String[] wordparts = pickedWord.split(" ", 2);
-        lidwoord = wordparts[0];
-        String znwparts = wordparts[1];
+        String[] wordParts = pickedWord.split(" ", 2);
+        article = wordParts[0];
+        String nouns = wordParts[1];
 
         // If the dictionary entries comes with multiple nouns, only use the first.
-        if(znwparts.indexOf(';') != -1) {
-            String[] znwpartsarray = znwparts.split(";", 2);
-            znw = znwpartsarray[0].trim();
+        if(nouns.indexOf(';') != -1) {
+            String[] nounParts = nouns.split(";", 2);
+            finalNoun = nounParts[0].trim();
         }
 
         else
-            znw = znwparts.trim();
+            finalNoun = nouns.trim();
 
         // Set the TextView to display the trimmed word without article.
-        woordTextView.setText(znw);
+        woordTextView.setText(finalNoun);
     }
 
     /**
@@ -272,7 +272,7 @@ public class GamePlay implements TimerHandler {
 
         // If "de" was picked
         if (view.getId() == R.id.de_button) {
-            if (lidwoord.equals("[de]")) {
+            if (article.equals("[de]")) {
                 ifCorrect();
             } else {
                 ifIncorrect();
@@ -280,7 +280,7 @@ public class GamePlay implements TimerHandler {
         }
         // if "het" was picked
         else if (view.getId() == R.id.het_button) {
-            if (lidwoord.equals("[het]")) {
+            if (article.equals("[het]")) {
                 ifCorrect();
             } else {
                 ifIncorrect();
@@ -304,7 +304,7 @@ public class GamePlay implements TimerHandler {
      * To be executed when the guess is correct.
      */
     public void ifCorrect(){
-        keylist.remove(pickedWord);
+        keyList.remove(pickedWord);
         correctCount++;
         correctTextView.setText(Integer.toString(correctCount)
                 + activityContext.getString(R.string.correctguesses));
@@ -323,7 +323,7 @@ public class GamePlay implements TimerHandler {
      * To be executed when the guess is incorrect.
      */
     public void ifIncorrect(){
-        keylist.add(pickedWord);
+        keyList.add(pickedWord);
         incorrectCount++;
         incorrectTextView.setText(activityContext.getString(R.string.incorrectguesses)
                 + Integer.toString(incorrectCount));
