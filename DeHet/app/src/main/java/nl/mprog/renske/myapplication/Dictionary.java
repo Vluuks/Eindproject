@@ -44,7 +44,8 @@ public class Dictionary {
         XmlPullParser xpp = factory.newPullParser();
 
         // Set the input stream.
-        Reader myReader = new InputStreamReader(activityContext.getAssets().open("dictionary2.xml"), "UTF-8");
+        Reader myReader = new InputStreamReader(activityContext.getAssets().open("dictionary2.xml"),
+                "UTF-8");
         xpp.setInput(myReader);
 
         // Loop over the XML file.

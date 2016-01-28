@@ -94,4 +94,9 @@
     <string name="menunewgame">NEW GAME</string>
     <string name="menuhelp">HELP</string>
     <string name="shopcoinsbasictext">Coins:</string>
+    <string name="helpapp">How does this app work?</string>
+    <string name="explain1">This app allows you to practise using the articles in Dutch, de and het. The app will present you with a word and it\'s up to you to pick the right article to go with it. To make things a little more interesting, you can earn points by picking the right article, and even more if you keep picking the right article consecutively.</string>
+    <string name="explain2">The little figure on the main screen right under the buttons is called Bruin. He\'s there to keep you a bit motivated and give you a reason to keep going, even if it doesn\'t go that well.</string>
+    <string name="explain3">You can earn achievements by meeting certain goals. If you complete achievements multiple times, you will be awarded with coins which can be used to purchase items in the shop which you can then give to Bruin! </string>string>
+    <string name="explain4">If the timer, combo system and points are freaking you out a little: no worries. Using the options menu you can disable these things to just practise in peace. You will just not be able to earn achievements or coins in this mode. If you are in need of a little help, don\'t hesitate to press the hints button in the main menu. This will provide you with some useful tips on how to determine which article to use. You can also tap the word to have it read aloud to you and have it translated. </string>
 </resources>

@@ -5,12 +5,10 @@ package nl.mprog.renske.myapplication;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

@@ -65,15 +65,13 @@ public class ShopActivity extends AppCompatActivity {
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
             coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
         }
-
-        // If sharedpreferences exist, use those instead.
+        // If SharedPreferences exist, use those instead.
         else {
             checkForReset();
             shopItems = shopItemLoader.loadShopItems(jsonString);
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
             coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
         }
-
         shopItemLoader.saveShopItems(shopItems, coinsAmount);
     }
 
@@ -81,7 +79,6 @@ public class ShopActivity extends AppCompatActivity {
      * Set an OnClickListener for the items in the ListView.
      */
     private void setListener(){
-        // listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -126,28 +123,28 @@ public class ShopActivity extends AppCompatActivity {
     /**
      * Buy or equip an item.
      */
-    public void buyItem(ShopItem theitem){
+    public void buyItem(ShopItem theItem){
 
         // If the user owns the item, equip or unequip it depending on current status.
-        if(theitem.status == 1) {
+        if(theItem.status == 1) {
 
-            if(!theitem.isEquipped()) {
-                theitem.setEquipped(true);
+            if(!theItem.isEquipped()) {
+                theItem.setEquipped(true);
                 Toast.makeText(ShopActivity.this, R.string.equippedsuccess, Toast.LENGTH_SHORT).show();
             }
             else {
-                theitem.setEquipped(false);
+                theItem.setEquipped(false);
                 Toast.makeText(ShopActivity.this, R.string.unequippedsuccess, Toast.LENGTH_SHORT).show();
             }
             listView.setAdapter(new UserItemAdapter(this, android.R.layout.simple_list_item_1, shopItems));
         }
         // If the user doesn't own the item, check if they can afford it and if so, buy it.
         else {
-            if(coinsAmount - theitem.getPrice() < 0)
+            if(coinsAmount - theItem.getPrice() < 0)
                 Toast.makeText(ShopActivity.this, R.string.cannotafford, Toast.LENGTH_SHORT).show();
             else {
-                coinsAmount = coinsAmount - theitem.getPrice();
-                theitem.setPrice(0);
+                coinsAmount = coinsAmount - theItem.getPrice();
+                theItem.setPrice(0);
                 coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
                 Toast.makeText(ShopActivity.this, R.string.itemboughtconfirmation, Toast.LENGTH_SHORT).show();
             }

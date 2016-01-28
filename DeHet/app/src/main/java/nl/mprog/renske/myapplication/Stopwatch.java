@@ -2,16 +2,16 @@
 
 package nl.mprog.renske.myapplication;
 
-/**
- * Implementation of a countodwn timer that is used in the game.
- * source: http://stackoverflow.com/questions/14393423/how-to-make-a-countdown-timer-in-java
- */
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Implementation of a countodwn timer that is used in the game.
+ * source: http://stackoverflow.com/questions/14393423/how-to-make-a-countdown-timer-in-java
+ */
 public class Stopwatch {
     static int interval;
     static Timer timer;

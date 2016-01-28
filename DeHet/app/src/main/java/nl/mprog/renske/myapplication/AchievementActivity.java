@@ -64,7 +64,6 @@ public class AchievementActivity extends AppCompatActivity {
         }
 
         // Check where the user came from, the menu or a game.
-        //achievementManager.saveAchievements(achievements, coinsAmount);
         checkSource();
     }
 
@@ -117,7 +116,8 @@ public class AchievementActivity extends AppCompatActivity {
     public class UserItemAdapter extends ArrayAdapter<Achievement> {
         protected ArrayList<Achievement> achievements;
 
-        public UserItemAdapter(Context context, int textViewResourceId, ArrayList<Achievement> achievements) {
+        public UserItemAdapter(Context context, int textViewResourceId,
+                               ArrayList<Achievement> achievements) {
             super(context, textViewResourceId, achievements);
             this.achievements = achievements;
         }
@@ -156,30 +156,32 @@ public class AchievementActivity extends AppCompatActivity {
                         // Check if the achievement is repeated and award coins appropriately.
                         if (achievement.getCounter() > 1) {
 
-                            // waarom doet deze het niet
-                            achievementProgress.setText(getString(R.string.completedpart1) + Integer.toString(achievement.getCounter()) + getString(R.string.completedpart2));
+                            achievementProgress.setText(getString(R.string.completedpart1)
+                                    + Integer.toString(achievement.getCounter())
+                                    + getString(R.string.completedpart2));
 
                             if  (achievementManager.isEligibleCoins()){
-                            switch (achievement.getType()) {
-                                case ("Beginner"):
-                                    coinsAmount = coinsAmount + 500;
-                                    break;
-                                case ("Novice"):
-                                    coinsAmount = coinsAmount + 10;
-                                    break;
-                                case ("Intermediate"):
-                                    coinsAmount = coinsAmount + 15;
-                                    break;
-                                case ("Master"):
-                                    coinsAmount = coinsAmount + 25;
-                                    break;
-                                case ("Ultimate"):
-                                    coinsAmount = coinsAmount + 50;
-                                    break;
-                            }
+                                switch (achievement.getType()) {
+                                    case ("Beginner"):
+                                        coinsAmount = coinsAmount + 5;
+                                        break;
+                                    case ("Novice"):
+                                        coinsAmount = coinsAmount + 10;
+                                        break;
+                                    case ("Intermediate"):
+                                        coinsAmount = coinsAmount + 15;
+                                        break;
+                                    case ("Master"):
+                                        coinsAmount = coinsAmount + 25;
+                                        break;
+                                    case ("Ultimate"):
+                                        coinsAmount = coinsAmount + 50;
+                                        break;
+                                }
                             }
                             // Update TextView to show the amount of coins the user has.
-                            coinsTextView.setText(getString(R.string.coins) + Integer.toString(coinsAmount));
+                            coinsTextView.setText(getString(R.string.coins) +
+                                    Integer.toString(coinsAmount));
                             achievementManager.setEligibleCoins(false);
                         }
                     }

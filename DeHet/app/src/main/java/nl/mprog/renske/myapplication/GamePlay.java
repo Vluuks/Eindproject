@@ -25,7 +25,7 @@ public class GamePlay implements TimerHandler {
 
     private Context activityContext;
     private TextView woordTextView, scoreTextView, livesTextView, multiplierTextView, timerTextView, correctTextView, incorrectTextView, translationTextView;
-    public ImageView finishedImageView;
+    private ImageView finishedImageView;
     private Button deButton, hetButton;
     private String lidwoord, znw, gameType, pickedWord, pickedWordTranslation, gameVersion;
     private int score, lives, multiplier, maxMultiplier, correctCount, incorrectCount;

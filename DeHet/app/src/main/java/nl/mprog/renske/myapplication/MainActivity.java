@@ -111,7 +111,8 @@ public class MainActivity extends AppCompatActivity  {
         Bruin bruin = new Bruin();
 
         // Set SharedPreferences for Bruin.
-        SharedPreferences storedachievements = getSharedPreferences("storedachievements", this.MODE_PRIVATE);
+        SharedPreferences storedachievements =
+                getSharedPreferences("storedachievements", this.MODE_PRIVATE);
         bruin.setSharedPreferences(storedachievements);
 
         // Pass ImageViews to Bruin.
@@ -166,7 +167,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     /**
-     * Interface redirecting methods.
+     * Layout redirecting methods.
      */
     public void displayHintScreen(View view) {
         Intent intent = new Intent(this, HintsActivity.class);
@@ -178,12 +179,12 @@ public class MainActivity extends AppCompatActivity  {
         gameplay.startNewGame();
     }
 
-    public void goToOptions(View view) {
+    public void displayOptions(View view) {
         Intent intent = new Intent(this, OptionsActivity.class);
         startActivity(intent);
     }
 
-    public void goToShop(View view) {
+    public void displayShop(View view) {
         Intent intent = new Intent(this, ShopActivity.class);
         startActivity(intent);
     }
@@ -193,9 +194,9 @@ public class MainActivity extends AppCompatActivity  {
             String speech = woordTextView.getText().toString();
             textToSpeech.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
         }
-        if (translationStatus){
+        if (translationStatus)
             gameplay.showTranslation();
-        }
+
     }
 
     public void displayAchievementScreen(View view) {

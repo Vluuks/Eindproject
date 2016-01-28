@@ -18,7 +18,7 @@ import android.widget.Switch;
 public class OptionsActivity extends AppCompatActivity {
 
     private Switch gamemodeSwitch, textToSpeechSwitch, translationSwitch;
-    public String chosenGametype, chosenGameversion;
+    private String chosenGametype, chosenGameversion;
     private RadioGroup radioGroup;
     private RadioButton dehetRadioButton, dezedieditdatRadioButton;
     private CheckBox resetCheckBox;
@@ -55,7 +55,8 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
-        CompoundButton.OnCheckedChangeListener multipleListener = new CompoundButton.OnCheckedChangeListener() {
+        CompoundButton.OnCheckedChangeListener multipleListener =
+                new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 switch (buttonView.getId()) {

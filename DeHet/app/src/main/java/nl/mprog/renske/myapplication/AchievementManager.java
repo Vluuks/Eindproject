@@ -4,13 +4,11 @@ package nl.mprog.renske.myapplication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -170,10 +168,11 @@ public class AchievementManager {
                 gson.toJsonTree(achievements, new TypeToken<ArrayList<Achievement>>() {
                 }.getType());
 
-        JsonArray jsonArray = element.getAsJsonArray(); // waarom crasht ie hier?? TODO
+        JsonArray jsonArray = element.getAsJsonArray();
         String jsonArrayString = jsonArray.toString();
 
-        SharedPreferences prefs = activityContext.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
+        SharedPreferences prefs =
+                activityContext.getSharedPreferences("storedachievements", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = prefs.edit();
 
         edit.putString("jsonachievements", jsonArrayString);
@@ -184,7 +183,8 @@ public class AchievementManager {
     /**
      * Checks if the user is eligible for one ore more achievements.
      */
-    public void checkForAchievement(int finalscore, int finalmultiplier, int finallives, int correctcounter, int currentcoins) {
+    public void checkForAchievement(int finalscore, int finalmultiplier, int finallives,
+                                    int correctcounter, int currentcoins) {
 
         setEligibleCoins(true);
 
